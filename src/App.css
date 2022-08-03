@@ -470,6 +470,10 @@ body {
   color: #000;
   height: 100%;
   padding-top: 80px;
+  padding-bottom: 80px;
+}
+#main_hot_photo {
+  padding-bottom: 100px;
 }
 #main_movie_clips h2, #main_hot_photo h2 {
   text-align: center;
@@ -510,6 +514,36 @@ body {
 }
 
 /* 광고배너(banner_bottom) */
+#main_banner_bottom {
+  padding-bottom: 20px;
+  background: #f7f7f7;
+}
+#main_banner_bottom > div {
+  position: relative;
+}
+#main_banner_bottom > div > img:nth-child(1) {
+  width: 100%;
+}
+#main_banner_bottom > div div img {
+  position: absolute;
+  top: 4%;
+  left: 15%;
+}
+#main_banner_bottom > div div:nth-child(3) p {
+  position: absolute;
+  top: 60%;
+  left: 35%;
+  border: 1px solid #fff;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 1em;
+}
+#main_banner_bottom > div div:nth-child(4) p {
+  position: absolute;
+  top: 60%;
+  right: 10%;
+}
+
 
 /* footer 하단영역 */
 #footer {
@@ -517,7 +551,7 @@ body {
   width: 100%;
   color: #fff;
   margin: 0 auto;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 #footer .footer_top {
   background: #011b47;

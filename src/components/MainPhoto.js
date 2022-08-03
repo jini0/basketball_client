@@ -40,7 +40,18 @@ const MainPhoto = () => {
                 </div>
             </section>
             <section id='main_banner_bottom'>
-
+                <div>
+                    <img src="images/banner.png" alt='메인광고배너' />
+                    <div>
+                        <img src='images/DB_insurance_logo.gif' alt='DB손해보험로고' />
+                    </div>
+                    <div>
+                        <p>사이트 바로가기</p>
+                    </div>
+                    <div>
+                        <p>사이트 바로가기</p>
+                    </div>
+                </div>
             </section>
         </div>
     );
