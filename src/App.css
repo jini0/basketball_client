@@ -1,38 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Open+Sans:wght@300;500&display=swap');
+* { cursor: url(https://cur.cursors-4u.net/sports/spo-2/spo145.cur), auto !important;} 
+* { padding: 0; margin: 0; box-sizing: border-box;}
+li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+html{
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
+}
 .App {
+  margin: 0 auto;
+  padding: 0;
+  /* box-sizing: border-box; */
+  width: 100%;
+  height: 100%;
+}
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+
+/* header */
+#header {
+  width: 100%;
+  /* position: fixed;
+  z-index: 15; */
+}
+/* -제일 상단 */
+#sign_nav {
+  background: #f1f1f1;
+  height: 40px;
+  font-size: 14px;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+}
+#sign_nav ul {
+  /* text-align: right; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#sign_nav ul li {
+  margin: 11px 5px;
+}
+#sign_nav ul li:not(:last-child) {
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+/* #sign_nav.on {
+  opacity: 0.6;
+} */
+/* -메뉴탭 부분 */
+#gnb {
+  height: 85px;
+  font-size: 17px; 
+  /* background: pink; */
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+}
+#gnb ul {
+  width: 100%;
+  max-width: 1200px;
+  position: absolute;
+  top: 35%;
+  left: 46%;
+  transform: translateX(-46%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 5;
+}
+#gnb ul li img {
+  position: absolute;
+  top: -10px;
+  left: 53%;
+  transform: translateX(-53%);
+  width: 10%;
+  z-index: 5;
+}
+
+
+/* mainPage */
+/* 슬라이드 이미지 */
+#mainPage {
+  width: 100%;
+  /* height: 100%; */
+  color: #fff;
+  /* position: relative; */
+}
+#mainSlide {
+  overflow: hidden;
+  position: relative;
+}
+#mainSlide #mainImg img {
+  width: 100%;
+  display: block;
+  opacity: 0.7;
+}
+#mainSlide .slide {
+  /* filter: opacity(0.5) drop-shadow(0 0 0 #175624);  */
+  transform: scale(1.15);
+  filter: blur(5px) grayscale(10%);
+}
+#mainSlide #mainImg .hidden_slide {
+  z-index: 3;
+  opacity: 1;
+  position: absolute;
+  /* clip: rect( 0, 1500px, 1000px, 400px ); */
+  clip: rect( 0, 1450px, 1000px, 350px );
+  transform: skewX(-15deg) rotate(-0.05deg);
+  /* transform: skewX(-20deg) rotate(-0.05deg); */
+  filter: opacity(0.7) drop-shadow(0 0 0 #175624);
+}
+#mainSlide #mainText {
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-shadow: 1px 1px 3px #333;
+  font-family: 'Open Sans', 'Nanum Gothic', sans-serif;
+  z-index: 5;
+}
+#mainSlide #mainText h1 {
+  font-size: 85px;
+  margin: 30px 0;
+}
+#mainSlide #mainText p {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+/* season 깃발모양 */
+.seasonText {
+  margin: 0 auto;
+  color: #175624;
+  width: 250px;
+  height: 40px;
+  position: relative;
+  background: #fff;    
+  text-align: center;
+  line-height: 40px;
+}
+.seasonText:before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20.18px solid #fff;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+.seasonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #283b3a;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+/* 라벨모양으로 한거 */
+/* .seasonText {
+  background: #fff;
+  color: #175624;
+  width: 110px;
+  height: 56px;
+  box-sizing: content-box;
+  padding-top: 15px;
+  position: relative;
+  background: #fff;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.seasonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 13px solid #eee;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+} */
+
+
+/* main_columns부분 */
+#main_columns {
+  width: 100%;
+  height: 700px;
+  background: #03662c;
+  padding-bottom: 100px;
+}
+#main_columns .inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+/* 왼쪽영역 */
+#main_columns #column_left {
+  width: 30%;
+  height: 100%;
+  padding-top: 100px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+#main_columns #column_left > div {
+  border-radius: 15px;
+}
+#main_columns #column_left div:nth-child(1) {
+  height: 40%;
+  /* height: 50%; */
+  background: rgba(255, 255, 255, 0.986);
+  color: #175624;
+  /* margin-bottom: 20px; */
+  margin-bottom: 8%;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.left_text {
+  padding-top: 50px;
+  text-shadow: 1px 1px 2px #555;
+  position: relative;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.left_text h2 {
+  font-size: 1.875em;
+  /* 30px */
+  padding-bottom: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.left_text p {
+  font-size: 0.938em;
+  /* 15px */
+}
+.left_text .left_img {
+  position: absolute;
+  bottom: 0;
+  right: 2%;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+.left_text .left_img img {
+  width: 100%;
+}
+/* .left_text .left_img img:nth-child(1) {
+  margin-right: 205px;
+  margin-left: 8px;
+} */
+#main_columns #column_left div:nth-child(2) {
+  height: 50%;
+}
+#main_columns #column_left div img {
+  width: 100%;
+  border-radius: 15px;
+  /* margin-bottom: 20px; */
+  margin-bottom: 8%;
+}
+/* 중간영역 */
+#column_mid {
+  width: 30%;
+  height: 100%;
+  color: #333;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+/* - 뉴스 / 공지 부분 */
+#column_mid #mid_top, #column_mid #mid_bot {
+  /* height: 50%; */
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.986);
+  padding: 25px 20px;
+}
+#mid_top > span:nth-child(1), #mid_bot > span:nth-child(1) {
+  border-radius: 20px;
+  border: 1px solid #03662c;
+  background: #03662c;
+  color: #fff;
+  padding: 3px 8px;
+  font-size: .938rem;
+  /* font-size --> px을 rem 전환하는 거 참고 
+  https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=classe82&logNo=221048948525 */
+}
+#mid_top > span:nth-child(2), #mid_bot > span:nth-child(2) {
+  font-size: .75rem;
+  color: #888;
+  margin-left: 65%;
+}
+#mid_top > span:nth-child(2)::after, #mid_bot > span:nth-child(2)::after {
+  display: inline;
+  content: " >";
+  font-size: .7rem;
+}
+#mid_top > ul, #mid_bot > ul {
+  padding-top: 3px;
+}
+#mid_top > ul li, #mid_bot > ul li {
+  width: 100%;
+  /* overflow: hidden; */
+  border-bottom: 1px solid rgba(204, 204, 204, 0.616);
+  padding-top: 15px;
+}
+#mid_top > ul li p, #mid_bot > ul li p {
+  width: 95%;
+  font-size: 1.000em;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: block;
+  /* 너비보다 초과하는 글자 안보이게 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#mid_top > ul span, #mid_bot > ul span {
+  color: #888;
+  font-size: 0.813em;
+  padding-left: 5px;
+}
+#column_mid #mid_bot {
+  margin-top: 20px;
+}
+/* 오른쪽영역 */
+#column_right {
+  width: 30%;
+  height: 90%;
+  margin-top: 12%;
+  background: rgba(255, 255, 255, 0.986);
+  border-radius: 15px;
+  color: #000;
+  padding: 25px 20px;
+}
+#column_right > ul {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 20px;
+  border: 1px solid #03662c;
+  margin-bottom: 25px;
+}
+#column_right > ul li {
+  width: 50%;
+  font-size: 0.875em;
+  text-align: center;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  padding: 5px 8px;
+}
+#column_right > ul li:nth-child(1).active {
+  background: #03662c;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px solid #03662c;
+  padding: 5px 8px;
+  color: #fff;
+}
+#column_right > ul li:nth-child(2).active {
+  background: #03662c;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 1px solid #03662c;
+  padding: 5px 8px;
+  color: #fff;
+}
+/* -경기일정 클릭시 */
+#game_schedule {
+  padding: 0 5px;
+}
+#schedule_detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
+#schedule_detail #date {
+  font-size: 1.000em;
+  font-weight: 600;
+}
+#schedule_detail #arrow ul {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#schedule_detail #arrow ul li {
+  padding: 5px;
+  cursor: pointer;
+}
+#schedule_detail #arrow ul li:nth-child(1) {
+  border-right: 1px solid #ccc;
+}
+.game_desc span {
+  color: #555;
+  font-size: 0.875em;
+  /* display: inline-block;
+  height: 1em; */
+}
+.game_desc span:nth-child(1) {
+  padding-right: 10px;
+}
+.game_desc span:nth-child(2) {
+  padding-left: 10px;
+  border-left: 2px solid #ccc;
+}
+.game_team {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.game_team .icon_emblem {
+  height: 3.75rem;
+  position: relative;
+  font-style: normal;
+  font-size: 0.813em;
+}
+.game_team .icon_emblem > p {
+  width: 100%;
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.game_team i:nth-child(1) {
+  width: 33.3333%;
+  background: url('../public/images/emblem_orions.png') center center / contain no-repeat;
+}
+.game_team .vs {
+  width: 33.3333%;
+  font-size: 1.125em;
+  /* font-weight: 600; */
+}
+.game_team i:nth-child(3) {
+  width: 33.3333%;
+  background: url('../public/images/emblem_db.png') center center / contain no-repeat;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* movie영역(youtube) *//* photo영역(사진) */
+#main_movie_clips, #main_hot_photo {
+  /* background: #f1f1f1; */
+  /* background: #03662c; */
+  background: #f7f7f7;
+  width: 100%;
+  color: #000;
+  height: 100%;
+  padding-top: 80px;
+}
+#main_movie_clips h2, #main_hot_photo h2 {
+  text-align: center;
+  font-size: 1.875em;
+  margin-bottom: 30px;
+}
+#main_movie_clips .inner > div > ul, #main_hot_photo .inner > div > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+#main_movie_clips ul > li, #main_hot_photo ul > li {
+  width: 30.5%;
+}
+.main_index {
+  width: 100%;
+}
+.main_index img {
+  width: 100%;
+  vertical-align: top;
+  height: 218px;
+  background-size: cover;
+  border-radius: 12px 12px 0 0;
+  background-position: 50%;
+}
+.main_index .main_index_text {
+
+}
+.main_index .main_index_text h4 {
+  /* 너비보다 초과하는 글자 안보이게 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+/* 광고배너(banner_bottom) */

@@ -1,0 +1,33 @@
+#aside {
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+  width: 4%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+/* 최상단 */
+#goTopBtn{
+  height: 50%;
+  width: 50px;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 40px;
+  color: #333;
+  z-index: 20;
+}
+/* 최하단 */
+#goBotBtn{
+  height: 50%;
+  width: 50px;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 40px;
+  color: #333;
+  z-index: 20;
+}
