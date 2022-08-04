@@ -37,19 +37,71 @@ const Header = () => {
             <nav id='gnb'>
                 <div className='inner'>
                     <ul>
-                        <li>PROMY
-                            <ul>
-                                <li></li>
+                        <li class="menuList">
+                            <h3>PROMY</h3>
+                            <ul class="hideMenu">
+                                <li>소개·인사말</li>
+                                <li>프론트·조직</li>
+                                <li>엠블럼·CI</li>
+                                <li>스폰서</li>
+                                <li>구장안내 </li>
                             </ul>
                         </li>
-                        <li>NEWS</li>
-                        <li>TEAM</li>
-                        <li>GAME·STATS</li>
+                        <li class="menuList">
+                            <h3>NEWS</h3>
+                            <ul class="hideMenu">
+                                <li>공지사항</li>
+                                <li>뉴스</li>
+                            </ul>
+                        </li>
+                        <li class="menuList">
+                            <h3>TEAM</h3>
+                            <ul class="hideMenu">
+                                <li>선수</li>
+                                <li>코칭스태프</li>
+                                <li>지원스태프</li>
+                                <li>응원단</li>
+                            </ul>
+                        </li>
+                        <li class="menuList">
+                            <h3>GAME·STATS</h3>
+                            <ul class="hideMenu">
+                                <li>일정 및 결과</li>
+                                <li>팀 순위</li>
+                                <li>선수 순위</li>
+                            </ul>
+                        </li>
                         <li><Link to="/"><img src="images/DB_logo1.png" alt="원주DB로고" /></Link></li>
-                        <li>FAN</li>
-                        <li>EVENT</li>
-                        <li>TICKET</li>
-                        <li>STORE</li>
+                        <li class="menuList">
+                            <h3>FAN</h3>
+                            <ul class="hideMenu">
+                                <li>DB Youtube</li>
+                                <li>DB photo</li>
+                                <li>KBL Polls</li>
+                                <li>KBL Challenge</li>
+                                <li>KBL Draw</li>
+                            </ul>
+                        </li>
+                        <li class="menuList">
+                            <h3>EVENT</h3>
+                            <ul class="hideMenu">
+                                <li>이벤트</li>
+                            </ul>
+                        </li>
+                        <li class="menuList">
+                            <h3>TICKET</h3>
+                            <ul class="hideMenu">
+                                <li>예매하기</li>
+                                <li>티켓가격</li>
+                                <li>티켓 안내사항</li>
+                            </ul>
+                        </li>
+                        <li class="menuList">
+                            <h3>STORE</h3>
+                            <ul class="hideMenu">
+                                <li>DB Store</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </nav>

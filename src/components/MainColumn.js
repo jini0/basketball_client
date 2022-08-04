@@ -13,14 +13,14 @@ const MainColumn = () => {
         schedule.addEventListener('click',()=>{
             schedule.classList.add('active');
             ranking.classList.remove('active');
-            gameSchedule.style.opacity = 1;
-            gameRanking.style.opacity = 0;
+            gameSchedule.style.display = "block";
+            gameRanking.style.display = "none";
         })
         ranking.addEventListener('click',()=>{
             ranking.classList.add('active');
             schedule.classList.remove('active');
-            gameRanking.style.opacity = 1;
-            gameSchedule.style.opacity = 0;
+            gameRanking.style.display = "block";
+            gameSchedule.style.display = "none";
         })
     // eslint-disable-next-line
     },[]);
@@ -116,7 +116,121 @@ const MainColumn = () => {
                             </div>
                         </div>
                         {/* 팀순위 클릭시 */}
-                        <div id='game_ranking'></div>
+                        <div id='game_ranking'>
+                            <p>2021-2022시즌</p>
+                            <ul>
+                                <li>
+                                    <span className='rank_top'>1</span>
+                                    <i className='icon_emblem emblem_sk'></i>
+                                    <span>서울 SK</span>
+                                    <ul>
+                                        <li>40W</li>
+                                        <li>14L</li>
+                                        <li>0.741</li>
+                                        <li>+0</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span className='rank_top'>2</span>
+                                    <i className='icon_emblem emblem_kt'></i>
+                                    <span>수원 KT</span>
+                                    <ul>
+                                        <li>37W</li>
+                                        <li>17L</li>
+                                        <li>0.685</li>
+                                        <li>+3</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span className='rank_top'>3</span>
+                                    <i className='icon_emblem emblem_kgc'></i>
+                                    <span>안양 KGC</span>
+                                    <ul>
+                                        <li>32W</li>
+                                        <li>22L</li>
+                                        <li>0.593</li>
+                                        <li>+8</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>4</span>
+                                    <i className='icon_emblem emblem_mobis'></i>
+                                    <span>울산 현대모비스</span>
+                                    <ul>
+                                        <li>30W</li>
+                                        <li>24L</li>
+                                        <li>0.556</li>
+                                        <li>+10</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>5</span>
+                                    <i className='icon_emblem emblem_orions'></i>
+                                    <span>고양 오리온</span>
+                                    <ul>
+                                        <li>27W</li>
+                                        <li>27L</li>
+                                        <li>0.500</li>
+                                        <li>+13</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>6</span>
+                                    <i className='icon_emblem emblem_koreagas'></i>
+                                    <span>대구 한국가스공사</span>
+                                    <ul>
+                                        <li>27W</li>
+                                        <li>27L</li>
+                                        <li>0.500</li>
+                                        <li>+13</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>7</span>
+                                    <i className='icon_emblem emblem_lg'></i>
+                                    <span>창원 LG</span>
+                                    <ul>
+                                        <li>24W</li>
+                                        <li>30L</li>
+                                        <li>0.444</li>
+                                        <li>+16</li>
+                                    </ul>
+                                </li>
+                                <li className='db_rank'>
+                                    <span>8</span>
+                                    <i className='icon_emblem emblem_db'></i>
+                                    <span>원주 DB</span>
+                                    <ul>
+                                        <li>23W</li>
+                                        <li>31L</li>
+                                        <li>0.426</li>
+                                        <li>+17</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>9</span>
+                                    <i className='icon_emblem emblem_kcc'></i>
+                                    <span>전주 KCC</span>
+                                    <ul>
+                                        <li>21W</li>
+                                        <li>33L</li>
+                                        <li>0.389</li>
+                                        <li>+19</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>10</span>
+                                    <i className='icon_emblem emblem_samsung'></i>
+                                    <span>서울 삼성</span>
+                                    <ul>
+                                        <li>9W</li>
+                                        <li>45L</li>
+                                        <li>0.167</li>
+                                        <li>+31</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
