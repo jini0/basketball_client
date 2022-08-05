@@ -5,6 +5,9 @@ import Slider from "react-slick";
 // 슬라이드 스타일
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import MainColumn from '../components/MainColumn';
+import MainMovie from '../components/MainMovie';
+import MainPhoto from '../components/MainPhoto';
 
 const MainPage = () => {
     // 슬라이드 설정
@@ -68,11 +71,38 @@ const MainPage = () => {
                         <div id='mainImg2'>
                             <img src="images/mainSlide_2.png" alt="메인슬라이드2"/>
                         </div>
+                        <div id='mainText2'>
+                            <div>
+                                <h4>2022-2023시즌 프로농구</h4>
+                                <h2>DB프로미 개막일정</h2>
+                            </div>
+                            <div>
+                                <div className='openingDate'>
+                                    <span>시즌 첫 경기</span>
+                                    <div>
+                                        <span>22.10.15 토 시간미정 고양실내</span>
+                                        <p><img src="images/emblem_db.png" alt='db로고'/>원주 DB <span>vs</span> 수원 KT<img src="images/emblem_kt.png" alt='kt로고'/></p>
+                                    </div>
+                                </div>
+                                <div className='openingDate'>
+                                    <span>원주 홈 개막</span>
+                                    <div>
+                                        <span>22.10.22 토 시간미정 원주종합</span>
+                                        <p><img src="images/emblem_db.png" alt='db로고'/>원주 DB <span>vs</span> 울산현대모비스<img src="images/emblem_mobis.png" alt='mobis로고'/></p>
+                                    </div>
+                                </div>
+                                <div className='openingDesc'>
+                                    <p>※경기 시간은 향후 변경될 수 있음을 알려드립니다.</p>
+                                    <h4>팬 여러분의 많은 관심과 성원 부탁드립니다.</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </Slider>
             </div>
-            
-            
+            <MainColumn/>
+            <MainMovie />
+            <MainPhoto />
         </div>
     );
 };

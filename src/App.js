@@ -1,22 +1,25 @@
 import './App.css';
-import MainColumn from './components/MainColumn';
-import MainMovie from './components/MainMovie';
-import MainPhoto from './components/MainPhoto';
-// import MainYoutube from './components/MainYoutube';
 import Aside from './include/Aside';
 import Footer from './include/Footer';
 import Header from './include/Header.js';
 import MainPage from './main';
+import { Routes,Route } from 'react-router-dom';
+import Player from './components/Team/Player';
+// import MainYoutube from './components/MainYoutube';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <MainPage />
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/player' element={<Player/>} />
+      </Routes>
+      {/* <MainPage />
       <MainColumn />
-      {/* <MainYoutube /> */}
       <MainMovie/>
-      <MainPhoto />
+      <MainPhoto /> */}
+      {/* <MainYoutube /> */}
       <Aside />
       <Footer />
     </div>

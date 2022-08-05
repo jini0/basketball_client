@@ -1,0 +1,92 @@
+.teamTab {
+    padding-top: 6%;
+}
+.teamHeader {
+    /* background: #03662c; */
+    background: #166c35;
+    padding: 65px 0 50px 75px;
+    height: 200px;
+    text-align: center;
+    color: #fff;
+}
+.teamHeader h3 {
+    font-size: 1.563em;
+    padding-bottom: 1%;
+}
+.teamHeader p {
+    font-size: 0.8125em;
+    letter-spacing: 1.5px;
+}
+.inner2 {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+}
+.position_name h4 {
+    padding: 0px 0px 20px 0;
+}
+/* player 선수 */
+.teamContent .playerTab {
+    width: 100%;
+    height: 100%;
+}
+.teamContent .playerTab > div:nth-child(1) > ul {
+    display: flex;
+    /* justify-content: space-around; */
+    padding: 22px 30px;
+    background-color: #fff;
+    border-radius: 36px;
+    position: relative;
+    top: -32px;
+    box-shadow: 2px 3.5px 29px 0 rgb(15 16 16 / 3%);
+    font-weight: 600;
+    text-align: center;
+}
+.teamContent .playerTab > div:nth-child(1) > ul li {
+    width: 10%;
+    line-height: 1em;
+}
+.playerTab > div:nth-child(1) > ul li:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+.teamContent .playerTab > div:nth-child(1) > ul li:nth-child(1) {
+    margin-left: 28.5%;
+}
+.teamContent .playerTab .active {
+    border: 1px solid #166c35;
+    background: #166c35;
+    color: #fff;
+}
+.teamContent .playerTab > div {
+    background: #f1f1f1;
+}
+.teamContent .playerTab .teamList {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    /* 이걸로 주면 items의 항목이 한 줄에 4개가 아닐때는 양옆으로(끝과 끝) 떨어짐.. */
+    align-items: center;
+    padding-bottom: 80px;
+}
+.teamContent .playerTab .teamList > li {
+    width: 32%;
+    margin-bottom: 2%;
+    background: #fff;
+}
+.teamContent .playerTab .teamList > li:not(:nth-child(3n)) {
+    margin-right: 2%;
+}
+.teamContent .playerTab .teamList img {
+    width: 100%;
+}
+.playerTab .teamList > li .teamList_img {
+    width: 100%;
+}
+.teamList .teamList_text {
+    text-align: center;
+    background: #ccc;
+}
+#army {
+    padding-bottom: 200px;
+}

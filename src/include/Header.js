@@ -57,7 +57,7 @@ const Header = () => {
                         <li class="menuList">
                             <h3>TEAM</h3>
                             <ul class="hideMenu">
-                                <li>선수</li>
+                                <li><Link to="/player">선수</Link></li>
                                 <li>코칭스태프</li>
                                 <li>지원스태프</li>
                                 <li>응원단</li>
