@@ -86,6 +86,7 @@
 .teamList .teamList_text {
     text-align: center;
     background: #ccc;
+    font-weight: 600;
 }
 #army {
     padding-bottom: 200px;
