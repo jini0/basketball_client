@@ -5,6 +5,8 @@ import Header from './include/Header.js';
 import MainPage from './main';
 import { Routes,Route } from 'react-router-dom';
 import Player from './components/Team/Player';
+import PlayerDetail from './components/Team/PlayerDetail';
+import Coach from './components/Team/Coach';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -14,11 +16,9 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/player' element={<Player/>} />
+        <Route path='/detailPlayer' element={<PlayerDetail/>} />
+        <Route path='/coach' element={<Coach/>} />
       </Routes>
-      {/* <MainPage />
-      <MainColumn />
-      <MainMovie/>
-      <MainPhoto /> */}
       {/* <MainYoutube /> */}
       <Aside />
       <Footer />

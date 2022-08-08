@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Team.css';
 const Player = () => {
     return (
@@ -23,6 +24,7 @@ const Player = () => {
                             <h4>GUARD</h4>
                             <ul className='teamList'>
                                 <li>
+                                    <Link to="/detailPlayer">
                                     <div className='teamList_img'>
                                         <img src='images/player_7.png' alt='김현호선수'/>
                                     </div>
@@ -31,6 +33,7 @@ const Player = () => {
                                         <p>김현호</p>
                                         <span className='position'>GUARD</span>
                                     </div>
+                                    </Link>
                                 </li>
                                 <li>
                                     <div className='teamList_img'>
@@ -85,7 +88,7 @@ const Player = () => {
                             </ul>
 
                         </div>
-                        <div id='foward' className=' inner2 position_name'>
+                        <div id='foward' className='inner2 position_name'>
                             <h4>FORWARD</h4>
                             <ul className='teamList'>
                                 <li>

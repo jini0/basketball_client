@@ -22,6 +22,7 @@
     max-width: 1000px;
     margin: 0 auto;
     height: 100%;
+    text-align: center;
 }
 .position_name h4 {
     padding: 0px 0px 20px 0;
@@ -70,15 +71,18 @@
     padding-bottom: 80px;
 }
 .teamContent .playerTab .teamList > li {
-    width: 32%;
-    margin-bottom: 2%;
+    width: 30%;
+    margin-bottom: 5%;
     background: #fff;
+    /* height: 15rem; */
+    border-radius: 15px;
+    overflow: hidden;
 }
 .teamContent .playerTab .teamList > li:not(:nth-child(3n)) {
-    margin-right: 2%;
+    margin-right: 5%;
 }
 .teamContent .playerTab .teamList img {
-    width: 100%;
+    width: 50%;
 }
 .playerTab .teamList > li .teamList_img {
     width: 100%;
@@ -88,6 +92,226 @@
     background: #ccc;
     font-weight: 600;
 }
+.teamList .teamList_text .num {
+    font-size: 0.813em;
+    color: #166c35;
+}
+.teamList .teamList_text > p {
+    font-size: 1.250em;
+    font-weight: 600;
+}
+.teamList .teamList_text .position {
+    font-size: 1.000em;
+    color: #fff;
+    font-weight: 500;
+}
 #army {
     padding-bottom: 200px;
+}
+/* 선수 상세페이지 */
+.playerDetailWrap {
+    width: 100%;
+    /* height: 80vh; */
+    /* height: 65vh; */
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.playerDetailWrap .detailBox {
+    width: 100%;
+    height: 590px;
+    /* height: 100%; */
+    /* background: url('/public/images/player_desc2.png') center center / contain no-repeat;     */
+    background: url('/public/images/player_desc2.png') center center / cover no-repeat;    
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.detailBox .detailInfoWrap {
+    padding: 50px 0 0 60px;
+    /* height: 66.704%; */
+}
+.detailBox .detailInfoWrap .detailInfo1 {
+    text-shadow: 1px 1px 3px #000;
+    font-weight: 700;
+}
+.detailInfo1 p:nth-child(1) {
+    font-size: 3.125em;
+    color: #03662c;
+    font-style: italic;
+}
+.detailInfo1 p:nth-child(2) {
+    font-size: 3.75em;
+    color: #fff;
+}
+.detailInfo1 p:nth-child(3) {
+    font-size: 2.875em;
+    color: #999;
+}
+.detailBox .detailInfoWrap .detailInfo2 {
+    margin-top: 130px;
+}
+.detailInfo2 strong, .detailInfo2 p {
+    font-size: 20px;
+}
+.detailInfo2 p {
+    line-height: 2;
+}
+.detailBox strong, .detailBox p {
+    color: #fff;
+}
+.detailInfo2 p:first-child strong {
+    display: inline-block;
+    letter-spacing: 4.5px;
+}
+.detailInfo2 p:last-child strong {
+    display: inline-block;
+    letter-spacing: 12px;
+}
+.detailInfo3 {
+    padding-top: 61px;
+    /* width: 100%; */
+    width: 40%;
+    height: 749.59px;
+}
+.detailInfo3 img {
+    /* width: 40%; */
+    position: static;
+    width: 85%;
+    transform: translateY(0);
+}
+.detailInfo4 {
+    display: flex;
+    color: #000;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border: 1px solid #c5c5c5;
+    border-top: none;
+    padding: 50px;
+}
+.detailInfo4 li {
+    display: flex;
+    align-items: center;
+}
+.detailInfo4 li:first-child {
+    color: #222;
+    font-size: 2.000em;
+    font-weight: 700;
+}
+.detailInfo4 li:not(:first-child)::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 70px;
+    background: #c5c5c5;
+    margin: 0 60px;
+}
+.detailInfo4 li p:first-child {
+    font-size: 1.375em;
+    color: #444;
+    font-weight: 600;
+}
+.detailInfo4 p {
+    text-align: center;
+}
+.detailInfo4 li p:last-child strong {
+    font-size: 40px;
+    color: #03662c;
+}
+.detailInfo4 li p:last-child {
+    font-size: 2.250em;
+    color: #666;
+}
+.detailInfo4 p {
+    text-align: center;
+}
+.playerScore {
+    margin-top: 50px;
+}
+.playerScore h3 {
+    background: url('/public/images/sub_title_bg.png') 30px / contain no-repeat;
+    /* background-position: 30px; */
+    background-size: 13px 18px;
+    position: relative;
+    display: block;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 20px 20px 20px 60px;
+    background-color: #ccc;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 20px;
+    color: #222;
+    font-weight: 700;
+    line-height: 1.4;
+    /* vertical-align: middle; */
+}
+.playerScore table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    margin-top: 20px;
+}
+.playerScore table thead th {
+    font-size: 1.000em;
+    color: #222;
+    /* font-weight: 700; */
+    background: #f8f8f8;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    border-top-color: #03662c;
+    min-height: 50px;
+    padding: 18px 0;
+    text-align: center;
+    line-height: 1.4;
+    border-right: 1px solid #e5e5e5;
+    vertical-align: middle;
+}
+.playerScore table thead th:first-child {
+    border-left: none;
+} 
+.playerScore table thead th:last-child {
+    border-right: none;
+} 
+.playerScore table tbody tr td {
+    border: 1px solid #ccc;
+    border-right: 1px solid #e5e5e5;
+    padding: 18px 0;
+    text-align: center;
+}
+.playerScore table tbody tr td:first-child {
+    border-left: none;
+} 
+.playerScore table tbody tr td:last-child {
+    border-right: none;
+} 
+/* 코칭스태프 */
+.coach {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+/* -감독님 */
+.coach #director {
+    height: 600px;
+    background: url('/public/images/coach_desc4.png') center center / cover no-repeat;        
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.coachDetail .coachProfile:nth-child(1) {
+    display: flex;
+}
+/* -코치 */
+#coaches {
+    width: 100%;
+}
+#coaches > ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

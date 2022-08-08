@@ -1,6 +1,7 @@
 import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs';
+import { SiNaver } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -28,9 +29,10 @@ const Header = () => {
                         <li>Login</li>
                         <li>Join</li>
                         {/* <li><FontAwesomeIcon icon="fa-brands fa-facebook" /></li> */}
-                        <li className='snsIcon'><BsInstagram /></li>
-                        <li className='snsIcon'><BsYoutube /></li>
-                        <li className='snsIcon'><BsFacebook /></li>
+                        <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/'><BsInstagram /></a></li>
+                        <li className='snsIcon'><a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg"><BsYoutube /></a></li>
+                        <li className='snsIcon'><a href='https://www.facebook.com/dbpromybasketball'><BsFacebook /></a></li>
+                        <li className='snsIcon'><a href='https://m.post.naver.com/my.nhn?memberNo=34663910'><SiNaver /></a></li>
                     </ul>
                 </div>
             </div>
@@ -55,10 +57,10 @@ const Header = () => {
                             </ul>
                         </li>
                         <li class="menuList">
-                            <h3>TEAM</h3>
+                            <h3><Link to="/player">TEAM</Link></h3>
                             <ul class="hideMenu">
                                 <li><Link to="/player">선수</Link></li>
-                                <li>코칭스태프</li>
+                                <li><Link to="/coach">코칭스태프</Link></li>
                                 <li>지원스태프</li>
                                 <li>응원단</li>
                             </ul>

@@ -134,7 +134,7 @@ const MainPhoto = () => {
                         <img src='images/DB_insurance_logo.gif' alt='DB손해보험로고' />
                     </div>
                     <div>
-                        <p>사이트 바로가기</p>
+                        <p><a href='https://www.idbins.com/FWMAIV0001.do'>사이트 바로가기</a></p>
                     </div>
                     <div>
                         <p>사이트 바로가기</p>
