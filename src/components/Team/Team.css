@@ -81,11 +81,13 @@
 .teamContent .playerTab .teamList > li:not(:nth-child(3n)) {
     margin-right: 5%;
 }
-.teamContent .playerTab .teamList img {
-    width: 50%;
-}
 .playerTab .teamList > li .teamList_img {
     width: 100%;
+    padding-top: 10px;
+}
+.teamContent .playerTab .teamList img {
+    width: 50%;
+    vertical-align: bottom;
 }
 .teamList .teamList_text {
     text-align: center;
@@ -287,31 +289,352 @@
 .playerScore table tbody tr td:last-child {
     border-right: none;
 } 
+
+
 /* 코칭스태프 */
 .coach {
     width: 100%;
     margin: 0 auto;
     margin-top: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 130px;
 }
 /* -감독님 */
 .coach #director {
-    height: 600px;
+    height: 620px;
     background: url('/public/images/coach_desc4.png') center center / cover no-repeat;        
     color: #fff;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-around; */
+    line-height: 1.6;
+    font-size: 1.000em;
+    position: relative;
+    overflow: hidden;
 }
-.coachDetail .coachProfile:nth-child(1) {
-    display: flex;
+#director .coachProfile {
+    width: 45%;
+    margin-top: 45px;
+    margin-left: 60px;
+}
+#director .coachProfile .profile_area {
+    min-height: auto;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+#director .coachProfile .profile_area h4 {
+    background: url('/public/images/sub_title_bg.png') left center/ contain no-repeat;
+    background-size: 13px 20px;
+    padding-left: 15px;
+}
+#director .coachProfile .profile_area > div {
+    border-left: 3px solid #fff;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+#director .coachProfile .profile_area > div p:nth-child(1) {
+    font-weight: 700;
+    font-size: 3.75em;
+    line-height: 60px;
+    margin-bottom: 10px;
+}
+#director .coachProfile .profile_area > div p:nth-child(2) {
+    font-size: 1.750em;
+    line-height: 1.75em;
+}
+#director .coachProfile .profile_area > div p:nth-child(3) {
+    font-weight: 700;
+    font-size: 1.750em;
+    line-height: 1.75em;
+}
+#director .coachProfile .profile_area ul {
+    font-size: 1.00em;
+}
+#director .coachProfile .profile_area ul li span{
+    min-width: 70px;
+    display: inline-block;
+}
+#director .coachImg {
+    position: absolute;
+    bottom: -10px;
+    right: 100px;
+    width: 43%;
+}
+#director .coachImg img {
+    width: 100%;
+}
+#director .coachProfile .career h4 {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    width: 400px;
+}
+#director .coachProfile .career h4 {
+    background: url('/public/images/sub_title_bg.png') left 2px/ contain no-repeat;
+    background-size: 13px 26px;
+    padding-left: 15px;
+    vertical-align: top;
+}
+#director .coachProfile .career ul {
+    line-height: 1.6;
+    font-size: 1.00em;
+}
+#director .coachProfile .career ul li span {
+    display: inline-block;
+    min-width: 130px;
 }
 /* -코치 */
 #coaches {
     width: 100%;
+    margin-top: 40px;
 }
 #coaches > ul {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between; */
 }
+#coaches > ul > li {
+    height: 870px;
+    width: 32%;
+}
+#coaches > ul > li:not(:last-child) {
+    margin-right: 2%;
+}
+#coaches .coachProfile {
+    height: 100%;
+    border: 1px solid #ccc;
+}
+#coaches .coachProfile .coachImg {
+    background: #ebecef;
+    text-align: center;
+    padding-top: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#coaches .coachProfile .coachImg img {
+    vertical-align: bottom;
+    width: 90%;
+}
+#coaches .coachProfile .profile_area div{
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 5px solid #111;
+}
+#coaches .coachProfile .profile_area div p:nth-child(1){
+    margin-bottom: 10px;
+    font-size: 2.0em;
+    line-height: 32px;
+    font-weight: 700;
+}
+#coaches .coachProfile .profile_area div p:nth-child(2){
+    font-size: 0.75em;
+    color: #999;
+}
+#coaches .coachProfile .profile_area div p:nth-child(3){
+    font-size: 1.125em;
+    line-height: 18px;
+    color: #656565;
+}
+#coaches .coachProfile  h4, #coaches .coachProfile  ul {
+    padding-left: 15px;
+}
+#coaches .coachProfile  h4 {
+    margin-bottom: 15px;
+    background: url('/public/images/sub_title_bg.png') left 2px/ contain no-repeat;
+    background-size: 13px 20px;
+    padding-left: 15px;
+    margin-left: 5px;
+}
+#coaches .coachProfile .profile_area {
+    margin-bottom: 10px;
+}
+#coaches .coachProfile .profile_area ul {
+    font-size: 1.00em;
+}
+#coaches .coachProfile .profile_area ul li span{
+    min-width: 70px;
+    display: inline-block;
+}
+#coaches .coachProfile .career ul {
+    line-height: 1.6;
+    font-size: 1.00em;
+}
+#coaches .coachProfile .career ul li {
+    width: 98%;
+}
+#coaches .coachProfile .career ul li span {
+    display: inline-block;
+    min-width: 150px;
+}
+
+
+/* 지원스태프 */
+.staffList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin: 80px 0;
+    text-align: center;
+}
+.staffList li {
+    width: 24%;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    border: 1px solid #ebecef;
+    overflow: hidden;
+}
+.staffList li:not(:nth-child(4n)) {
+    margin-right: 1.3333%;
+}
+.staffList .staffList_img {
+    background: #ebecef;
+    overflow: hidden;
+    width: 100%;
+}
+.staffList .staffList_img img {
+    width: 80%;
+    vertical-align: bottom;
+}
+.staffList .staffList_text {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.063em;
+    font-weight: 600;
+}
+.staffList .staffList_text p:nth-child(2) {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 0.813em;
+    line-height: 0.813em;
+    color: #999;
+    font-weight: 500;
+    padding-right: 10px;
+}
+.staffList .staffList_text p:nth-child(2) img {
+    width: 10%;
+    vertical-align: middle;
+}
+
+
+/* 응원단 */
+/* - 응원단장/아나운서 */
+.cheer {
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 130px;
+}
+.cheer .cheerleading {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cheer .cheerleading .cheer_Captain, .cheer .cheerleading .cheer_announcer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+.cheer_Captain img, .cheer_announcer img {
+    width: 100%;
+}
+.cheer_text p:nth-child(1) {
+    font-size: 1.688em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.cheer_text p:nth-child(1) span {
+    vertical-align: bottom;
+    font-size: 1.7em;
+    font-weight: 600;
+    color: #03662c;
+}
+.cheer_text p:nth-child(2) {
+    width: 300px;
+    text-align: center;
+    padding: 8px 0;
+    border-top: 2px solid #03662c;
+    border-bottom: 2px solid #03662c;
+}
+.cheer_text p:nth-child(2) span {
+    letter-spacing: 4px;
+}
+/* - 치어리더 */
+.cheerleaders {
+    text-align: center;
+    margin-top: 60px;
+}
+.cheerleaders h3 {
+    font-style: normal;
+    display: block;
+    font-size: 2.625em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #03662c;
+}
+.cheerleaders p {
+    text-align: center;
+    margin: 50px 0 45px;
+    font-size: 1.250em;
+    line-height: 1.4;
+}
+.cheerleaders > div {
+    position: relative;
+    padding-bottom: 200px;
+}
+.cheerleaders > div ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.cheerleaders > div ul:nth-child(2) {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+.cheerleaders > div ul:nth-child(1) li {
+    width: 18%;
+}
+.cheerleaders > div ul:nth-child(2) li {
+    width: 18%;
+}
+.cheerleaders > div ul li {
+    position: relative;
+}
+.cheerleaders > div ul:nth-child(1) li:hover .hideName {
+    display: block;
+}
+.cheerleaders > div ul:nth-child(2) li:hover .hideName {
+    display: block;
+}
+.cheerleaders > div ul:nth-child(1) li .hideName {
+    font-size: 0.813em;
+    position: absolute;
+    width: 80px;
+    height: auto;
+    background: #03662c;
+    color: #fff;
+    padding: 5px;
+    top: -20%;
+    left: 80%;
+    display: none;
+    z-index: 2;
+}
+.cheerleaders > div ul:nth-child(2) li .hideName {
+    font-size: 0.813em;
+    position: absolute;
+    width: 80px;
+    height: auto;
+    background: #03662c;
+    color: #fff;
+    padding: 5px;
+    bottom: -25%;
+    left: 80%;
+    display: none;
+}
+
+
+

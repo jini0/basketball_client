@@ -61,8 +61,8 @@ const Header = () => {
                             <ul class="hideMenu">
                                 <li><Link to="/player">선수</Link></li>
                                 <li><Link to="/coach">코칭스태프</Link></li>
-                                <li>지원스태프</li>
-                                <li>응원단</li>
+                                <li><Link to="/staff">지원스태프</Link></li>
+                                <li><Link to="/cheerleading">응원단</Link></li>
                             </ul>
                         </li>
                         <li class="menuList">
@@ -85,9 +85,9 @@ const Header = () => {
                             </ul>
                         </li>
                         <li class="menuList">
-                            <h3>EVENT</h3>
+                            <h3><Link to="/event">EVENT</Link></h3>
                             <ul class="hideMenu">
-                                <li>이벤트</li>
+                                <li><Link to="/event">이벤트</Link></li>
                             </ul>
                         </li>
                         <li class="menuList">

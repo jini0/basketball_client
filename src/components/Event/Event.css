@@ -1,0 +1,19 @@
+.teamTab {
+    padding-top: 6%;
+}
+.teamHeader {
+    /* background: #03662c; */
+    background: #166c35;
+    padding: 65px 0 50px 75px;
+    height: 200px;
+    text-align: center;
+    color: #fff;
+}
+.teamHeader h3 {
+    font-size: 1.563em;
+    padding-bottom: 1%;
+}
+.teamHeader p {
+    font-size: 0.8125em;
+    letter-spacing: 1.5px;
+}
