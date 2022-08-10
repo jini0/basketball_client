@@ -1,0 +1,254 @@
+/* 소개 인사말 */
+#intro {
+    background: #f1f1f1;
+    padding-bottom: 130px;
+}
+/* - 구단주 */
+#intro .owner {
+    width: 100%;
+    padding-top: 80px;
+}
+#intro .inner > div:nth-child(1) {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 0 12px 20px;
+    margin-bottom: 25px;
+}
+#intro .inner > div:nth-child(1) h3 {
+    background: url('/public/images/sub_title_bg.png') left center/ contain no-repeat;
+    background-size: 13px 20px;
+    padding-left: 18px;
+    font-size: 1.250em;
+}
+#intro .inner > div:nth-child(2) {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    position: relative;
+}
+.intro_text {
+    width: 58%;
+    margin-right: 10%;
+    margin-left: 7%;
+    position: relative;
+}
+.intro_text h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.6;
+    word-break: keep-all;
+    /* margin-bottom: 1.875rem; */
+    margin-bottom: 40px;
+    padding: 5px 50px;
+}
+.intro_text h4::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.313rem;
+    background: url('/public/images/quotes_left.png') left center/ contain no-repeat;
+}
+.intro_text h4::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 380px;
+    width: 1.5rem;
+    height: 1.313rem;
+    background: url('/public/images/quotes_right.png') left center/ contain no-repeat;
+}
+.intro_text p {
+    width: 100%;
+    word-break: break-word;
+    text-align: justify;
+    font-size: .875rem;
+    color: #777;
+    padding: 0 0 0 50px;
+}
+.intro_img {
+    width: 35%;
+    height: 500px;
+}
+.owner .intro_img img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+}
+/* - 단장 */
+#intro .leader {
+    width: 100%;
+    padding-top: 80px;
+}
+.leader .intro_img img {
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+    width: 38%;
+}
+.leader .intro_text h4::after {
+    /* position: absolute;
+    top: 0; */
+    left: 420px;
+}
+
+
+/* 엠블럼 CI */
+.logo {
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+.logo .logo_tab {
+    text-align: center;
+    border-top: 2px solid #c5c5c5;
+    border-bottom: 2px solid #c5c5c5;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.logo .logo_tab li {
+    padding: 20px 15px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    flex: 1;
+    color: #656565;
+}
+.logo .logo_tab .active {
+    color: #fff;
+    background-color: #166c35;
+    font-weight: 700;
+}
+.logo > div .active {
+    display: block;
+}
+.mascotList {
+    display: none;
+}
+/* - 엠블럼 */
+.logo > div h4 {
+    margin-bottom: 30px;
+    font-size: 1.563em;
+    line-height: 28px;
+    color: #166c35;
+}
+.logo > div p {
+    line-height: 22px;
+    padding-left: 10px;
+    letter-spacing: 0.2px;
+}
+.logo > div > div {
+    margin-top: 40px;
+    overflow: hidden;
+}
+.logo .emblemList > div ul {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+.logo .emblemList > div ul li {
+    width: 48%;
+}
+.logo .emblemList > div ul li:nth-child(1) {
+    margin-right: 4%;
+}
+.logo .emblemList > div ul li strong {
+    font-size: 1.125em;
+    line-height: 30px;
+    border-bottom: 2px solid #666;
+}
+.logo .emblemList > div ul li .bg_pattern {
+    margin-top: 20px;
+    border: 1px solid #e1e1e1;
+    background: url('/public/images/bg_pattern.png') 0 0 repeat;
+    background-size: 10.9px auto;
+    width: 100%;
+    padding: 10px 0;
+}
+.logo .emblemList .bg_pattern  > div {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+.logo .emblemList .bg_pattern img {
+    width: auto;
+}
+/* - 마스코트 */
+.logo .mascotList > div ul li {
+    width: 100%;
+    margin-bottom: 35px;
+}
+.logo .mascotList > div ul li strong {
+    font-size: 1.125em;
+    line-height: 30px;
+    border-bottom: 2px solid #666;
+}
+.logo .mascotList > div ul li .bg_pattern {
+    margin-top: 20px;
+    border: 1px solid #e1e1e1;
+    background: url('/public/images/bg_pattern.png') 0 0 repeat;
+    background-size: 10.9px auto;
+    width: 100%;
+    padding: 10px 0;
+}
+.logo .mascotList .bg_pattern  > div {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+.logo .mascotList .bg_pattern img {
+    width: auto;
+}
+
+
+/* 스폰서 */
+#sponser {
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+#sponser ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    border-bottom: 1px solid #c5c5c5;
+    overflow: hidden;
+}
+#sponser li:nth-child(8n + 1) {
+    margin-left: 0;
+}
+#sponser li {
+    width: 155px;
+    margin-left: 5px;
+}
+#sponser li a {
+    display: block;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    /* margin-top: 15px; */
+}
+#sponser li a img {
+    width: 100%;
+    height: auto;
+}
+#sponser li strong {
+    font-size: 0.875em;
+    color: #111;
+    height: 50px;
+}
+

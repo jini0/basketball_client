@@ -8,8 +8,8 @@ const Cheer = () => {
                 <h3>응원단</h3>
                 <p>DB프로미 선수들과 함께 승리를 부르는 응원단을 소개합니다.</p>
             </div> 
-            <div className='inner cheer'>
-                <div className='cheerleading'>
+            <div className='cheer'>
+                <div className='cheerleading inner'>
                     <div className='cheer_Captain'>
                         <div>
                             <img src="images/cheerleading_captain.png"  alt="응원단장" />
@@ -29,7 +29,7 @@ const Cheer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='cheerleaders'>
+                <div className='cheerleaders  inner'>
                     <h3>DB PROMY CHEER LEADER</h3>
                     <p>DB 치어리더를 소개합니다.<br/>
                     항상 열정과 혼신을 다해 선수들을 응원합니다!</p>

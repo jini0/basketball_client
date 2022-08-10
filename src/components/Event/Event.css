@@ -17,3 +17,120 @@
     font-size: 0.8125em;
     letter-spacing: 1.5px;
 }
+/* 이벤트 */
+.events {
+    padding: 80px 0 300px 0;
+    background: #f1f1f1;
+}
+.event_tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;   
+    margin-bottom: 50px;
+}
+.event_tab  .event_i{
+    display: block;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    background: #f1f1f1;
+    text-align: center;
+    font-size: 0.875em;
+    color: #898989;
+    font-weight: 700;
+    line-height: 30px;
+    border-left: 1px solid #a4b2ce;
+    /* border-right: 1px solid #a4b2ce; */
+    border-right: 1px solid #fff;
+}
+.event_tab  .event_e{
+    display: block;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    background: #f1f1f1;
+    text-align: center;
+    font-size: 0.875em;
+    color: #898989;
+    font-weight: 700;
+    line-height: 30px;
+}
+.event_tab .active {
+    background: #011b47;
+    color: #fff;   
+}
+.event_ing, .event_end {
+    width: 63.5%;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 5px solid #011b47;
+    overflow: hidden;
+    padding: 0 0 0 0;
+    background: #ffffff;
+}
+.event_end {
+    display: none;
+}
+.event_ing li, .event_end li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    border-right: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+.event_ing li > div, .event_end li > div {
+    text-align: center;
+    width: 50%;
+}
+.event_img {
+    padding: 0;
+    height: 220px;
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+}
+.event_img img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-left: 1px solid #000;
+}
+.event_ing li > div:nth-child(2) {
+    margin: 0 auto;
+    text-align: center;
+}
+.event_title {
+    margin: 30px 0;
+    padding: 10px 4px;
+    width: 250px;
+    border-top: 2px solid #011b47;
+    border-bottom: 2px solid #011b47;
+    display: inline-block;
+    font-size: 1.250em;
+    font-weight: 700;
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.btn_view {
+    position: absolute;
+    right: 140px;
+    bottom: 40px;
+}
+.btn_view a {
+    background: #001e5e;
+    color: #fff;
+    padding: 8px 18px;
+    font-size: 0.875em;
+}
+
+

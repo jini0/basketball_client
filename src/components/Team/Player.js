@@ -201,6 +201,36 @@ const Player = () => {
                                         <span className='position'>CENTER</span>
                                     </div>
                                 </li>
+                                <li>
+                                    <div className='teamList_img'>
+                                        <img src='images/player_12.png' alt='김훈선수'/>
+                                    </div>
+                                    <div className='teamList_text'>
+                                        <span className='num'>No.12</span>
+                                        <p>김훈</p>
+                                        <span className='position'>FORWARD</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='teamList_img'>
+                                        <img src='images/player_30.png' alt='이용우선수'/>
+                                    </div>
+                                    <div className='teamList_text'>
+                                        <span className='num'>No.30</span>
+                                        <p>이용우</p>
+                                        <span className='position'>GUARD</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='teamList_img'>
+                                        <img src='images/player_yoo.png' alt='유현준선수'/>
+                                    </div>
+                                    <div className='teamList_text'>
+                                        <span className='num'>No.미정</span>
+                                        <p>유현준</p>
+                                        <span className='position'>GUARD</span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>

@@ -10,6 +10,10 @@ import Coach from './components/Team/Coach';
 import Staff from './components/Team/Staff';
 import Cheer from './components/Team/Cheer';
 import Event from './components/Event/Event';
+import Introduce from './components/Promy/Introduce';
+import Emblem from './components/Promy/Emblem';
+import Sponser from './components/Promy/Sponser';
+import Stadium from './components/Promy/Stadium';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -18,6 +22,10 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='/intro' element={<Introduce/>} />
+        <Route path='/emblem' element={<Emblem/>} />
+        <Route path='/sponser' element={<Sponser/>} />
+        <Route path='/stadium' element={<Stadium/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/detailPlayer' element={<PlayerDetail/>} />
         <Route path='/coach' element={<Coach/>} />

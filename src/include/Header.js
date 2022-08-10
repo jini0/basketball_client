@@ -40,13 +40,13 @@ const Header = () => {
                 <div className='inner'>
                     <ul>
                         <li class="menuList">
-                            <h3>PROMY</h3>
+                            <h3><Link to="/intro">PROMY</Link></h3>
                             <ul class="hideMenu">
-                                <li>소개·인사말</li>
-                                <li>프론트·조직</li>
-                                <li>엠블럼·CI</li>
-                                <li>스폰서</li>
-                                <li>구장안내 </li>
+                                <li><Link to="/intro">소개·인사말</Link></li>
+                                {/* <li>프론트·조직</li> */}
+                                <li><Link to="/emblem">엠블럼·CI</Link></li>
+                                <li><Link to="/sponser">스폰서</Link></li>
+                                <li><Link to="/stadium">구장안내</Link></li>
                             </ul>
                         </li>
                         <li class="menuList">
@@ -81,10 +81,14 @@ const Header = () => {
                                 <li>DB photo</li>
                                 <li>KBL Polls</li>
                                 <li>KBL Challenge</li>
-                                <li>KBL Draw</li>
+                                {/* <li>KBL Draw</li> */}
                             </ul>
                         </li>
                         <li class="menuList">
+                            {/* <h3><Link to="/event?etc1=I">EVENT</Link></h3>
+                            <ul class="hideMenu">
+                                <li><Link to="/event?etc1=I">이벤트</Link></li>
+                            </ul> */}
                             <h3><Link to="/event">EVENT</Link></h3>
                             <ul class="hideMenu">
                                 <li><Link to="/event">이벤트</Link></li>

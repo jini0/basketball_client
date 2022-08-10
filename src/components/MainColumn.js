@@ -24,6 +24,7 @@ const MainColumn = () => {
         })
     // eslint-disable-next-line
     },[]);
+
     return (
         <div id="mainPage">
             <section id='main_columns'>
@@ -48,17 +49,18 @@ const MainColumn = () => {
                             <span>NEWS</span>
                             <span>more</span>
                             <ul>
-                                <li>
+                                {/* https://beomsoo.me/issue/Issue-4/ */}
+                                <li><a href="https://sports.news.naver.com/news?oid=417&aid=0000837363" target="_blank" rel="noopener noreferrer">
                                     <p>에르난데스 영입…재계약한 프리먼과 호흡</p>
-                                    <span>2022-07-28</span>
+                                    <span>2022-07-28</span></a>
                                 </li>
-                                <li>
+                                <li><a href="https://sports.news.naver.com/news?oid=421&aid=0006217698" target="_blank" rel="noopener noreferrer">
                                     <p>10월15일 개막…원주서 해 넘기는 '농구영신' 개최</p>
-                                    <span>2022-07-14</span>
+                                    <span>2022-07-14</span></a>
                                 </li>
-                                <li>
+                                <li><a href="https://sports.news.naver.com/news?oid=076&aid=0003889672" target="_blank" rel="noopener noreferrer">
                                     <p>아시아쿼터 이선 알바노 영입</p>
-                                    <span>2022-07-06</span>
+                                    <span>2022-07-06</span></a>
                                 </li>
                             </ul>
                         </div>
