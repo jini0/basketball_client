@@ -233,14 +233,18 @@
     margin-left: 0;
 }
 #sponser li {
-    width: 155px;
+    width: 145px;
+    /* 1200px/8 = 150 // 마진제외 145 */
     margin-left: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #sponser li a {
     display: block;
     border: 1px solid #e1e1e1;
     text-align: center;
-    /* margin-top: 15px; */
 }
 #sponser li a img {
     width: 100%;
@@ -251,4 +255,221 @@
     color: #111;
     height: 50px;
 }
+#sponser .inner > p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.875em;
+    color: #c5c5c5;
+    font-weight: 600;
+}
 
+
+/* 구장 (원주 종합 체육관) */
+/* - 구장 안내 */
+#stadium {
+    width: 100%;
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+#stadium .inner > div:not(:nth-child(1)) {
+    margin-top: 55px;
+}
+#stadium .stadium_title {
+    background: #fff;
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px 0 12px 20px;
+    margin-bottom: 15px;
+}
+#stadium .stadium_title h3 {
+    background: url('/public/images/sub_title_bg.png') left center/ contain no-repeat;
+    background-size: 13px 20px;
+    padding-left: 18px;
+    font-size: 1.250em;
+}
+#stadium .stadium_title h3 span {
+    padding-left: 15px;
+    color: #656565;
+    font-size: 0.875em;
+}
+#stadium .stadium_box {
+    background: #fff;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+#stadium .stadium_1 .stadium_box .stadium_desc > div:nth-child(1) {
+    padding: 65px 0;
+    display: flex;
+    align-items: center;
+}
+.stadium_1 .stadium_desc .wonju_stadium {
+    width: 35%;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+.stadium_1 .stadium_desc .wonju_stadium h4 {
+    font-size: 1.375em;
+    font-weight: 700;
+    line-height: 1.6;
+    word-break: keep-all;
+    margin-bottom: 40px;
+    padding: 5px 50px;
+}
+.wonju_stadium h4::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.313rem;
+    background: url('/public/images/quotes_left.png') left center/ contain no-repeat;
+}
+.wonju_stadium h4::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 305px;
+    width: 1.5rem;
+    height: 1.313rem;
+    background: url('/public/images/quotes_right.png') left center/ contain no-repeat;
+}
+.stadium_1 .stadium_desc .wonju_stadium > div {
+    background: #e1e1e1;
+    border-radius: 15px;
+    padding: 20px 0 20px 30px;
+    font-size: .875rem;
+}
+.stadium_1 .stadium_desc .wonju_stadium > div ul li {
+    padding: 3px 0;
+    color: #444;
+}
+.stadium_1 .stadium_desc .wonju_stadium > div ul li span {
+    font-weight: 700;
+    width: 5.5rem;
+    display: inline-block;
+    color: #222;
+}
+.stadium_1 .stadium_desc .wonju_stadium_desc {
+    width: 60%;
+    margin-right: 5%;
+    font-size: .875rem;
+    letter-spacing: 0.3px;
+    color: #777;
+    word-break: break-word;
+    text-align: justify;
+    line-height: 1.6;
+}
+.wonju_stadium_img {
+    width: 100%;
+}
+.wonju_stadium_img img {
+    width: 50%;
+    vertical-align: bottom;
+}
+/* - 찾아오시는 길 */
+.stadium_2 .stadium_box p {
+    margin-left: 40px;
+    width: calc(100% + 80px);
+    position: relative;
+    left: -40px;
+    padding: 30px 40px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 1.125em;
+    font-weight: 700;
+    color: #222;
+}
+.stadium_2 .stadium_box > div {
+    padding: 30px 40px;
+}
+.stadium_2 .stadium_box > div h4 {
+    font-weight: 700;
+    font-size: 1.0em;
+    margin-bottom: 10px;
+}
+.stadium_2 .stadium_box > div ul li {
+    font-size: 0.875em;
+    color: #656565;
+    line-height: 1.6;
+    display: flex;
+}
+.stadium_2 .stadium_box > div ul li span {
+    width: 6rem;
+    color: #333;
+}
+/* - 도착 후 교통편 */
+.stadium_3 .stadium_box {
+    width: 100%;
+    padding: 65px 50px;
+}
+.stadium_3 .stadium_box table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(192, 192, 192);
+    background-color: #f5f5f5;
+    margin-bottom: 25px;
+}
+.stadium_3 .stadium_box table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    font-size: 0.875em;
+}
+.stadium_3 .stadium_box table tbody .t_title {
+    background: #e2e2e2;
+    font-weight: 600;
+    color: #444;
+}
+.stadium_3 .stadium_box table tbody tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.stadium_3 .stadium_box table tbody td {
+    /* width: 10%; */
+    text-align: center;
+    border: 1px solid rgb(192, 192, 192);
+    padding: 8px 10px;
+    color: #656565;
+    position: relative;
+}
+.stadium_3 .stadium_box table .ktx::before {
+    background: url('/public/images/ktx.png') left center/ contain no-repeat;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 32%;
+    width: 1.5rem;
+    height: 1.313rem;
+}
+.stadium_3 .stadium_box table .ktx_man::before {
+    top: 22%;
+}
+.stadium_3 .cf_bus {
+    padding: 0 0 0 15px;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    font-size: 0.938em;
+}
+.stadium_3 .cf_bus blockquote {
+    background: #eee;
+    border: 2px dashed #ccc;
+    border-left: 5px solid #166c35;
+    display: table;
+    margin: 1em 0;
+    padding: 1em;
+}
+/* - 좌석 배치도 */
+.stadium_4 .stadium_box {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+.stadium_4 .stadium_box img {
+    width: 80%;
+}

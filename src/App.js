@@ -14,6 +14,7 @@ import Introduce from './components/Promy/Introduce';
 import Emblem from './components/Promy/Emblem';
 import Sponser from './components/Promy/Sponser';
 import Stadium from './components/Promy/Stadium';
+import Store from './components/Store/Store';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />
         <Route path='/event' element={<Event/>} />
+        <Route path='/product' element={<Store/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />

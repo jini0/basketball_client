@@ -79,9 +79,9 @@ const Header = () => {
                             <ul class="hideMenu">
                                 <li>DB Youtube</li>
                                 <li>DB photo</li>
-                                <li>KBL Polls</li>
-                                <li>KBL Challenge</li>
-                                {/* <li>KBL Draw</li> */}
+                                <li><a href='https://kbl.or.kr/fan/kblpoll' target="_blank" rel="noopener noreferrer">KBL Polls</a></li>
+                                <li><a href='https://kbl.or.kr/fan/kblchallenge' target="_blank" rel="noopener noreferrer">KBL Challenge</a></li>
+                                <li><a href='https://kbl.or.kr/fan/kbldraw' target="_blank" rel="noopener noreferrer">KBL Draw</a></li>
                             </ul>
                         </li>
                         <li class="menuList">
@@ -103,9 +103,9 @@ const Header = () => {
                             </ul>
                         </li>
                         <li class="menuList">
-                            <h3>STORE</h3>
+                            <h3><Link to="/product">STORE</Link></h3>
                             <ul class="hideMenu">
-                                <li>DB Store</li>
+                                <li><Link to="/product">DB Store</Link></li>
                             </ul>
                         </li>
                     </ul>
