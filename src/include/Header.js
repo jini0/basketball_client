@@ -29,10 +29,10 @@ const Header = () => {
                         <li>Login</li>
                         <li>Join</li>
                         {/* <li><FontAwesomeIcon icon="fa-brands fa-facebook" /></li> */}
-                        <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/'><BsInstagram /></a></li>
-                        <li className='snsIcon'><a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg"><BsYoutube /></a></li>
-                        <li className='snsIcon'><a href='https://www.facebook.com/dbpromybasketball'><BsFacebook /></a></li>
-                        <li className='snsIcon'><a href='https://m.post.naver.com/my.nhn?memberNo=34663910'><SiNaver /></a></li>
+                        <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/' target="_blank" rel="noopener noreferrer"><BsInstagram /></a></li>
+                        <li className='snsIcon'><a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg" target="_blank" rel="noopener noreferrer"><BsYoutube /></a></li>
+                        <li className='snsIcon'><a href='https://www.facebook.com/dbpromybasketball' target="_blank" rel="noopener noreferrer"><BsFacebook /></a></li>
+                        <li className='snsIcon'><a href='https://m.post.naver.com/my.nhn?memberNo=34663910' target="_blank" rel="noopener noreferrer"><SiNaver /></a></li>
                     </ul>
                 </div>
             </div>

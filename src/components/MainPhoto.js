@@ -50,6 +50,7 @@ const MainPhoto = () => {
                     <img src='images/basketball.png' alt='농구공'/>
                     <h2>PHOTO GALLERY</h2>
                     <img src='images/basketball.png' alt='농구공'/>
+                    <span>more</span>
                     <div>
                         <Slider {...settings} className="slide">
                             <div className='main_index_3'>

@@ -52,8 +52,8 @@ const MainMovie = () => {
         autoplaySpeed: 2000,    // 자동 넘어가는 속도
         slidesToShow: 3,        // 3장씩 보이게
         slidesToScroll: 1,      // 1장씩 뒤로 넘어가게
-        centerMode: true,       // 정중앙 정렬  / centerMode의 가운데 슬라이드가 강조하는 등의 설정이 안 된다. 해당 부분은 추가로 css 옵션을 줘야 한다.
-        centerPadding: '0px',   // 0px 하면 슬라이드 끝쪽 이미지가 안잘림
+        // centerMode: true,       // 정중앙 정렬  / centerMode의 가운데 슬라이드가 강조하는 등의 설정이 안 된다. 해당 부분은 추가로 css 옵션을 줘야 한다.
+        // centerPadding: '0px',   // 0px 하면 슬라이드 끝쪽 이미지가 안잘림
         cssEase: "linear",       // 슬라이드 이동 스타일 수정
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
@@ -65,9 +65,24 @@ const MainMovie = () => {
                     <img src='images/basketball.png' alt='농구공'/>
                     <h2>DB PROMY YOUTUBE</h2>
                     <img src='images/basketball.png' alt='농구공'/>
+                    <span>more</span>
                     <div id="main_movie_slide">
                     {/* 항목들 슬라이드로 할거임! */}
                         <Slider {...settings} className="slide">
+                            <div className='main_index_3'>
+                                <img src='images/youtube_.png' alt='유튜브화면' />
+                                <div className='main_index_text_3'>
+                                    <h4>Welcome DB, 한국 도착한 이선 알바노👋 #shorts</h4>
+                                    <span>2022-08-16</span>
+                                </div>
+                            </div>
+                            <div className='main_index_3'>
+                                <img src='images/youtube_0.png' alt='유튜브화면0' />
+                                <div className='main_index_text_3'>
+                                    <h4>상처만 남은…찬카소의 화실🎨</h4>
+                                    <span>2022-08-12</span>
+                                </div>
+                            </div>
                             <div className='main_index_3'>
                                 <img src='images/youtube_1.png' alt='유튜브화면1' />
                                 <div className='main_index_text_3'>
@@ -108,6 +123,13 @@ const MainMovie = () => {
                                 <div className='main_index_text_3'>
                                     <h4>티브릿지와 함께하는 TMI 대방출!에 이제 영어 듣기를 곁들인...🎧</h4>
                                     <span>2022-04-14</span>
+                                </div>
+                            </div>
+                            <div className='main_index_3'>
+                                <img src='images/youtube_7.png' alt='유튜브화면7' />
+                                <div className='main_index_text_3'>
+                                    <h4>윈디 여러분 감사합니다! 승리로 장식한 마지막 홈경기❤‍🔥｜4월 5일 원주 DB vs 창원 LG</h4>
+                                    <span>2022-04-08</span>
                                 </div>
                             </div>
                         </Slider>

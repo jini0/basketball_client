@@ -11,6 +11,22 @@ const Footer = () => {
                         <p>주소: 서울시 강남구 테헤란로 432 DB금융센터 (11층, 대치동, DB금융센터) ｜ 대표전화: 02-3011-3176 ｜ 팩스번호: 0505-181-0092</p>
                         <p>홈경기장 - 서울사무실: (02)3011-3177 ｜ 원주사무실: (033)764-3015</p>
                     </div>
+                    <div className='footer_sns'>
+                        <ul>
+                            <li>
+                                <a href='https://www.instagram.com/dbpromy_official/' target="_blank" rel="noopener noreferrer"><img src="images/ico_insta.png" alt="인스타그램"/></a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg" target="_blank" rel="noopener noreferrer"><img src="images/ico_yt.png" alt="유튜브" /></a>
+                            </li>
+                            <li>
+                                <a href='https://www.facebook.com/dbpromybasketball' target="_blank" rel="noopener noreferrer"><img src="images/ico_fb.png" alt="페이스북" /></a>
+                            </li>
+                            <li>
+                                <a href='https://m.post.naver.com/my.nhn?memberNo=34663910' target="_blank" rel="noopener noreferrer"><img src="images/ico_naver.png" alt="네이버블로그" /></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <section className='footer_bot'>

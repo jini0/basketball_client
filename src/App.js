@@ -14,12 +14,15 @@ import Introduce from './components/Promy/Introduce';
 import Emblem from './components/Promy/Emblem';
 import Sponser from './components/Promy/Sponser';
 import Stadium from './components/Promy/Stadium';
+import ScrollToTop from './components/ScrollToTop';
 import Store from './components/Store/Store';
+import ProductDetail from './components/Store/ProductDetail';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop/>
       <Header />
       <Routes>
         <Route path='/' element={<MainPage />} />
@@ -34,6 +37,7 @@ function App() {
         <Route path='/cheerleading' element={<Cheer/>} />
         <Route path='/event' element={<Event/>} />
         <Route path='/product' element={<Store/>} />
+        <Route path='/detailProduct' element={<ProductDetail/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />
