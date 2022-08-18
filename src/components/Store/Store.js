@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './Store.css';
 
 const Store = () => {
+    // 위시리스트 클릭
+
     // 카테고리 분류 --> 뿌리고나서 filter 사용해서!
     return (
         <div className='teamTab'>
@@ -57,24 +59,26 @@ const Store = () => {
                     {/* All */}
                     <ul className='products'>
                         <li>
-                            <Link to="/detailProduct">
-                                <div>
-                                    <img src="images/goods_metal_sticker.png" alt="메탈스티커" />
+                                <div className='product_img'>
+                                    <Link to="/detailProduct">
+                                        <img src="images/goods_metal_sticker.png" alt="메탈스티커" />
+                                    </Link>
                                     <span className='wish_btn'></span>
                                 </div>
-                                <div className='product_text'>
-                                    <h4>DB프로미 플레이어 메탈스티커<span>(대형)</span></h4>
-                                    <div>
-                                        <span className='price'></span>
-                                        <span className='saleprice'>6,000원</span>
-                                        <span className='discount_per'></span>
+                                <Link to="/detailProduct">
+                                    <div className='product_text'>
+                                        <h4>DB프로미 플레이어 메탈스티커<span>(대형)</span></h4>
+                                        <div>
+                                            <span className='price'></span>
+                                            <span className='saleprice'>6,000원</span>
+                                            <span className='discount_per'></span>
+                                        </div>
+                                        <span className='store'>(주)스미스스포츠</span>
                                     </div>
-                                    <span className='store'>(주)스미스스포츠</span>
-                                </div>
-                            </Link>
+                                </Link>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_muffler.png" alt="니트머플러" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -89,7 +93,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_pinButton.png" alt="핀버튼" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -104,7 +108,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_gripTok.png" alt="그립톡" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -119,7 +123,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_mug.png" alt="머그컵" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -134,7 +138,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_uniform.png" alt="시티유니폼" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -149,7 +153,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_uniform_home.png" alt="홈유니폼" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -164,7 +168,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_muffler2.png" alt="전사머플러" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -179,7 +183,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_signBall.png" alt="사인볼" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -194,7 +198,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_keyRing.png" alt="스트랩키링" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -209,7 +213,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_figure.png" alt="미니등신대" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -224,7 +228,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_blanket.png" alt="무릎담요" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -239,7 +243,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_keyRing2.png" alt="키링" />
                                 <span className='wish_btn'></span>
                             </div>
@@ -254,7 +258,7 @@ const Store = () => {
                             </div>
                         </li>
                         <li>
-                            <div>
+                            <div className='product_img'>
                                 <img src="images/goods_sticker.png" alt="스티커세트" />
                                 <span className='wish_btn'></span>
                             </div>

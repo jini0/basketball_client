@@ -26,7 +26,7 @@ const Header = () => {
             <div id='sign_nav'>
                 <div className='inner'>
                     <ul>
-                        <li>Login</li>
+                        <li><Link to="/login">Login</Link></li>
                         <li>Join</li>
                         {/* <li><FontAwesomeIcon icon="fa-brands fa-facebook" /></li> */}
                         <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/' target="_blank" rel="noopener noreferrer"><BsInstagram /></a></li>

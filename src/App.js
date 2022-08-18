@@ -17,11 +17,13 @@ import Stadium from './components/Promy/Stadium';
 import ScrollToTop from './components/ScrollToTop';
 import Store from './components/Store/Store';
 import ProductDetail from './components/Store/ProductDetail';
+import Login from './components/Member/Login';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
   return (
     <div className="App">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
       <ScrollToTop/>
       <Header />
       <Routes>
@@ -38,6 +40,7 @@ function App() {
         <Route path='/event' element={<Event/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/detailProduct' element={<ProductDetail/>} />
+        <Route path='/login' element={<Login/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />

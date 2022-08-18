@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const MainColumn = () => {
     useEffect(()=>{
@@ -40,7 +41,7 @@ const MainColumn = () => {
                         </div>
                         <div>
                             {/* <img src='images/main_column1.png' alt='KBL_STORE'/> */}
-                            <img src='images/DB_store1.png' alt='KBL_CHALLENGE'/>
+                            <Link to="/product"><img src='images/DB_store1.png' alt='KBL_STORE'/></Link>
                             <a href='https://kbl.or.kr/fan/kblchallenge'><img src='images/main_column2.png' alt='KBL_CHALLENGE'/></a>
                         </div>
                     </div>
