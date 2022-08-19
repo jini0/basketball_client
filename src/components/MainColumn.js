@@ -48,7 +48,7 @@ const MainColumn = () => {
                     <div id='column_mid'>
                         <div id='mid_top'>
                             <span>NEWS</span>
-                            <span>more</span>
+                            <span><Link to="/news">more</Link></span>
                             <ul>
                                 {/* https://beomsoo.me/issue/Issue-4/ */}
                                 <li><a href="https://sports.news.naver.com/news?oid=417&aid=0000837363" target="_blank" rel="noopener noreferrer">
@@ -59,15 +59,19 @@ const MainColumn = () => {
                                     <p>10월15일 개막…원주서 해 넘기는 '농구영신' 개최</p>
                                     <span>2022-07-14</span></a>
                                 </li>
-                                <li><a href="https://sports.news.naver.com/news?oid=076&aid=0003889672" target="_blank" rel="noopener noreferrer">
+                                <li><a href="http://www.rookie.co.kr/news/articleView.html?idxno=75803" target="_blank" rel="noopener noreferrer">
+                                    <p>‘이제는 DB맨’ 최승욱 “첫 목표는 팀에 필요한 선수 되는 것”</p>
+                                    <span>2022-07-11</span></a>
+                                </li>
+                                {/* <li><a href="https://sports.news.naver.com/news?oid=076&aid=0003889672" target="_blank" rel="noopener noreferrer">
                                     <p>아시아쿼터 이선 알바노 영입</p>
                                     <span>2022-07-06</span></a>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <div id='mid_bot'>
                             <span>NOTICE</span>
-                            <span>more</span>
+                            <span><Link to="/notice">more</Link></span>
                             <ul>
                             <li>
                                     <p>원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</p>

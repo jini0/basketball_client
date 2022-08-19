@@ -4,6 +4,7 @@ import Slider from "react-slick";
 // 슬라이드 스타일
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from "react-router-dom";
 
 // https://poew.tistory.com/707
 // https://fromnowwon.tistory.com/entry/react-slick-slider
@@ -65,7 +66,7 @@ const MainMovie = () => {
                     <img src='images/basketball.png' alt='농구공'/>
                     <h2>DB PROMY YOUTUBE</h2>
                     <img src='images/basketball.png' alt='농구공'/>
-                    <span>more</span>
+                    <span><Link to="/youtube">more</Link></span>
                     <div id="main_movie_slide">
                     {/* 항목들 슬라이드로 할거임! */}
                         <Slider {...settings} className="slide">

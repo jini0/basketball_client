@@ -18,6 +18,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Store from './components/Store/Store';
 import ProductDetail from './components/Store/ProductDetail';
 import Login from './components/Member/Login';
+import Notice from './components/News/Notice';
+import News from './components/News/News';
+import Youtube from './components/Fan/Youtube';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -32,11 +35,14 @@ function App() {
         <Route path='/emblem' element={<Emblem/>} />
         <Route path='/sponser' element={<Sponser/>} />
         <Route path='/stadium' element={<Stadium/>} />
+        <Route path='/notice' element={<Notice/>} />
+        <Route path='/news' element={<News/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/detailPlayer' element={<PlayerDetail/>} />
         <Route path='/coach' element={<Coach/>} />
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />
+        <Route path='/youtube' element={<Youtube/>} />
         <Route path='/event' element={<Event/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/detailProduct' element={<ProductDetail/>} />

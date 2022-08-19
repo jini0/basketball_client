@@ -169,6 +169,9 @@ body {
   overflow: hidden;
   position: relative;
 }
+#mainSlide #main1 #mainImg {
+  width: 100%;
+}
 #mainSlide #main1 #mainImg img {
   width: 100%;
   display: block;

@@ -329,14 +329,14 @@
 #detail_desc .detail_tabMenu .active::after {
     content: '';
     display: block;
-    border-bottom: 2px solid #166c35;
+    border-bottom: 2px solid #000;
     width: 100%;
     position: absolute;
     bottom: -106%;
     left: 0;
 }
 #detail_desc .detail_tabMenu .active {
-    color: #166c35;
+    color: #000;
     font-weight: 700;
     /* border-bottom: 1px solid #166c35; */
 }
@@ -344,5 +344,15 @@
     width: 100%;
 }
 #detail_desc .detail_img img {
+    width: 100%;
+}
+#detail_desc .detail_review_desc {
+    display: none;
+}
+#detail_desc .detail_delivery_desc {
+    display: none;
+    width: 100%;
+}
+#detail_desc .detail_delivery_desc img {
     width: 100%;
 }

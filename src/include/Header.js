@@ -50,10 +50,10 @@ const Header = () => {
                             </ul>
                         </li>
                         <li class="menuList">
-                            <h3>NEWS</h3>
+                            <h3><Link to="/notice">NEWS</Link></h3>
                             <ul class="hideMenu">
-                                <li>공지사항</li>
-                                <li>뉴스</li>
+                                <li><Link to="/notice">공지사항</Link></li>
+                                <li><Link to="/news">뉴스</Link></li>
                             </ul>
                         </li>
                         <li class="menuList">
@@ -75,9 +75,9 @@ const Header = () => {
                         </li>
                         <li><Link to="/"><img src="images/DB_logo1.png" alt="원주DB로고" /></Link></li>
                         <li class="menuList">
-                            <h3>FAN</h3>
+                            <h3><Link to="/youtube">FAN</Link></h3>
                             <ul class="hideMenu">
-                                <li>DB Youtube</li>
+                                <li><Link to="/youtube">DB Youtube</Link></li>
                                 <li>DB photo</li>
                                 <li><a href='https://kbl.or.kr/fan/kblpoll' target="_blank" rel="noopener noreferrer">KBL Polls</a></li>
                                 <li><a href='https://kbl.or.kr/fan/kblchallenge' target="_blank" rel="noopener noreferrer">KBL Challenge</a></li>
