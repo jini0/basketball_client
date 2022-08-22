@@ -3,6 +3,7 @@ import Slider from "react-slick";
 // 슬라이드 스타일
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 
 const MainPhoto = () => {
     // 다음 버튼 커스텀
@@ -50,7 +51,7 @@ const MainPhoto = () => {
                     <img src='images/basketball.png' alt='농구공'/>
                     <h2>PHOTO GALLERY</h2>
                     <img src='images/basketball.png' alt='농구공'/>
-                    <span>more</span>
+                    <span><Link to="/photo">more</Link></span>
                     <div>
                         <Slider {...settings} className="slide">
                             <div className='main_index_3'>
@@ -138,7 +139,7 @@ const MainPhoto = () => {
                         <p><a href='https://www.idbins.com/FWMAIV0001.do' target="_blank" rel="noopener noreferrer">사이트 바로가기</a></p>
                     </div>
                     <div>
-                        <p>사이트 바로가기</p>
+                        <p><a href='https://blog.naver.com/ace3107' target="_blank" rel="noopener noreferrer">사이트 바로가기</a></p>
                     </div>
                 </div>
             </section>

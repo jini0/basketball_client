@@ -21,6 +21,7 @@ import Login from './components/Member/Login';
 import Notice from './components/News/Notice';
 import News from './components/News/News';
 import Youtube from './components/Fan/Youtube';
+import Photo from './components/Fan/Photo';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />
         <Route path='/youtube' element={<Youtube/>} />
+        <Route path='/photo' element={<Photo/>} />
         <Route path='/event' element={<Event/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/detailProduct' element={<ProductDetail/>} />

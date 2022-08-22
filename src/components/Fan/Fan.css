@@ -1,0 +1,230 @@
+/* 유튜브 DB Youtube */
+#youtube {
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+/* -유튜브상단 */
+#youtube #youtube_top {
+    margin-bottom: 70px;
+    width: 100%;
+}
+#youtube #youtube_top .youtube_info {
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#youtube #youtube_top .youtube_info .youtube_date {
+    vertical-align: middle;
+}
+/* span만 넣을때, */
+/* #youtube #youtube_top .youtube_info .youtube_date > span {
+    font-size: 0.875em;
+    color: #777;
+    line-height: 0.875em;
+} */
+#youtube #youtube_top .youtube_info .youtube_date ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#youtube #youtube_top .youtube_info .youtube_date ul li {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.875em;
+    color: #777;
+    line-height: 0.875em;
+}
+#youtube_top .youtube_info .youtube_date ul li:not(:first-child)::before {
+    content: "|";
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 0.875em;
+    vertical-align: top;
+}
+#youtube #youtube_top .youtube_info .youtube_date ul li span {
+    margin-left: 3px;
+}
+/* -유튜브 하단 */
+#youtube #youtube_bot {
+    width: 100%;
+}
+#youtube #youtube_bot > ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: flex-start; */
+}
+#youtube #youtube_bot > ul li {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    /* background: #fff;
+    border-radius: 0 0 12px 12px; */
+}
+#youtube #youtube_bot > ul li:not(:nth-child(4n)) {
+    margin-right: 1.3333%;
+}
+#youtube #youtube_bot > ul li .youtube_img {
+    width: 100%;
+    height: auto;
+}
+#youtube #youtube_bot > ul li img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+}
+#youtube #youtube_bot > ul li .youtube_info {
+    border-radius: 0 0 12px 12px;
+    background: #fff;
+    padding: 18px 20px;
+}
+#youtube #youtube_bot > ul li .youtube_info .youtube_title {
+    width: 240px;
+    margin-bottom: 12px;
+    font-size: 	0.938em;
+    font-weight: 700;
+}
+#youtube #youtube_bot > ul li .youtube_info .youtube_title h3 {
+    /* 너비보다 초과하는 글자 안보이게 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#youtube #youtube_bot > ul li .youtube_info .youtube_date {
+    width: 100%;
+    vertical-align: middle;
+}
+/* span만 넣을때, */
+#youtube #youtube_bot .youtube_info .youtube_date > span {
+    font-size: 0.875em;
+    color: #777;
+    line-height: 0.875em;
+}
+#youtube #youtube_bot .youtube_info .youtube_date ul {
+    width: 100%;
+    height: 22px;
+    line-height: 0.875em;
+}
+#youtube #youtube_bot .youtube_info .youtube_date ul li {
+    width: 40%;
+    display: inline-block;
+    font-size: 0.875em;
+    color: #777;
+    /* margin-right: 10px; */
+    line-height: 0.875em;
+}
+#youtube #youtube_bot .youtube_info .youtube_date ul li:first-child::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.875em;
+    vertical-align: top;
+}
+
+
+/* 사진 DB Photo */
+#photo {
+    width: 100%;
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 130px;
+    position: relative;
+}
+#photo .photo_main {
+    width: 100%;
+}
+#photo .photo_main .photo_category {
+    position: absolute;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 22px 30px;
+    background-color: #fff;
+    border-radius: 36px;
+    top: -32px;
+    box-shadow: 2px 3.5px 29px 0 rgb(15 16 16 / 3%);
+}
+#photo .photo_main .photo_category .photo_selector {
+    display: flex;
+}
+#photo .photo_main .photo_category .photo_selector label {
+    position: relative;
+    top: -1px;
+    font-size: 0.813em;
+    letter-spacing: -.02em;
+    color: #222;
+    margin-right: 16px;
+}
+#photo .photo_main .photo_category .photo_selector .photo_selected .photo_text {
+    display: none;
+}
+#photo .photo_main .photo_category .photo_selector .photo_selected select {
+    width: 12.5rem;
+    padding-right: 15px;
+    border: 0;
+    font-size: 1.000em;
+    font-weight: 700;
+    color: #011241;
+    appearance: none;
+    background-image: url('/public/images/select_arrow.png');
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: 8px 13px;
+    cursor: pointer;
+    background-color: transparent;
+}
+#photo .photo_main > ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: flex-start; */
+}
+#photo .photo_main > ul li {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+#photo .photo_main > ul li:not(:nth-child(4n)) {
+    margin-right: 1.3333%;
+}
+#photo .photo_main > ul li .photo_img {
+    width: 100%;
+    height: auto;
+}
+#photo .photo_main > ul li img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+}
+#photo .photo_main > ul li .photo_info {
+    border-radius: 0 0 12px 12px;
+    background: #fff;
+    padding: 18px 20px;
+}
+#photo .photo_main > ul li .photo_info .photo_title {
+    width: 240px;
+    margin-bottom: 12px;
+    font-size: 	0.938em;
+    font-weight: 700;
+}
+#photo .photo_main > ul li .photo_info .photo_title h3 {
+    /* 너비보다 초과하는 글자 안보이게 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#photo .photo_main > ul li .photo_info .photo_date {
+    width: 100%;
+    vertical-align: middle;
+}
+#photo .photo_main .photo_info .photo_date > span {
+    font-size: 0.875em;
+    color: #777;
+    line-height: 0.875em;
+}
+

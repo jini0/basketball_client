@@ -78,7 +78,7 @@ const Header = () => {
                             <h3><Link to="/youtube">FAN</Link></h3>
                             <ul class="hideMenu">
                                 <li><Link to="/youtube">DB Youtube</Link></li>
-                                <li>DB photo</li>
+                                <li><Link to="/photo">DB photo</Link></li>
                                 <li><a href='https://kbl.or.kr/fan/kblpoll' target="_blank" rel="noopener noreferrer">KBL Polls</a></li>
                                 <li><a href='https://kbl.or.kr/fan/kblchallenge' target="_blank" rel="noopener noreferrer">KBL Challenge</a></li>
                                 <li><a href='https://kbl.or.kr/fan/kbldraw' target="_blank" rel="noopener noreferrer">KBL Draw</a></li>
