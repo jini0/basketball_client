@@ -23,6 +23,8 @@ import News from './components/News/News';
 import Youtube from './components/Fan/Youtube';
 import Photo from './components/Fan/Photo';
 import DetailPhoto from './components/Fan/DetailPhoto';
+import DetailNotice from './components/News/DetailNotice';
+import TicketPrice from './components/Ticket/TicketPrice';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
         <Route path='/sponser' element={<Sponser/>} />
         <Route path='/stadium' element={<Stadium/>} />
         <Route path='/notice' element={<Notice/>} />
+        <Route path='/detailNotice' element={<DetailNotice/>} />
         <Route path='/news' element={<News/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/detailPlayer' element={<PlayerDetail/>} />
@@ -48,6 +51,7 @@ function App() {
         <Route path='/photo' element={<Photo/>} />
         <Route path='/detailPhoto' element={<DetailPhoto/>} />
         <Route path='/event' element={<Event/>} />
+        <Route path='/ticketPrice' element={<TicketPrice/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/detailProduct' element={<ProductDetail/>} />
         <Route path='/login' element={<Login/>} />

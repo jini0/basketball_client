@@ -59,23 +59,23 @@ const Store = () => {
                     {/* All */}
                     <ul className='products'>
                         <li>
-                                <div className='product_img'>
-                                    <Link to="/detailProduct">
-                                        <img src="images/goods_metal_sticker.png" alt="메탈스티커" />
-                                    </Link>
-                                    <span className='wish_btn'></span>
-                                </div>
+                            <div className='product_img'>
                                 <Link to="/detailProduct">
-                                    <div className='product_text'>
-                                        <h4>DB프로미 플레이어 메탈스티커<span>(대형)</span></h4>
-                                        <div>
-                                            <span className='price'></span>
-                                            <span className='saleprice'>6,000원</span>
-                                            <span className='discount_per'></span>
-                                        </div>
-                                        <span className='store'>(주)스미스스포츠</span>
-                                    </div>
+                                    <img src="images/goods_metal_sticker.png" alt="메탈스티커" />
                                 </Link>
+                                <span className='wish_btn'></span>
+                            </div>
+                            <Link to="/detailProduct">
+                                <div className='product_text'>
+                                    <h4>DB프로미 플레이어 메탈스티커<span>(대형)</span></h4>
+                                    <div>
+                                        <span className='price'></span>
+                                        <span className='saleprice'>6,000원</span>
+                                        <span className='discount_per'></span>
+                                    </div>
+                                    <span className='store'>(주)스미스스포츠</span>
+                                </div>
+                            </Link>
                         </li>
                         <li>
                             <div className='product_img'>

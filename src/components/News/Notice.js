@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './News.css';
 
 const Notice = () => {
@@ -33,8 +34,20 @@ const Notice = () => {
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>12</td>
+                                    <td>2022-2023시즌 티켓 및 좌석 안내</td>
+                                    <td>2022-08-12</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>사과문</td>
+                                    <td>2022-06-27</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
                                     <td>10</td>
-                                    <td>원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</td>
+                                    <td><Link to="/detailNotice">원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</Link></td>
                                     <td>2022-06-02</td>
                                     <td>0</td>
                                 </tr>

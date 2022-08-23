@@ -73,18 +73,26 @@ const MainColumn = () => {
                             <span>NOTICE</span>
                             <span><Link to="/notice">more</Link></span>
                             <ul>
-                            <li>
+                                <li>
+                                    <p>2022-2023시즌 티켓 및 좌석 안내</p>
+                                    <span>2022-08-22</span>
+                                </li>
+                                <li>
+                                    <p>사과문</p>
+                                    <span>2022-06-27</span>
+                                </li>
+                                <li>
                                     <p>원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</p>
                                     <span>2022-06-12</span>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <p>트레이너 채용 공고 안내</p>
                                     <span>2022-05-10</span>
                                 </li>
                                 <li>
                                     <p>프로스포츠 관람권 지원사업 7회차</p>
                                     <span>2022-03-29</span>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
