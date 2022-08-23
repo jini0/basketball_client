@@ -38,7 +38,7 @@ const TicketPrice = () => {
                                 <img src="images/DB_seat4.png" alt="티켓구매방법안내" />
                             </div>
                         </section>
-                        <section>
+                        <section className='reserve_method'>
                             <h3>티켓 예매 방법</h3>
                             <div>
                                 <table>
@@ -53,14 +53,14 @@ const TicketPrice = () => {
                                         <tr>
                                             <td>온라인 예매</td>
                                             <td>
-                                                - KBL 통합 어플리케이션
+                                                - KBL 통합 어플리케이션<br/>
                                                 - KBL 통합 티켓 홈페이지(https://promy.kbl.or.kr)
                                             </td>
                                             <td rowSpan={2}>
-                                                - 경기 <span>5일전</span> 낮 12시부터 경기시작 전까지 예매 가능
-                                                - 1인당 최대 <span>4매</span> 예매 가능
-                                                - 예매수수료 1,000원/장
-                                                - <span className='ticket_table_tit'>운영시간</span> : 온라인(24시간), 전화(10시~18시) 
+                                                - 경기 <span>5일전</span> 낮 12시부터 경기시작 전까지 예매 가능<br/>
+                                                - 1인당 최대 <span>4매</span> 예매 가능<br/>
+                                                - 예매수수료 1,000원/장<br/>
+                                                - <span className='ticket_table_tit'>운영시간</span> : 온라인(24시간), 전화(10시~18시)<br/>
                                                 - <span className='ticket_table_tit'>입장시간</span> : 경기시작 1시간 30분 전부터 입장 가능
                                             </td>
                                         </tr>
@@ -72,7 +72,7 @@ const TicketPrice = () => {
                                 </table>
                             </div>
                         </section>
-                        <section>
+                        <section className='ticket_discount'>
                             <h3>일반 할인</h3>
                             <div>
                                 <table>
