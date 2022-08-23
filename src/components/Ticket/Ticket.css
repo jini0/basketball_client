@@ -75,3 +75,102 @@
 #ticket_price .inner > div:nth-child(2) > section > div img {
     width: 100%;
 }
+/* --티켓 예약방법 */
+#ticket_price .inner > div:nth-child(2) .reserve_method > div, #ticket_price .inner > div:nth-child(2) .ticket_discount > div {
+    padding: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    line-height: 1.6;
+    font-size: 0.875em;
+    margin-bottom: 65px;
+    overflow: hidden;
+}
+#ticket_price .inner > div:nth-child(2) .reserve_method table, #ticket_price .inner > div:nth-child(2) .ticket_discount table {
+    background: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+#ticket_price .reserve_method table thead tr, #ticket_price .ticket_discount table thead tr {
+    width: 100%;
+}
+#ticket_price .reserve_method table thead tr th, #ticket_price .ticket_discount table thead tr th {
+    padding: 15px 0;
+    border-bottom: 2px solid #000;
+    width: 33.3333%;
+}
+#ticket_price .reserve_method table thead tr th:not(:last-child), #ticket_price .ticket_discount table thead tr th:not(:last-child) {
+    border-right: 1px solid #e5e5e5;
+}
+#ticket_price .reserve_method table tbody tr td {
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+#ticket_price .reserve_method table tbody tr:nth-child(2) td {
+    border-bottom: 0;
+}
+#ticket_price .reserve_method table tbody tr:nth-child(1) td:last-child {
+    border-bottom: 0;
+    border-right: 0;
+}
+#ticket_price .reserve_method table tbody tr td {
+    padding: 30px 40px;
+}
+#ticket_price .reserve_method table tbody tr td:first-child {
+    text-align: center;
+}
+#ticket_price .reserve_method table tbody tr td span {
+    color: rgba(251, 59, 59, 0.958);
+    font-weight: 600;
+}
+#ticket_price .reserve_method table tbody tr td .ticket_table_tit {
+    color: #000;
+    font-weight: 400;
+}
+/* --일반할인 */
+#ticket_price .ticket_discount table tbody tr td {
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 15px 0;
+}
+#ticket_price .ticket_discount table tbody tr:last-child td {
+    border-bottom: 0;
+}
+#ticket_price .ticket_discount table tbody tr:nth-child(9) td:nth-child(1) {
+    border-bottom: 0;
+}
+#ticket_price .ticket_discount table tbody tr td:last-child {
+    border-right: 0;
+}
+#ticket_price .ticketBtn {
+    text-align: center;
+}
+.ticketBtn > button {
+    width: 10rem;
+    height: 2.55rem;
+    line-height: 2.55rem;
+    margin-top: 4rem;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 6px;
+    background: #011b47;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+.ticketBtn > button:hover {
+    background-color: #011b47c7;
+}
+.ticketBtn > button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
