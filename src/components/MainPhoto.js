@@ -55,14 +55,14 @@ const MainPhoto = () => {
                     <div>
                         <Slider {...settings} className="slide">
                             <div className='main_index_3'>
-                                <img src='images/photo_1.jpg' alt='핫포토1' />
+                                <img src='images/photo_1.jpg' alt='핫포토2' />
                                 <div className='main_index_text_3'>
                                     <h4><span>경기</span>[04.05] 원주 DB와 창원 LG의 경기</h4>
                                     <span>2022-04-06</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/photo_2.jpg' alt='핫포토2' />
+                                <img src='images/photo_2.jpg' alt='핫포토1' />
                                 <div className='main_index_text_3'>
                                     <h4><span>응원</span>[04.05] 원주 DB와 창원 LG의 경기</h4>
                                     <span>2022-04-06</span>
@@ -71,8 +71,8 @@ const MainPhoto = () => {
                             <div className='main_index_3'>
                                 <img src='images/photo_3.jpg' alt='핫포토3' className='main_index_img' />
                                 <div className='main_index_text_3'>
-                                    <h4><span>경기</span>[04.05] 원주 DB와 창원 LG의 경기</h4>
-                                    <span>2022-04-06</span>
+                                    <h4><span>경기</span>[03.30] 원주 DB와 전주 KCC의 경기</h4>
+                                    <span>2022-03-31</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>

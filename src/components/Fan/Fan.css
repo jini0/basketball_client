@@ -192,9 +192,13 @@
 #photo .photo_main > ul li:not(:nth-child(4n)) {
     margin-right: 1.3333%;
 }
+#photo .photo_main > ul li a {
+    height: 100%;
+}
 #photo .photo_main > ul li .photo_img {
     width: 100%;
     height: auto;
+    /* height: 68%; */
 }
 #photo .photo_main > ul li img {
     width: 100%;
@@ -227,4 +231,155 @@
     color: #777;
     line-height: 0.875em;
 }
+/* -경기장면 클릭시 */
+/* -응원장면 클릭시 */
+#photo #cheering_page {
+    display: none;
+}
 
+
+/* 포토상세페이지 detailPhoto */
+#detail_photo {
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 130px;
+    min-height: calc(100vh - 29.75rem);
+}
+#detail_photo .inner {
+    position: relative;
+    margin: 4px auto 0;
+}
+#detail_photo article .detail_photo_title {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+}
+#detail_photo article .detail_photo_title h2 {
+    font-size: 1.250em;
+    color: #222;
+    font-weight: 700;
+}
+#detail_photo article > table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+#detail_photo article > table thead th {
+    width: 100%;
+    min-height: 50px;
+    background-color: #fff;
+    padding: 20px 30px;
+    text-align: left;
+    font-size: 	0.875em;
+    color: #999;
+    vertical-align: middle;
+    line-height: 1.4;
+    border-bottom: 1px solid #e5e5e5;
+}
+#detail_photo article > table thead tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+#detail_photo article > table thead tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+#detail_photo article > table td:last-child, #detail_photo article > table th:last-child {
+    border-right: 0;
+}
+#detail_photo article > table thead th, #detail_photo article > table thead th a {
+    font-size: 0.875em;
+    color: #222;
+    font-weight: 700;
+}
+#detail_photo article > table thead th > ul > li {
+    display: inline-block;
+    margin-right: 20px;
+    color: #999;
+    /* vertical-align: middle; */
+    /* position: relative; */
+}
+#detail_photo article > table thead th > ul> li span {
+    color: #222;
+    margin-right: 10px;
+}
+#detail_photo article > table thead th > ul> li:not(:last-child):after {
+    /* content: "";
+    width: 1.5px;
+    height: 14px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background: #999; */
+    /* content: "|"; */
+    content: "│";
+    display: inline-block;
+    margin-left: 20px;
+}
+#detail_photo article > table tbody {
+    width: 100%;
+    background: #fff;
+}
+#detail_photo article > table tbody .photo_content {
+    width: 100%;
+    padding: 40px 30px;
+    text-align: left;
+    border-radius: 0;
+}
+#detail_photo article > table tbody .photo_content, #detail_photo article > table tfoot td {
+    word-break: break-all;
+    height: 64px;
+    font-size: 14px;
+    color: #222;
+    font-weight: 400;
+    line-height: 1.6;
+    vertical-align: middle;
+}
+#detail_photo article > table > tbody .photo_content > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#detail_photo article > table > tbody .photo_content > div img {
+    max-width: 100%;
+    height: auto;
+}
+#detail_photo article > table > tfoot {
+    background: #fff;
+    text-align: center;
+}
+#detail_photo article > table > tfoot td {
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0 0 12px 12px;
+    padding: 30px 0;
+}
+/* https://developer.mozilla.org/ko/docs/Web/HTML/Element/button */
+#detail_photo article > table > tfoot button {
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #011b47;
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+#detail_photo article > table > tfoot button:hover {
+    background-color: #011b47c7;
+}
+#detail_photo article > table > tfoot button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
