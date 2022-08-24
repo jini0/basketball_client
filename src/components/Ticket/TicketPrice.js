@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Ticket.css';
 
 const TicketPrice = () => {
@@ -15,7 +16,7 @@ const TicketPrice = () => {
                             <li className='reservation'>예매하기</li>
                             <li className='ticketPrice active'>티켓가격</li>
                             {/* <li>멤버쉽</li> */}
-                            <li className='guidelines'>티켓 안내사항</li>
+                            <li className='guidelines'><Link to="/guide">티켓 안내사항</Link></li>
                         </ul>
                     </div>
                     {/* 티켓가격 클릭시 */}

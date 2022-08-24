@@ -134,3 +134,99 @@
 }
 
 
+/* 이벤트 상세보기 detailEvent */
+#detail_event {
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+#detail_event .inner {
+    /* padding: 15px 0 80px 20px;
+    margin: 0;
+    position: relative;
+    overflow: hidden; */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+}
+#detail_event .detail_event_content {
+    /* width: 760px; */
+    width: 100%;
+}
+#detail_event .detail_event_content table {
+    /* width: 760px; */
+    width: 100%;
+    table-layout: fixed;
+    background: #fff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
+}
+#detail_event .detail_event_content table thead th {
+    background: #011b47;
+    /* border-radius: 12px 12px 0 0; */
+    font-size: 1em;
+    text-align: left;
+    color: #fff;
+    padding: 12px 0 12px 15px;
+}
+#detail_event .detail_event_content table tbody th {
+    border-bottom: 1px solid #001e5e;
+}
+#detail_event .detail_event_content table tbody th {
+    border-bottom: 1px solid #001e5e;
+    padding: 9px 0 7px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+#detail_event .detail_event_content table tbody th span {
+    color: #555555;
+    padding: 0 0 0 8px;
+    font-weight: normal;
+}
+#detail_event .detail_event_content table tbody td {
+    padding: 40px 15px;
+}
+#detail_event .detail_event_content table tbody td > div {
+    text-align: center;
+}
+#detail_event .detail_event_content table tbody td > div img {
+    vertical-align: top;
+    /* width: 100%; */
+}
+#detail_event .detail_eventBtn {
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0 0 12px 12px;
+    padding: 30px 0;
+}
+#detail_event .detail_eventBtn .event_btn {
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #011b47;
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+#detail_event .detail_eventBtn .event_btn:hover {
+    background-color: #011b47c7;
+}
+#detail_event .detail_eventBtn .event_btn:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}

@@ -25,6 +25,8 @@ import Photo from './components/Fan/Photo';
 import DetailPhoto from './components/Fan/DetailPhoto';
 import DetailNotice from './components/News/DetailNotice';
 import TicketPrice from './components/Ticket/TicketPrice';
+import Guidelines from './components/Ticket/Guidelines';
+import DetailEvent from './components/Event/DetailEvent';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -51,7 +53,9 @@ function App() {
         <Route path='/photo' element={<Photo/>} />
         <Route path='/detailPhoto' element={<DetailPhoto/>} />
         <Route path='/event' element={<Event/>} />
+        <Route path='/detailEvent' element={<DetailEvent/>} />
         <Route path='/ticketPrice' element={<TicketPrice/>} />
+        <Route path='/guide' element={<Guidelines/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/detailProduct' element={<ProductDetail/>} />
         <Route path='/login' element={<Login/>} />

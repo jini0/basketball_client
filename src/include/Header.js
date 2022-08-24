@@ -99,7 +99,7 @@ const Header = () => {
                             <ul class="hideMenu">
                                 <li>예매하기</li>
                                 <li><Link to="/ticketPrice">티켓가격</Link></li>
-                                <li>티켓 안내사항</li>
+                                <li><Link to="/guide">티켓 안내사항</Link></li>
                             </ul>
                         </li>
                         <li class="menuList">

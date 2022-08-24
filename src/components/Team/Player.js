@@ -57,6 +57,16 @@ const Player = () => {
                                 </li>
                                 <li>
                                     <div className='teamList_img'>
+                                        <img src='images/player_55.png' alt='원종훈선수'/>
+                                    </div>
+                                    <div className='teamList_text'>
+                                        <span className='num'>No.55</span>
+                                        <p>원종훈</p>
+                                        <span className='position'>GUARD</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='teamList_img'>
                                         <img src='images/player_6.png' alt='이민석선수'/>
                                     </div>
                                     <div className='teamList_text'>
@@ -82,6 +92,16 @@ const Player = () => {
                                     <div className='teamList_text'>
                                         <span className='num'>No.19</span>
                                         <p>정호영</p>
+                                        <span className='position'>GUARD</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='teamList_img'>
+                                        <img src='images/player_17-1.png' alt='알바노선수'/>
+                                    </div>
+                                    <div className='teamList_text'>
+                                        <span className='num'>No.17</span>
+                                        <p>이선 알바노</p>
                                         <span className='position'>GUARD</span>
                                     </div>
                                 </li>
