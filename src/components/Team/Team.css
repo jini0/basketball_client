@@ -289,7 +289,20 @@
 .playerScore table tbody tr td:last-child {
     border-right: none;
 } 
-
+.player_cf {
+    /* text-align: center; */
+    padding-top: 50px;
+    margin-left: 30%;
+}
+.player_cf p {
+    font-size: 1.375em;
+    color: #03662c;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+.player_cf p:nth-child(1) {
+    padding-bottom: 10px;
+}
 
 /* 코칭스태프 */
 .coach {

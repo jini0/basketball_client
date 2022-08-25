@@ -282,7 +282,7 @@ body {
   position: relative;
 }
 #mainPage #mainSlide #main2 #mainImg2 {
-  width: 100%;
+  height: 100%;
 }
 #mainPage #mainSlide #main2 #mainImg2 img {
   width: 100%;
@@ -380,6 +380,22 @@ body {
   text-decoration: underline;
   /* color: #03662c; */
 }
+/* 슬라이드3, 슬라이드4 */
+#main3, #main4 {
+  width: 100%;
+  /* height: 646px; */
+  height: 792px;
+  overflow: hidden;
+  position: relative;
+}
+#main3 img, #main4 img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+}
+
 /* 슬라이드 이전, 다음 버튼 / dots */
 #mainSlide .slic-list {
   position: relative;

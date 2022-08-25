@@ -45,7 +45,7 @@ function App() {
         <Route path='/detailNotice' element={<DetailNotice/>} />
         <Route path='/news' element={<News/>} />
         <Route path='/player' element={<Player/>} />
-        <Route path='/detailPlayer' element={<PlayerDetail/>} />
+        <Route path='/player/:id' element={<PlayerDetail/>} />
         <Route path='/coach' element={<Coach/>} />
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />

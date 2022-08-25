@@ -98,6 +98,12 @@ const MainPage = () => {
                             </div>
                         </div>
                     </div>
+                    <div id="main3">
+                        <img src="images/mainSlide_3.png" alt="메인슬라이드3" />
+                    </div>
+                    <div id="main4">
+                        <img src="images/mainSlide_4.png" alt="메인슬라이드4" />
+                    </div>
                 </Slider>
             </div>
             <MainColumn/>

@@ -1,7 +1,76 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+// import { Link } from 'react-router-dom';
 import './Team.css';
+import PlayerList from './PlayerList';
 const Player = () => {
+    const allLists = document.querySelector('.allLists');
+    const guardList = document.querySelector('.guardList');
+    const forwardList = document.querySelector('.forwardList');
+    const centerList = document.querySelector('.centerList');
+    const armyList = document.querySelector('.armyList');
+
+    // mysql로 데이터 부르기
+    const [ players, setPlayers ] = useState([]);
+    const [ allPlayers, setAllPlayers ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/players")
+        .then(result=>{
+            const players = result.data;
+            console.log(players);
+            // console.log(result.data);
+            setPlayers(result.data)
+            setAllPlayers(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    //포지션별 클릭 - onClick이벤트
+    function all(){ 
+        setPlayers(allPlayers.filter(e=>e.position1)) 
+        allLists.classList.add('active');
+        guardList.classList.remove('active');
+        forwardList.classList.remove('active');
+        centerList.classList.remove('active');
+        armyList.classList.remove('active');
+    }
+    function guard(){ 
+        setPlayers(allPlayers.filter(e=>e.position1==="GUARD")) 
+        guardList.classList.add('active');
+        allLists.classList.remove('active');
+        forwardList.classList.remove('active');
+        centerList.classList.remove('active');
+        armyList.classList.remove('active');
+    }
+    function forward(){ 
+        setPlayers(allPlayers.filter(e=>e.position1==="FORWARD")) 
+        forwardList.classList.add('active');
+        allLists.classList.remove('active');
+        guardList.classList.remove('active');
+        centerList.classList.remove('active');
+        armyList.classList.remove('active');
+    }
+    function center(){ 
+        setPlayers(allPlayers.filter(e=>e.position1==="CENTER")) 
+        centerList.classList.add('active');
+        allLists.classList.remove('active');
+        guardList.classList.remove('active');
+        forwardList.classList.remove('active');
+        armyList.classList.remove('active');
+    }
+    function army(){ 
+        setPlayers(allPlayers.filter(e=>e.position1==="ARMY")) 
+        armyList.classList.add('active');
+        allLists.classList.remove('active');
+        guardList.classList.remove('active');
+        forwardList.classList.remove('active');
+        centerList.classList.remove('active');
+    }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -12,18 +81,38 @@ const Player = () => {
                 <div className='playerTab'>
                     <div>
                         <ul className='inner'>
-                            <li className='active'>전체</li>
-                            <li>가드</li>
-                            <li>포워드</li>
-                            <li>센터</li>
-                            <li>군입대 선수</li>
+                            <li onClick={all} className='active allLists'>전체</li>
+                            <li onClick={guard} className="guardList">가드</li>
+                            <li onClick={forward} className="forwardList">포워드</li>
+                            <li onClick={center} className="centerList">센터</li>
+                            <li onClick={army} className="armyList">군입대 선수</li>
                         </ul>
                     </div>
                     <div>
                         <div id='guard' className='inner2 position_name'>
                             <h4>GUARD</h4>
                             <ul className='teamList'>
-                                <li>
+                                {players.filter(e=>e.position1==="GUARD").map(player=>(
+                                    <PlayerList key={player.id} player={player}/>
+                                ))}
+
+                                {/* 따로 PlayerList 만들기전, */}
+                                {/* {players.filter(e=>e.position1==="GUARD").map(player=>(
+                                    <li key={player.id}>
+                                        <Link to="/detailPlayer">
+                                        <div className='teamList_img'>
+                                            <img src={player.imgsrc} alt=''/>
+                                        </div>
+                                        <div className='teamList_text'>
+                                            <span className='num'>No.{player.no}</span>
+                                            <p>{player.name}</p>
+                                            <span className='position'>{player.position2}</span>
+                                        </div>
+                                        </Link>
+                                    </li>
+                                ))} */}
+
+                                {/* <li>
                                     <Link to="/detailPlayer">
                                     <div className='teamList_img'>
                                         <img src='images/player_7.png' alt='김현호선수'/>
@@ -104,14 +193,17 @@ const Player = () => {
                                         <p>이선 알바노</p>
                                         <span className='position'>GUARD</span>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
 
                         </div>
                         <div id='foward' className='inner2 position_name'>
                             <h4>FORWARD</h4>
                             <ul className='teamList'>
-                                <li>
+                                {players.filter(e=>e.position1==="FORWARD").map(player=>(
+                                    <PlayerList key={player.id} player={player}/>
+                                ))}
+                                {/* <li>
                                     <div className='teamList_img'>
                                         <img src='images/player_26.png' alt='강상재선수'/>
                                     </div>
@@ -170,13 +262,16 @@ const Player = () => {
                                         <p>레너드 프리먼</p>
                                         <span className='position'>FORWARD</span>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <div id='center' className='inner2 position_name'>
                             <h4>CENTER</h4>
                             <ul className='teamList'>
-                                <li>
+                                {players.filter(e=>e.position1==="CENTER").map(player=>(
+                                    <PlayerList key={player.id} player={player}/>
+                                ))}
+                                {/* <li>
                                     <div className='teamList_img'>
                                         <img src='images/player_15.png' alt='김종규선수'/>
                                     </div>
@@ -195,13 +290,16 @@ const Player = () => {
                                         <p>드완 에르난데스</p>
                                         <span className='position'>CENTER</span>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <div id='army' className='inner2 position_name'>
                             <h4>ARMY</h4>
                             <ul className='teamList'>
-                                <li>
+                                {players.filter(e=>e.position1==="ARMY").map(player=>(
+                                    <PlayerList key={player.id} player={player}/>
+                                ))}
+                                {/* <li>
                                     <div className='teamList_img'>
                                         <img src='images/player_4.png' alt='서현석선수'/>
                                     </div>
@@ -250,7 +348,7 @@ const Player = () => {
                                         <p>유현준</p>
                                         <span className='position'>GUARD</span>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
