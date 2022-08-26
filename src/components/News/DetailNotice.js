@@ -1,5 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './News.css';
 
 const DetailNotice = () => {
@@ -9,6 +10,26 @@ const DetailNotice = () => {
     function onSubmit(){
         navigate('/notice');
     }
+
+    // mysql로 데이터 불러오기
+    const [ notice, setNotice ] = useState(null);
+    const { id } = useParams();             // id값 받아오기(parameter 사용)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8001/notice/${id}`)
+        .then(result => {
+            const results = result.data;
+            console.log(results);
+            // setNotice(results); 
+            setNotice(results[0]); 
+        })   
+        .catch(e=> {
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+    if(!notice) return <div>로딩중입니다...</div>
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -18,6 +39,56 @@ const DetailNotice = () => {
             <div id='detail_notice'>
                 <div className='inner'>
                     <article>
+                        <div className='detail_notice_title'>
+                            <h2>{notice.title}</h2>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <ul>
+                                            <li><span>작성일</span>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</li>
+                                            <li><span>조회</span></li>
+                                        </ul>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className='notice_content'>
+                                        <div>
+                                            <img src={"../images/"+notice.imgsrc} alt="상세공지" />
+                                            { (notice.address !== null) && (notice.imgsrc2 !== null) ? 
+                                                <a href={notice.address} target="_blank" rel="noopener noreferrer"><img src={"../images/"+notice.imgsrc2} alt="상세공지" /></a> 
+                                                : (notice.imgsrc2 !== null) ? <img src={"../images/"+notice.imgsrc2} alt="상세공지" /> : null
+                                            }
+                                            {/* { (notice.address !== null) && (notice.imgsrc2 !== null) && 
+                                                <a href={notice.address} target="_blank" rel="noopener noreferrer"><img src={"../images/"+notice.imgsrc2} alt="상세공지" /></a>
+                                            } */}
+                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null)) &&
+                                                <img src={"../images/"+notice.imgsrc3} alt="상세공지" />                                       
+                                            }
+                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== null)) && 
+                                                <img src={"../images/"+notice.imgsrc4} alt="상세공지" />
+                                            }
+                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== null) && (notice.imgsrc5 !== null)) && 
+                                                <img src={"../images/"+notice.imgsrc5} alt="상세공지" />
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <button className='detail_notice_btn' type='button' onClick={onSubmit}>목록으로</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </article>
+
+                    {/* <article>
                         <div className='detail_notice_title'>
                             <h2>원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</h2>
                         </div>
@@ -37,8 +108,8 @@ const DetailNotice = () => {
                                     <td className='notice_content'>
                                         <div>
                                             <img src="images/notice10.png" alt="상세공지" />
-                                            {/* <img src="images/photo_1-1.png" alt="상세공지" />
-                                            <img src="images/photo_1-2.png" alt="상세공지" /> */}
+                                            <img src="images/photo_1-1.png" alt="상세공지" />
+                                            <img src="images/photo_1-2.png" alt="상세공지" />
                                         </div>
                                     </td>
                                 </tr>
@@ -51,7 +122,7 @@ const DetailNotice = () => {
                                 </tr>
                             </tfoot>
                         </table>
-                    </article>
+                    </article> */}
                 </div>
             </div> 
         </div>
