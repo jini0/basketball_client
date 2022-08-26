@@ -274,7 +274,7 @@ const Store = () => {
                         </li>
                     </ul>
                 </section>
-                <div className='ball_dribble'>
+                <div className='ball_dribble0'>
                     <img src="images/gif-maker.gif" alt="농구공gif" />
                 </div>
             </div>

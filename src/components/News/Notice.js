@@ -1,8 +1,33 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './News.css';
+import Pagination from './Pagination';
 
 const Notice = () => {
+    // mysql로 데이터 부르기
+    const [ notices, setNotices ] = useState([]);
+    // 페이지네이션
+    const [limit, setLimit] = useState(10);
+    const [page, setPage] = useState(1);
+    const offset = (page - 1) * limit;  //offset은 db에서 모든 컬럼을 읽어와, n~m 순서를 부여한 후 offset부터 limit 수로 자르는 작업
+  
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/notices")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setNotices(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -22,6 +47,21 @@ const Notice = () => {
                         <input type="text" placeholder="검색어를 입력해주세요." />
                         <button className='searchBtn'></button>
                     </div>
+                    {/* 페이지당 게시물 수 제한 */}
+                    <label>
+                        페이지당 표시할 게시물 수 :&nbsp;
+                        <select
+                        type="number"
+                        value={limit}
+                        onChange={({ target: { value } }) => setLimit(Number(value))}
+                        >
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </label>
                     <div className='notice_table'>
                         <table>
                             <thead>
@@ -33,7 +73,18 @@ const Notice = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                            {/* slice() 메서드를 사용하여 첫 게시물부터 마지막 게시물까지만 루프를 돌도록! */}
+                                {notices.slice(offset, offset + limit).map(notice=>(
+                                    <tr key={notice.id} notice={notice}>
+                                        <td>{notice.id}</td>
+                                        <td><Link to={`/notice/${notice.id}`}>{notice.title}</Link></td>
+                                        <td>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</td>
+                                        <td></td>
+                                    </tr>
+                                ))}
+                                {/* 페이지네이션 table 밖에! */}
+
+                                {/* <tr>
                                     <td>13</td>
                                     <td>2022-2023시즌 시즌권 판매 안내</td>
                                     <td>2022-08-24</td>
@@ -110,9 +161,18 @@ const Notice = () => {
                                     <td>BODYFRIEND X DB PROMY 윈디 서바이벌 게임 참가 안내</td>
                                     <td>2022-01-25</td>
                                     <td>0</td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
+                        {/* 페이지네이션 */}
+                        <div className='pagenav'>
+                            <Pagination
+                                total={notices.length}
+                                limit={limit}
+                                page={page}
+                                setPage={setPage}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>   

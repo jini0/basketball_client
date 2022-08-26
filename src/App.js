@@ -42,7 +42,7 @@ function App() {
         <Route path='/sponser' element={<Sponser/>} />
         <Route path='/stadium' element={<Stadium/>} />
         <Route path='/notice' element={<Notice/>} />
-        <Route path='/detailNotice' element={<DetailNotice/>} />
+        <Route path='/notice/:id' element={<DetailNotice/>} />
         <Route path='/news' element={<News/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/player/:id' element={<PlayerDetail/>} />

@@ -61,6 +61,8 @@
 #notice .notice_table {
     width: 100%;
     text-align: center;
+    /* label, 페이지네이션 추가 후 */
+    margin-top: 15px;
 }
 #notice .notice_table table {
     width: 100%;
@@ -132,6 +134,22 @@
 }
 #notice .notice_table table tbody tr:last-child td {
     border-bottom: none;
+}
+/* 페이지네이션 */
+/* - label 페이지당 게시물 제한 수 */
+#notice label {
+    margin-left: 10px;
+    font-size: 0.875em;
+    color: #777;
+}
+#notice label select {
+    margin-left: 5px;
+}
+/* - 페이지네이션 부모요소 position */
+#notice .notice_table .pagenav {
+    position: relative;
+    height: 80px;
+    padding: 30px 0 20px 0;
 }
 
 /* 공지 상세페이지 detailNotice */
