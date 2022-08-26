@@ -1,7 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './Team.css';
 
 const Staff = () => {
+     // mysql로 데이터 부르기
+     const [ staffs, setStaffs ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/staff")
+        .then(result=>{
+            const staffs = result.data;
+            console.log(staffs);
+            // console.log(result.data);
+            setStaffs(result.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
     return (
         <div className='teamTab'>
            <div className='teamHeader'>
@@ -11,7 +29,20 @@ const Staff = () => {
             <div>
                 <div className='inner'>
                     <ul className='staffList'>
-                        <li>
+                        {staffs.map(staff=>(    
+                            <li key={staff.id} staff={staff}>
+                                <div className='staffList_img'>
+                                    <img src={staff.imgsrc} alt=''/>
+                                </div>
+                                <div className='staffList_text'>
+                                    <p>{staff.name}</p>
+                                    <p><img src={staff.imgsrc2} alt='원주DB로고'/>{staff.affiliation}</p>
+                                </div>
+                            </li>  
+                        ))}
+
+
+                        {/* <li>
                             <div className='staffList_img'>
                                 <img src='images/staff_parkjae.png' alt='박제용스카우터'/>
                             </div>
@@ -73,7 +104,7 @@ const Staff = () => {
                                 <p>이진우 트레이너</p>
                                 <p><img src='images/emblem_db.png' alt='원주DB로고'/>원주 DB 프로미</p>
                             </div>
-                        </li>  
+                        </li>   */}
                     </ul>
                 </div>
             </div>

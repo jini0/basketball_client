@@ -23,11 +23,31 @@ const PlayerDetail = () => {
     },[])
     if(!player) return <div>로딩중입니다...</div>
 
-    // 생년월일 : 8자리 하이픈(-) 붙이기 
+    // *생년월일 : 8자리 하이픈(-) 붙이기1 
     // function dateFormat(){
     //     // 정규표현식
-    //     // s = s.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+    //     // - 숫자 8자리 형식으로 된 날자 형식을 년-월-일 형식으로 하이픈(-) 넣어서 보여주는 방법을 정규화로 된 부분입니다.
+    // // s = s.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
     // }
+
+    // *생년월일 : 8자리 하이픈(-) 붙이기2 
+    // function YMDFormatter(num){
+    //     if(!num) return "";
+    //     var formatNum = '';
+        
+    //     // 공백제거     
+    //     num=num.replace(/\s/gi, "");
+        
+    //     try{
+    //         if(num.length == 8) {
+    //             formatNum = num.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+    //         }
+    //     } catch(e) {
+    //         formatNum = num;console.log(e);
+    //     }
+    //     return formatNum;
+    // }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

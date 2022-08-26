@@ -1,7 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './Team.css';
 
 const Cheer = () => {
+    // mysql로 데이터 부르기
+    const [ cheers, setCheers ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/cheer")
+        .then(result=>{
+            const cheers = result.data;
+            console.log(cheers);
+            // console.log(result.data);
+            setCheers(result.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -10,7 +28,30 @@ const Cheer = () => {
             </div> 
             <div className='cheer'>
                 <div className='cheerleading inner'>
-                    <div className='cheer_Captain'>
+                    {cheers.filter(e=>e.position==="응원단장").map(cheer=>(
+                        <div className='cheer_Captain' key={cheer.id} cheer={cheer}>
+                            <div>
+                                <img src={cheer.imgsrc}  alt="응원단장" />
+                            </div>
+                            <div className='cheer_text'>
+                                <p><span>{cheer.name}</span> {cheer.position}</p>
+                                <p><span>생년월일</span> : {cheer.profile}</p>
+                            </div>
+                        </div>
+                    ))}
+                    {cheers.filter(e=>e.position==="아나운서").map(cheer=>(
+                        <div className='cheer_announcer' key={cheer.id} cheer={cheer}>
+                            <div className='cheer_text'>
+                                <p><span>{cheer.name}</span> {cheer.position}</p>
+                                <p><span>생년월일</span> : {cheer.profile}</p>
+                            </div>
+                            <div>
+                                <img src={cheer.imgsrc}  alt="아나운서" />
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* <div className='cheer_Captain'>
                         <div>
                             <img src="images/cheerleading_captain.png"  alt="응원단장" />
                         </div>
@@ -27,7 +68,7 @@ const Cheer = () => {
                         <div>
                             <img src="images/cheerleading_announcer.png"  alt="아나운서" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='cheerleaders  inner'>
                     <h3>DB PROMY CHEER LEADER</h3>
@@ -35,7 +76,14 @@ const Cheer = () => {
                     항상 열정과 혼신을 다해 선수들을 응원합니다!</p>
                     <div>
                         <ul>
-                            <li>
+                            {cheers.filter(e=>e.position==="치어리더1").map(cheer=>(
+                                <li key={cheer.id} cheer={cheer}>
+                                    <img src={cheer.imgsrc} alt="치어리더1"/>
+                                    <p className='hideName'>{cheer.name}</p>
+                                </li>
+                            ))}
+
+                            {/* <li>
                                 <img src="images/cheerleading_1.png" alt="치어리더1"/>
                                 <p className='hideName'>김도희</p>
                             </li>
@@ -54,10 +102,18 @@ const Cheer = () => {
                             <li>
                                 <img src="images/cheerleading_5.png" alt="치어리더5"/>
                                 <p className='hideName'>정다혜</p>
-                            </li>
+                            </li> */}
                         </ul>
                         <ul>
-                            <li>
+                            {cheers.filter(e=>e.position==="치어리더2").map(cheer=>(
+                                <li key={cheer.id} cheer={cheer}>
+                                    <img src={cheer.imgsrc} alt="치어리더2"/>
+                                    <p className='hideName'>{cheer.name}</p>
+                                </li>
+                            ))}
+
+
+                            {/* <li>
                                 <img src="images/cheerleading_6.png" alt="치어리더6"/>
                                 <p className='hideName'>최석화</p>
                             </li>
@@ -72,7 +128,7 @@ const Cheer = () => {
                             <li>
                                 <img src="images/cheerleading_9.png" alt="치어리더9"/>
                                 <p className='hideName'>심송연</p>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

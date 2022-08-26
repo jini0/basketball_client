@@ -49,7 +49,24 @@ const Youtube = () => {
                     <ul>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_.png" alt="유튜브" />
+                                <img src="images/youtube_1.png" alt="유튜브" />
+                            </div>
+                            <div className='youtube_info'>
+                                <div className='youtube_title'>
+                                    <h3>DB농구 보고 싶은 윈디들?!🙋🏻‍♂ 비시즌 첫 연습 경기 H/L (vs 고려대)</h3>
+                                </div>
+                                <div className='youtube_date'>
+                                    <span>2022-08-25</span>
+                                    {/* <ul>
+                                        <li>2022-08-16</li>
+                                        <li>조회수 : <span></span></li>
+                                    </ul> */}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className='youtube_img'>
+                                <img src="images/youtube_2.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -66,7 +83,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_0.png" alt="유튜브" />
+                                <img src="images/youtube_3.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -83,7 +100,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_1.png" alt="유튜브" />
+                                <img src="images/youtube_4.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -100,7 +117,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_2.png" alt="유튜브" />
+                                <img src="images/youtube_5.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -117,7 +134,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_3.png" alt="유튜브" />
+                                <img src="images/youtube_6.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -134,7 +151,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_4.png" alt="유튜브" />
+                                <img src="images/youtube_7.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -151,7 +168,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_5.png" alt="유튜브" />
+                                <img src="images/youtube_8.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -168,7 +185,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_6.png" alt="유튜브" />
+                                <img src="images/youtube_9.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>
@@ -185,7 +202,7 @@ const Youtube = () => {
                         </li>
                         <li>
                             <div className='youtube_img'>
-                                <img src="images/youtube_7.png" alt="유튜브" />
+                                <img src="images/youtube_10.png" alt="유튜브" />
                             </div>
                             <div className='youtube_info'>
                                 <div className='youtube_title'>

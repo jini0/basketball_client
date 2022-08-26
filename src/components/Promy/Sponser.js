@@ -1,7 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './Promy.css';
 
 const Sponser = () => {
+    // mysql로 데이터 부르기
+    const [ sponsers, setSponsers ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/sponsers")
+        .then(result=>{
+            const results = result.data;
+            console.log(results);
+            // console.log(result.data);
+            setSponsers(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+    
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -11,7 +29,14 @@ const Sponser = () => {
             <div id='sponser'>
                 <div className='inner'>
                     <ul>
-                        <li>
+                        {sponsers.map(sponser=>(
+                            <li key={sponser.id} sponser={sponser}>
+                                <strong>{sponser.name}</strong>
+                                <a href={sponser.address} target="_blank" rel="noopener noreferrer"><img src={sponser.imgsrc} alt={sponser.name} /></a>
+                            </li>
+                        ))}
+
+                        {/* <li>
                             <strong>험멜코리아</strong>
                             <a href="http://www.hummel.co.kr/" target="_blank" rel="noopener noreferrer"><img src="images/spon_db_1_2.png" alt="험멜코리아" /></a>
                         </li>
@@ -106,7 +131,7 @@ const Sponser = () => {
                         <li>
                             <strong>설성식품</strong>
                             <a href="https://www.sulsungmall.com/" target="_blank" rel="noopener noreferrer"><img src="images/spon_db_24.png" alt="설성식품" /></a>
-                        </li>
+                        </li> */}
                     </ul>
                     <p>클릭시 홈페이지로 넘어갑니다.</p>
                 </div>

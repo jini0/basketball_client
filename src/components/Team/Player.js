@@ -3,16 +3,33 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import './Team.css';
 import PlayerList from './PlayerList';
+
 const Player = () => {
+    // 변수 지정
+    // const guardAll = document.querySelector('#guard');
+    // const forwardAll = document.querySelector('#forward');
+    // const centerAll = document.querySelector('#center');
+    // const armyAll = document.querySelector('#army');
+
     const allLists = document.querySelector('.allLists');
     const guardList = document.querySelector('.guardList');
     const forwardList = document.querySelector('.forwardList');
     const centerList = document.querySelector('.centerList');
     const armyList = document.querySelector('.armyList');
 
+    // 스타일 상태관리
+    // * https://velog.io/@loocia1910/React-displaynone-효과-적용하기
+    // 리액트에서 display: none을 처음 설정을 하면, hover해도 diplay:block 상태로 되지 않는다.
+    // const [ style, setStyle ] = useState({display: 'none'});
+    const [ style, setStyle ] = useState({display: 'block'});
+    const [ style2, setStyle2 ] = useState({display: 'block'});
+    const [ style3, setStyle3 ] = useState({display: 'block'});
+    const [ style4, setStyle4 ] = useState({display: 'block'});
+    
     // mysql로 데이터 부르기
     const [ players, setPlayers ] = useState([]);
     const [ allPlayers, setAllPlayers ] = useState([]);
+    const [ position, setPosition ] = useState('');
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/players")
@@ -29,6 +46,35 @@ const Player = () => {
         // eslint-disable-next-line
     },[])
 
+    //guard
+    const onMouseEnter = (e) => {
+        setStyle({display: 'block'})
+    }
+    const onMouseLeave = (e) => {
+        setStyle({display: 'none'})
+    }
+    //forward
+    const onMouseEnter2 = (e) => {
+        setStyle2({display: 'block'})
+    }
+    const onMouseLeave2 = (e) => {
+        setStyle2({display: 'none'})
+    }
+    //center
+    const onMouseEnter3 = (e) => {
+        setStyle3({display: 'block'})
+    }
+    const onMouseLeave3 = (e) => {
+        setStyle3({display: 'none'})
+    }
+    //army
+    const onMouseEnter4 = (e) => {
+        setStyle4({display: 'block'})
+    }
+    const onMouseLeave4 = (e) => {
+        setStyle4({display: 'none'})
+    }
+
     //포지션별 클릭 - onClick이벤트
     function all(){ 
         setPlayers(allPlayers.filter(e=>e.position1)) 
@@ -37,6 +83,11 @@ const Player = () => {
         forwardList.classList.remove('active');
         centerList.classList.remove('active');
         armyList.classList.remove('active');
+        setPosition('1');
+        onMouseEnter();
+        onMouseEnter2();
+        onMouseEnter3();
+        onMouseEnter4();
     }
     function guard(){ 
         setPlayers(allPlayers.filter(e=>e.position1==="GUARD")) 
@@ -45,6 +96,15 @@ const Player = () => {
         forwardList.classList.remove('active');
         centerList.classList.remove('active');
         armyList.classList.remove('active');
+        setPosition('2');
+        onMouseEnter();
+        onMouseLeave2();
+        onMouseLeave3();
+        onMouseLeave4();
+        // guardAll.style.display = "block";
+        // forwardAll.style.display = "none";
+        // centerAll.style.display = "none";
+        // armyAll.style.display = "none";
     }
     function forward(){ 
         setPlayers(allPlayers.filter(e=>e.position1==="FORWARD")) 
@@ -53,6 +113,15 @@ const Player = () => {
         guardList.classList.remove('active');
         centerList.classList.remove('active');
         armyList.classList.remove('active');
+        setPosition('3');
+        onMouseEnter2();
+        onMouseLeave();
+        onMouseLeave3();
+        onMouseLeave4();
+        // forwardAll.style.display = "block";
+        // guardAll.style.display = "none";
+        // centerAll.style.display = "none";
+        // armyAll.style.display = "none";
     }
     function center(){ 
         setPlayers(allPlayers.filter(e=>e.position1==="CENTER")) 
@@ -61,6 +130,15 @@ const Player = () => {
         guardList.classList.remove('active');
         forwardList.classList.remove('active');
         armyList.classList.remove('active');
+        setPosition('4');
+        onMouseEnter3();
+        onMouseLeave();
+        onMouseLeave2();
+        onMouseLeave4();
+        // centerAll.style.display = "block";
+        // guardAll.style.display = "none";
+        // forwardAll.style.display = "none";
+        // armyAll.style.display = "none";
     }
     function army(){ 
         setPlayers(allPlayers.filter(e=>e.position1==="ARMY")) 
@@ -69,6 +147,15 @@ const Player = () => {
         guardList.classList.remove('active');
         forwardList.classList.remove('active');
         centerList.classList.remove('active');
+        setPosition('5');
+        onMouseEnter4();
+        onMouseLeave();
+        onMouseLeave2();
+        onMouseLeave3();
+        // armyAll.style.display = "block";
+        // guardAll.style.display = "none";
+        // forwardAll.style.display = "none";
+        // centerAll.style.display = "none";
     }
 
     return (
@@ -89,8 +176,10 @@ const Player = () => {
                         </ul>
                     </div>
                     <div>
-                        <div id='guard' className='inner2 position_name'>
-                            <h4>GUARD</h4>
+                        <div id="guard" className='inner2 position_name' style={style}>
+                            { (position === '1' || position === '2' || position === '')  &&
+                                <h4>GUARD</h4>
+                            }
                             <ul className='teamList'>
                                 {players.filter(e=>e.position1==="GUARD").map(player=>(
                                     <PlayerList key={player.id} player={player}/>
@@ -195,10 +284,11 @@ const Player = () => {
                                     </div>
                                 </li> */}
                             </ul>
-
                         </div>
-                        <div id='foward' className='inner2 position_name'>
+                        <div id='foward' className='inner2 position_name' style={style2}>
+                            { (position === '1' || position === '3' || position === '')  &&
                             <h4>FORWARD</h4>
+                            }
                             <ul className='teamList'>
                                 {players.filter(e=>e.position1==="FORWARD").map(player=>(
                                     <PlayerList key={player.id} player={player}/>
@@ -265,8 +355,10 @@ const Player = () => {
                                 </li> */}
                             </ul>
                         </div>
-                        <div id='center' className='inner2 position_name'>
-                            <h4>CENTER</h4>
+                        <div id='center' className='inner2 position_name' style={style3}>
+                            { (position === '1' || position === '4' || position === '')  &&
+                                <h4>CENTER</h4>
+                            }
                             <ul className='teamList'>
                                 {players.filter(e=>e.position1==="CENTER").map(player=>(
                                     <PlayerList key={player.id} player={player}/>
@@ -293,8 +385,10 @@ const Player = () => {
                                 </li> */}
                             </ul>
                         </div>
-                        <div id='army' className='inner2 position_name'>
-                            <h4>ARMY</h4>
+                        <div id='army' className='inner2 position_name' style={style4}>
+                            { (position === '1' || position === '5' || position === '')  &&
+                                <h4>ARMY</h4>
+                            }
                             <ul className='teamList'>
                                 {players.filter(e=>e.position1==="ARMY").map(player=>(
                                     <PlayerList key={player.id} player={player}/>

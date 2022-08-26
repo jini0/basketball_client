@@ -71,63 +71,70 @@ const MainMovie = () => {
                     {/* 항목들 슬라이드로 할거임! */}
                         <Slider {...settings} className="slide">
                             <div className='main_index_3'>
-                                <img src='images/youtube_.png' alt='유튜브화면' />
+                                <img src='images/youtube_1.png' alt='유튜브화면1' />
+                                <div className='main_index_text_3'>
+                                    <h4>DB농구 보고 싶은 윈디들?!🙋🏻‍♂ 비시즌 첫 연습 경기 H/L (vs 고려대)</h4>
+                                    <span>2022-08-25</span>
+                                </div>
+                            </div>
+                            <div className='main_index_3'>
+                                <img src='images/youtube_2.png' alt='유튜브화면2' />
                                 <div className='main_index_text_3'>
                                     <h4>Welcome DB, 한국 도착한 이선 알바노👋 #shorts</h4>
                                     <span>2022-08-16</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_0.png' alt='유튜브화면0' />
+                                <img src='images/youtube_3.png' alt='유튜브화면3' />
                                 <div className='main_index_text_3'>
                                     <h4>상처만 남은…찬카소의 화실🎨</h4>
                                     <span>2022-08-12</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_1.png' alt='유튜브화면1' />
+                                <img src='images/youtube_4.png' alt='유튜브화면4' />
                                 <div className='main_index_text_3'>
                                     <h4>소중한 땀방울이 모인 DB프로미의 러브하우스🏡</h4>
                                     <span>2022-07-13</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_2.png' alt='유튜브화면2' />
+                                <img src='images/youtube_5.png' alt='유튜브화면5' />
                                 <div className='main_index_text_3'>
                                     <h4>모든 것을 파헤쳐 보자! Welcome Back 두경민의 100문 100답💯</h4>
                                     <span>2022-06-24</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_3.png' alt='유튜브화면3' />
+                                <img src='images/youtube_6.png' alt='유튜브화면6' />
                                 <div className='main_index_text_3'>
                                     <h4>휴가 끝! 새로운 시작!☀ 선수단 소집 그리고 체력 테스트 현장🔥</h4>
                                     <span>2022-06-10</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_4.png' alt='유튜브화면4' />
+                                <img src='images/youtube_7.png' alt='유튜브화면7' />
                                 <div className='main_index_text_3'>
                                     <h4>윈디들 보고싶을거야💚 충성! 잘 다녀오겠습니다🥺</h4>
                                     <span>2022-05-17</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_5.png' alt='유튜브화면5' />
+                                <img src='images/youtube_8.png' alt='유튜브화면8' />
                                 <div className='main_index_text_3'>
                                     <h4>코삼부자 특별 출연! 참을 수 없는 가족과의 비즈니스...💦 허웅의 바디프랜드 광고 촬영 현장📸</h4>
                                     <span>2022-04-20</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_6.png' alt='유튜브화면6' />
+                                <img src='images/youtube_9.png' alt='유튜브화면9' />
                                 <div className='main_index_text_3'>
                                     <h4>티브릿지와 함께하는 TMI 대방출!에 이제 영어 듣기를 곁들인...🎧</h4>
                                     <span>2022-04-14</span>
                                 </div>
                             </div>
                             <div className='main_index_3'>
-                                <img src='images/youtube_7.png' alt='유튜브화면7' />
+                                <img src='images/youtube_10.png' alt='유튜브화면10' />
                                 <div className='main_index_text_3'>
                                     <h4>윈디 여러분 감사합니다! 승리로 장식한 마지막 홈경기❤‍🔥｜4월 5일 원주 DB vs 창원 LG</h4>
                                     <span>2022-04-08</span>
