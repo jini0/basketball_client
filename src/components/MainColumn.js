@@ -1,8 +1,26 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 const MainColumn = () => {
+    // mysql로 데이터 부르기
+    const [ mainNotices, setmainNotices ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/noticesmain")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setmainNotices(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
     useEffect(()=>{
         // 변수
         const schedule = document.querySelector('.schedule');
@@ -25,6 +43,32 @@ const MainColumn = () => {
         })
     // eslint-disable-next-line
     },[]);
+
+    // mysql로 데이터 부르기
+    // const [ notices, setNotices ] = useState([]);
+    // const [ notices2, setNotices2 ] = useState([]);
+    // const [ notices3, setNotices3 ] = useState([]);
+    // useEffect(()=>{ 
+    //     axios.get("http://localhost:8001/notices")
+    //     .then(result=>{
+    //         const resultA = result.data;
+    //         console.log(resultA);
+    //         console.log(result.data);
+    //         console.log(result.data.length - (result.data.length));
+    //         console.log(result.data[result.data.length - (result.data.length)]);
+    //         // setNotices(result.data);
+    //         // setNotices(result.data[result.data.length - (result.data.length)]);
+    //         // setNotices2(result.data[result.data.length - (result.data.length - 1)]);
+    //         // setNotices3(result.data[result.data.length - (result.data.length - 2)]);
+    //         // setNotices(result.data[result.length - 2])
+    //         // setNotices(result.data[result.length - 3])
+    //     })
+    //     .catch(e=>{
+    //         console.log(e);
+    //     })
+    //     // eslint-disable-next-line
+    // },[])
+
 
     return (
         <div id="mainPage">
@@ -73,7 +117,15 @@ const MainColumn = () => {
                             <span>NOTICE</span>
                             <span><Link to="/notice">more</Link></span>
                             <ul>
-                                <li>
+                                {mainNotices.map(mainnotice=>(
+                                    <li key={mainnotice.id}>
+                                        <Link to={`/notice/${mainnotice.id}`}>
+                                        <p>{mainnotice.title}</p>
+                                        <span>{(mainnotice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                        </Link>
+                                    </li>
+                                ))}
+                                {/* <li>
                                     <p>2022-2023시즌 시즌권 판매 안내</p>
                                     <span>2022-08-24</span>
                                 </li>
@@ -84,7 +136,8 @@ const MainColumn = () => {
                                 <li>
                                     <p>사과문</p>
                                     <span>2022-06-27</span>
-                                </li>
+                                </li> */}
+
                                 {/* <li>
                                     <p>원주DB, 22-23시즌 업무 대행사 선정공고(이벤트,장치장식물,온라인마케팅)</p>
                                     <span>2022-06-12</span>

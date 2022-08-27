@@ -27,6 +27,34 @@ const Notice = () => {
         // eslint-disable-next-line
     },[])
 
+    //form데이터
+    const [ formData, setFormData ] = useState({
+        check: ""       //검색입력 - 빈값
+    })
+    // //news_notice 테이블 배열길이
+    // const noticeLength = news_notice.length; 
+
+    //input - onChange이벤트
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name] : value
+        })
+    }
+    //form - onSubmit이벤트
+    const onSubmit = (e) => {
+        e.preventDefault(); //기존 폼태그 이벤트 제거
+        if(formData.check === ""){
+            alert("검색어를 입력하시오.")
+        } else {
+            const state = {
+                check: `${formData.check}`  
+            }
+            return state;
+        }
+    }
+
 
     return (
         <div className='teamTab'>
@@ -37,15 +65,17 @@ const Notice = () => {
             <div id='notice'>
                 <div className='inner'>
                     <div className='notice_search'>
-                        <div className='form_select'>
-                            <div className='text'>제목</div>
-                            <select className='search_options'>
-                                <option data-key="title" value="title">제목</option>
-                                <option data-key="content" value="content">내용</option>
-                            </select>
-                        </div>
-                        <input type="text" placeholder="검색어를 입력해주세요." />
-                        <button className='searchBtn'></button>
+                        <form onSubmit={onSubmit}>
+                            <div className='form_select'>
+                                <div className='text'>제목</div>
+                                <select className='search_options'>
+                                    <option data-key="title" value="title">제목</option>
+                                    <option data-key="content" value="content">내용</option>
+                                </select>
+                            </div>
+                            <input type="text" placeholder="검색어를 입력해주세요." value={formData.check}  onChange={onChange}/>
+                            <button className='searchBtn' type='submit'></button>
+                        </form>
                     </div>
                     {/* 페이지당 게시물 수 제한 */}
                     <label>
