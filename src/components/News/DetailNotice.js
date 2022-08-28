@@ -48,7 +48,7 @@ const DetailNotice = () => {
                                     <th>
                                         <ul>
                                             <li><span>작성일</span>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</li>
-                                            <li><span>조회</span></li>
+                                            <li><span>조회</span>{notice.view}</li>
                                         </ul>
                                     </th>
                                 </tr>
@@ -74,6 +74,7 @@ const DetailNotice = () => {
                                             { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== null) && (notice.imgsrc5 !== null)) && 
                                                 <img src={"../images/"+notice.imgsrc5} alt="상세공지" />
                                             }
+                                            <p>{notice.noticedesc}</p>
                                         </div>
                                     </td>
                                 </tr>

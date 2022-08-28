@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './News.css';
+// import Pagination from './Pagination';
 
 const News = () => {
+    // 페이지네이션
+    // const [limit, setLimit] = useState(10);
+    // const [page, setPage] = useState(1);
+    // const offset = (page - 1) * limit;  //offset은 db에서 모든 컬럼을 읽어와, n~m 순서를 부여한 후 offset부터 limit 수로 자르는 작업
+    
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -11,16 +17,36 @@ const News = () => {
             <div id='notice'>
                 <div className='inner'>
                     <div className='notice_search'>
-                        <div className='form_select'>
-                            <div className='text'>제목</div>
-                            <select className='search_options'>
-                                <option data-key="title" value="title">제목</option>
-                                <option data-key="content" value="content">내용</option>
-                            </select>
+                        <div className='registerBtn'>
+                            <button>게시물 등록</button>
                         </div>
-                        <input type="text" placeholder="검색어를 입력해주세요." />
-                        <button className='searchBtn'></button>
+                        <form>
+                            <div className='form_select'>
+                                <div className='text'>제목</div>
+                                <select className='search_options'>
+                                    <option data-key="title" value="title">제목</option>
+                                    <option data-key="content" value="content">내용</option>
+                                </select>
+                            </div>
+                            <input type="text" placeholder="검색어를 입력해주세요." />
+                            <button className='searchBtn'></button>
+                        </form>
                     </div>
+                    {/* 페이지당 게시물 수 제한 */}
+                    {/* <label>
+                        페이지당 표시할 게시물 수 :&nbsp;
+                        <select
+                        type="number"
+                        value={limit}
+                        onChange={({ target: { value } }) => setLimit(Number(value))}
+                        >
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </label> */}
                     <div className='notice_table'>
                         <table>
                             <thead>
@@ -88,6 +114,15 @@ const News = () => {
                                 </tr>
                             </tbody>
                         </table>
+                        {/* 페이지네이션 */}
+                        {/* <div className='pagenav'>
+                            <Pagination
+                                total={news.length}
+                                limit={limit}
+                                page={page}
+                                setPage={setPage}
+                            />
+                        </div> */}
                     </div>
                 </div>
             </div>
