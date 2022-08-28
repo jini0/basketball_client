@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './News.css';
 import Pagination from './Pagination';
 
@@ -11,7 +11,7 @@ const Notice = () => {
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
     const offset = (page - 1) * limit;  //offset은 db에서 모든 컬럼을 읽어와, n~m 순서를 부여한 후 offset부터 limit 수로 자르는 작업
-  
+    
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/notices")
@@ -27,34 +27,54 @@ const Notice = () => {
         // eslint-disable-next-line
     },[])
 
-    //form데이터
-    const [ formData, setFormData ] = useState({
-        check: ""       //검색입력 - 빈값
-    })
-    // //news_notice 테이블 배열길이
-    // const noticeLength = news_notice.length; 
-
+    // *검색기능*
+    const [ search, setSearch ] = useState("");   
     //input - onChange이벤트
-    const onChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name] : value
+    const onChangeSearch = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value);
+    }
+    //검색기능 코드 - filter, includes 이용하여 검색어 포함시 필터링을 해주어 검색 구현
+    const onSearch = (e) => {
+        e.preventDefault();
+        if(search === null || search === '') {  //검색어가 없을 경우(null이거나 '빈값') 경고창 + 전체리스트 반환
+            alert("검색어를 입력하시오.")
+            axios.get("http://localhost:8001/notices")
+            .then(result=>{
+                const resultA = result.data;
+                console.log(resultA);
+                // console.log(result.data);
+                setNotices(result.data)
+            })
+        } else {    //검색구현
+            const filterData = notices.filter((row)=> row.title.includes(search))
+            setNotices(filterData);
+            if(!notices){
+                alert('관련 항목이 없습니다.')
+                axios.get("http://localhost:8001/notices")
+                .then(result=>{
+                    const resultA = result.data;
+                    console.log(resultA);
+                    // console.log(result.data);
+                    setNotices(result.data)
+                })
+            }
+        }
+        setSearch('')
+    }
+
+    // *조회수 -- 각 아이디당..주려니까 id를 못찾음 ㅠㅠ
+    const { id } = useParams();
+    const noticeClick = () => {
+        axios.put(`http://localhost:8001/notice/${id}`)
+        .then(res=>{
+            console.log(res);
+            setNotices(res.data.view+1);
+        })
+        .catch(e=>{
+            console.log(e);
         })
     }
-    //form - onSubmit이벤트
-    const onSubmit = (e) => {
-        e.preventDefault(); //기존 폼태그 이벤트 제거
-        if(formData.check === ""){
-            alert("검색어를 입력하시오.")
-        } else {
-            const state = {
-                check: `${formData.check}`  
-            }
-            return state;
-        }
-    }
-
 
     return (
         <div className='teamTab'>
@@ -65,7 +85,10 @@ const Notice = () => {
             <div id='notice'>
                 <div className='inner'>
                     <div className='notice_search'>
-                        <form onSubmit={onSubmit}>
+                        <div className='registerBtn'>
+                            <button type='submit'><Link to="/registerNotice">공지사항 등록</Link></button>
+                        </div>
+                        <form onSubmit={e => onSearch(e)}>
                             <div className='form_select'>
                                 <div className='text'>제목</div>
                                 <select className='search_options'>
@@ -73,7 +96,7 @@ const Notice = () => {
                                     <option data-key="content" value="content">내용</option>
                                 </select>
                             </div>
-                            <input type="text" placeholder="검색어를 입력해주세요." value={formData.check}  onChange={onChange}/>
+                            <input type="text" placeholder="검색어를 입력해주세요." value={search} onChange={onChangeSearch} />
                             <button className='searchBtn' type='submit'></button>
                         </form>
                     </div>
@@ -107,9 +130,12 @@ const Notice = () => {
                                 {notices.slice(offset, offset + limit).map(notice=>(
                                     <tr key={notice.id} notice={notice}>
                                         <td>{notice.id}</td>
-                                        <td><Link to={`/notice/${notice.id}`}>{notice.title}</Link></td>
+                                        <td onClick={noticeClick}><Link to={`/notice/${notice.id}`}>{notice.title}</Link></td>
                                         <td>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</td>
-                                        <td></td>
+                                        <td>{notice.view}</td>
+                                        {/* {(!notices) &&
+                                            <td colSpan={4} className="empty">조회할 내용이 없습니다.</td>
+                                        } */}
                                     </tr>
                                 ))}
                                 {/* 페이지네이션 table 밖에! */}

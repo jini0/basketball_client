@@ -27,6 +27,7 @@ import DetailNotice from './components/News/DetailNotice';
 import TicketPrice from './components/Ticket/TicketPrice';
 import Guidelines from './components/Ticket/Guidelines';
 import DetailEvent from './components/Event/DetailEvent';
+import RegisterNotice from './components/News/RegisterNotice';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route path='/sponser' element={<Sponser/>} />
         <Route path='/stadium' element={<Stadium/>} />
         <Route path='/notice' element={<Notice/>} />
+        <Route path='/registerNotice' element={<RegisterNotice/>} />
         <Route path='/notice/:id' element={<DetailNotice/>} />
         <Route path='/news' element={<News/>} />
         <Route path='/player' element={<Player/>} />

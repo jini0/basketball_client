@@ -5,6 +5,34 @@
     margin: 0 auto;
     padding-bottom: 130px;
 }
+#notice .notice_search, #news .notice_search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#notice .notice_search button, #news .notice_search button {
+    border: none;
+    background: #011b47;
+    color: #fff;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 0.875em;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+#notice .notice_search button:hover, #news .notice_search button:hover {
+    background: #011b47c7;
+}
+#notice .notice_search button:active, #news .notice_search button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
 #notice .notice_search, #news .news_search {
     margin: 0 auto;
     text-align: right;
@@ -294,6 +322,82 @@
     background-color: #011b47c7;
 }
 #detail_notice article > table > tfoot button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+/* 게시글 등록 */
+#uploadBox {
+    background: #f1f1f1;
+    padding-top: 80px;
+    padding-bottom: 120px;
+}
+#uploadBox .inner {
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+}
+#uploadBox p {
+    font-size: 0.7em;
+    color: #777;
+    margin-bottom: 20px;
+}
+#uploadBox form {
+    width: 100%;
+}
+#uploadBox li:not(:last-child) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    /* padding: 0 40px; */
+}
+#uploadBox input{
+    width: 70%;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    outline: none;
+}
+#uploadBox textarea{
+    width: 70%;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    cursor: text;
+    outline: none;
+    resize: none;
+    height: 200px;
+    /* padding-left: 10px;
+    padding-top: 5px; */
+}
+#uploadBtn button {
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #166c35;
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+    margin-top: 35px;
+}
+#uploadBtn button:nth-child(1) {
+    margin-right: 15px;
+}
+#uploadBtn button:hover {
+    background-color: #166c36bc;
+}
+#uploadBtn button:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
