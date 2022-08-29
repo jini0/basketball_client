@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Fan.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Photo = () => {
     // cf.https://wazacs.tistory.com/31 <React 에서 select 사용하기>
@@ -22,6 +23,38 @@ const Photo = () => {
     // onChange 이벤트
     const handleSelect = (e) => {
         setSelected(e.target.value);
+    }
+
+    // mysql로 데이터 부르기
+    const [ photos, setPhotos ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/photos")
+        .then(result=>{
+            const players = result.data;
+            console.log(players);
+            // console.log(result.data);
+            setPhotos(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    // *조회수 
+    // const { id } = useParams();
+    const photoClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewPhoto/${id}`)
+        .then(res=>{
+            console.log(res);
+            // setNotices(res.data.view+1);
+            setPhotos(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
     }
 
     return (
@@ -47,7 +80,26 @@ const Photo = () => {
                     </div>
                     {/* 경기장면 클릭시 */}
                     <ul id='game_page'>
-                        <li>
+                        {photos.filter(e=>e.sort==="경기").map(photo=>(
+                            <li onClick={()=>photoClick(photo.id)}>
+                                <div className='photo_img'>
+                                    <Link to={`/photo/${photo.id}`}>
+                                        <img src={photo.imgsrc} alt="포토" />
+                                    </Link>
+                                </div>
+                                <Link to="/detailPhoto">
+                                    <div className='photo_info'>
+                                        <div className='photo_title'>
+                                            <h3><span>{photo.sort}</span>{photo.title}</h3>
+                                        </div>
+                                        <div className='photo_date'>
+                                            <span>{(photo.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                        {/* <li>
                             <div className='photo_img'>
                                 <Link to="/detailPhoto">
                                     <img src="images/photo_1.jpg" alt="포토" />
@@ -193,11 +245,30 @@ const Photo = () => {
                                     <span>2022-03-07</span>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                     {/* 응원장면 클릭시 */}
                     <ul id='cheering_page'>
-                        <li>
+                        {photos.filter(e=>e.sort==="응원").map(photo=>(
+                            <li onClick={()=>photoClick(photo.id)}>
+                                <div className='photo_img'>
+                                    <Link to={`/photo/${photo.id}`}>
+                                        <img src={photo.imgsrc} alt="포토" />
+                                    </Link>
+                                </div>
+                                <Link to="/detailPhoto">
+                                    <div className='photo_info'>
+                                        <div className='photo_title'>
+                                            <h3><span>{photo.sort}</span>{photo.title}</h3>
+                                        </div>
+                                        <div className='photo_date'>
+                                            <span>{(photo.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                        {/* <li>
                             <div className='photo_img'>
                                 <img src="images/photo_2.jpg" alt="포토" />
                             </div>
@@ -242,7 +313,7 @@ const Photo = () => {
                             </div>
                             <div className='photo_info'>
                                 <div className='photo_title'>
-                                    <h3><span>응원</span>[03.11] 원주 DB와 수원 KT의 경기</h3>
+                                    <h3><span>응원</span>[03.10] 원주 DB와 수원 KT의 경기</h3>
                                 </div>
                                 <div className='photo_date'>
                                     <span>2022-03-11</span>
@@ -261,7 +332,7 @@ const Photo = () => {
                                     <span>2022-03-07</span>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div> 

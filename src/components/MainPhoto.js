@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
 // 슬라이드 스타일
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const MainPhoto = () => {
     // 다음 버튼 커스텀
@@ -44,6 +45,37 @@ const MainPhoto = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
+
+    // mysql로 데이터 부르기
+    const [ mainPhotos, setmainPhotos ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/photomain")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setmainPhotos(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    //news 조회수
+    const photoClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewPhotoMain/${id}`)
+        .then(res=>{
+            console.log(res);
+            setmainPhotos(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+
     return (
         <div id='mainPage'>
             <section id='main_hot_photo'>
@@ -54,7 +86,18 @@ const MainPhoto = () => {
                     <span><Link to="/photo">more</Link></span>
                     <div>
                         <Slider {...settings} className="slide">
-                            <div className='main_index_3'>
+                            {mainPhotos.map(mainPhoto=>(
+                                <div className='main_index_3' onClick={()=>photoClick(mainPhoto.id)}>
+                                    <Link to={`photo/${mainPhoto.id}`}>
+                                        <img src={mainPhoto.imgsrc} alt='핫포토' />
+                                        <div className='main_index_text_3'>
+                                            <h4><span>{mainPhoto.sort}</span>{mainPhoto.title}</h4>
+                                            <span>{(mainPhoto.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {/* <div className='main_index_3'>
                                 <img src='images/photo_1.jpg' alt='핫포토2' />
                                 <div className='main_index_text_3'>
                                     <h4><span>경기</span>[04.05] 원주 DB와 창원 LG의 경기</h4>
@@ -95,8 +138,9 @@ const MainPhoto = () => {
                                     <h4><span>경기</span>[03.23] 원주 DB와 고양 오리온의 경기</h4>
                                     <span>2022-03-24</span>
                                 </div>
-                            </div>
+                            </div> */}
                         </Slider>
+
                         {/* <ul>
                             <li>
                                 <div className='main_index'>

@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './News.css';
 import Pagination from './Pagination';
 
 const Notice = () => {
+    // const noticeTr = document.querySelector('.noticeTr');
+    // const noticeTr2 = document.querySelector('.noticeTr2');
+
     // mysql로 데이터 부르기
     const [ notices, setNotices ] = useState([]);
-    // 페이지네이션
+    const [ searchlist, setSearchList ] = useState([]); 
+    // *페이지네이션
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
     const offset = (page - 1) * limit;  //offset은 db에서 모든 컬럼을 읽어와, n~m 순서를 부여한 후 offset부터 limit 수로 자르는 작업
@@ -18,8 +22,8 @@ const Notice = () => {
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
-            // console.log(result.data);
-            setNotices(result.data)
+            setNotices(result.data);
+            setSearchList(result.data);
         })
         .catch(e=>{
             console.log(e);
@@ -35,6 +39,7 @@ const Notice = () => {
         setSearch(e.target.value);
     }
     //검색기능 코드 - filter, includes 이용하여 검색어 포함시 필터링을 해주어 검색 구현
+    const filterData = notices.filter((row)=> row.title.includes(search))
     const onSearch = (e) => {
         e.preventDefault();
         if(search === null || search === '') {  //검색어가 없을 경우(null이거나 '빈값') 경고창 + 전체리스트 반환
@@ -44,32 +49,33 @@ const Notice = () => {
                 const resultA = result.data;
                 console.log(resultA);
                 // console.log(result.data);
-                setNotices(result.data)
+                // setNotices(result.data)
+                setSearchList(result.data);
             })
         } else {    //검색구현
-            const filterData = notices.filter((row)=> row.title.includes(search))
-            setNotices(filterData);
-            if(!notices){
-                alert('관련 항목이 없습니다.')
-                axios.get("http://localhost:8001/notices")
-                .then(result=>{
-                    const resultA = result.data;
-                    console.log(resultA);
-                    // console.log(result.data);
-                    setNotices(result.data)
-                })
+            // const filterData = notices.filter((row)=> row.title.includes(search))    //전역으로 밖에 빼주자!
+            // setSearchList(filterData);
+            // -검색내역 없을시 조건주기-
+                // eslint-disable-next-line
+            if(filterData == ''){
+                alert("해당 내용이 없습니다.")
+            } else {
+                setSearchList(filterData);
             }
         }
-        setSearch('')
+        
     }
 
-    // *조회수 -- 각 아이디당..주려니까 id를 못찾음 ㅠㅠ
-    const { id } = useParams();
-    const noticeClick = () => {
-        axios.put(`http://localhost:8001/notice/${id}`)
+    // *조회수 
+    // const { id } = useParams();
+    const noticeClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/view/${id}`)
         .then(res=>{
             console.log(res);
-            setNotices(res.data.view+1);
+            // setNotices(res.data.view+1);
+            setNotices(res.data);
+            // noticeTr.style.display = "none";
         })
         .catch(e=>{
             console.log(e);
@@ -127,16 +133,20 @@ const Notice = () => {
                             </thead>
                             <tbody>
                             {/* slice() 메서드를 사용하여 첫 게시물부터 마지막 게시물까지만 루프를 돌도록! */}
-                                {notices.slice(offset, offset + limit).map(notice=>(
-                                    <tr key={notice.id} notice={notice}>
-                                        <td>{notice.id}</td>
-                                        <td onClick={noticeClick}><Link to={`/notice/${notice.id}`}>{notice.title}</Link></td>
-                                        <td>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</td>
-                                        <td>{notice.view}</td>
-                                        {/* {(!notices) &&
-                                            <td colSpan={4} className="empty">조회할 내용이 없습니다.</td>
+                                {searchlist.slice(offset, offset + limit).map(notice=>(
+                                    <>
+                                        <tr key={notice.id} notice={notice} className="noticeTr">
+                                            <td>{notice.id}</td>
+                                            <td onClick={()=> noticeClick(notice.id)}><Link to={`/notice/${notice.id}`}>{notice.title}</Link></td>
+                                            <td>{(notice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</td>
+                                            <td>{notice.view}</td>
+                                        </tr>
+                                        {/* {(filterData == '') &&
+                                            <tr className='noticeTr2'>
+                                                    <td colSpan={4} className="empty">조회할 내용이 없습니다.</td>
+                                            </tr>
                                         } */}
-                                    </tr>
+                                    </>
                                 ))}
                                 {/* 페이지네이션 table 밖에! */}
 
@@ -223,7 +233,8 @@ const Notice = () => {
                         {/* 페이지네이션 */}
                         <div className='pagenav'>
                             <Pagination
-                                total={notices.length}
+                                // total={notices.length}
+                                total={searchlist.length}
                                 limit={limit}
                                 page={page}
                                 setPage={setPage}

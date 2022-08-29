@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 // import styled from "styled-components";
 // 슬라이드 스타일
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // https://poew.tistory.com/707
 // https://fromnowwon.tistory.com/entry/react-slick-slider
@@ -59,6 +60,36 @@ const MainMovie = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
+
+    // mysql로 데이터 부르기
+    const [ mainYoutubes, setmainYoutubes ] = useState([]);
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/youtubemain")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            setmainYoutubes(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    // *조회수 
+    const youtubeClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewYoutubeMain/${id}`)
+        .then(res=>{
+            console.log(res);
+            setmainYoutubes(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+
     return (
         <div id='mainPage'>
             <section id='main_movie_clips'>
@@ -70,7 +101,18 @@ const MainMovie = () => {
                     <div id="main_movie_slide">
                     {/* 항목들 슬라이드로 할거임! */}
                         <Slider {...settings} className="slide">
-                            <div className='main_index_3'>
+                            {mainYoutubes.map(mainYoutube=>(
+                                <div className='main_index_3' onClick={()=>youtubeClick(mainYoutube.id)}>
+                                    <Link to="/youtube">
+                                    <img src={mainYoutube.imgsrc} alt='유튜브화면' />
+                                    <div className='main_index_text_3'>
+                                        <h4>{mainYoutube.title}</h4>
+                                        <span>{(mainYoutube.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                    </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {/* <div className='main_index_3'>
                                 <img src='images/youtube_1.png' alt='유튜브화면1' />
                                 <div className='main_index_text_3'>
                                     <h4>DB농구 보고 싶은 윈디들?!🙋🏻‍♂ 비시즌 첫 연습 경기 H/L (vs 고려대)</h4>
@@ -139,7 +181,7 @@ const MainMovie = () => {
                                     <h4>윈디 여러분 감사합니다! 승리로 장식한 마지막 홈경기❤‍🔥｜4월 5일 원주 DB vs 창원 LG</h4>
                                     <span>2022-04-08</span>
                                 </div>
-                            </div>
+                            </div> */}
                         </Slider>
                     </div>
                 </div>

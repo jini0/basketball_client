@@ -30,6 +30,18 @@ const DetailNotice = () => {
     },[])
     if(!notice) return <div>로딩중입니다...</div>
 
+    //게시글 삭제
+    const onDelete = () => {
+        axios.delete(`http://localhost:8001/delNotice/${id}`)
+        .then(res=>{
+            console.log("삭제 완료!");
+            navigate(-1);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -38,6 +50,10 @@ const DetailNotice = () => {
             </div> 
             <div id='detail_notice'>
                 <div className='inner'>
+                    <div className='noticeBtn'>
+                        <button id='editBtn'>수정하기</button>
+                        <button id='deleteBtn' onClick={onDelete}>삭제하기</button>
+                    </div>
                     <article>
                         <div className='detail_notice_title'>
                             <h2>{notice.title}</h2>

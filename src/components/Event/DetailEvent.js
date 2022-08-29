@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Event.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const DetailEvent = () => {
     const navigate = useNavigate();
@@ -9,6 +10,25 @@ const DetailEvent = () => {
     function onSubmit(){
         navigate('/event');
     }
+
+    // mysql로 데이터 불러오기
+    const [ event, setEvent ] = useState(null);
+    const { id } = useParams();             // id값 받아오기(parameter 사용)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8001/event/${id}`)
+        .then(result => {
+            const results = result.data;
+            console.log(results);
+            setEvent(results[0]); 
+        })   
+        .catch(e=> {
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+    if(!event) return <div>로딩중입니다...</div>
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -21,6 +41,25 @@ const DetailEvent = () => {
                     <div className='detail_event_content'>
                         <table summary='이벤트내용보기'>
                             <thead>
+                                <tr>
+                                    <th colSpan={2}>{event.title}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>이벤트기간 : <span>{event.date}</span></th>
+                                    <th>조회수 : <span>{event.view}</span></th>
+                                </tr>
+                                <tr>
+                                    <td colSpan={2} className="eventCont">
+                                        <div>
+                                            <img src={"../"+event.imgsrc1} alt="이벤트" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            {/* <thead>
                                 <tr>
                                     <th colSpan={2}>원주DB 홈 경기 직관이벤트</th>
                                 </tr>
@@ -37,7 +76,7 @@ const DetailEvent = () => {
                                         </div>
                                     </td>
                                 </tr>
-                            </tbody>
+                            </tbody> */}
                         </table>
                     </div>
                     {/* 댓글달기 */}

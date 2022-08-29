@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Event.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Event = () => {
     // 이벤트 클릭시 각 이벤트리스트 뜨게!
@@ -21,7 +22,56 @@ const Event = () => {
             eventEndList.style.display = "block";
             eventIngList.style.display = "none";
         })
+    // eslint-disable-next-line
     },[])
+
+    // mysql로 데이터 부르기
+    const [ events, setEvents ] = useState([]);
+    const [ ongoing, setOngoing ] = useState("");
+
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/events")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setEvents(result.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    // eslint-disable-next-line
+    },[])
+
+    //ongoing 진행중인 이벤트 -> 없을시 다른 이미지 넣기
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/ongoing")
+        .then(result=>{
+            const resultB = result.data;
+            console.log(resultB);
+            // console.log(result.data);
+            setOngoing(result.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    // eslint-disable-next-line
+    },[events])
+
+    // *조회수 
+    const eventClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewEvent/${id}`)
+        .then(res=>{
+            console.log(res);
+            // setNotices(res.data.view+1);
+            setEvents(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -38,6 +88,24 @@ const Event = () => {
                     </ul>
                     {/* 이벤트리스트 - 진행 중인 이벤트 ?etc1=I*/}
                     <ul className='active event_ing'>
+                        { (ongoing == null) ?
+                        events.filter(e=>e.sort==="ongoing").map(event=>(
+                            <li>
+                                <div>
+                                    <p className='event_img'>
+                                        <img src={event.imgsrc} alt="이벤트사진" />
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className='event_title'>{event.title}</p>
+                                    <p className='event_date'></p>
+                                    <p className='btn_view' onClick={()=>eventClick(event.id)}>
+                                        <Link to={`/event/${event.id}`}>{event.detailview}</Link>
+                                    </p>
+                                </div>
+                            </li>
+                        ))
+                        : 
                         <li>
                             <div>
                                 <p className='event_img'>
@@ -50,10 +118,27 @@ const Event = () => {
                                 <p className='btn_view'></p>
                             </div>
                         </li>
+                        }
                     </ul>
                     {/* 이벤트리스트 - 지난 이벤트 ?etc1=E*/}
                     <ul className='event_end'>
-                        <li>
+                        {events.filter(e=>e.sort==="last").map(event=>(
+                            <li key={event.id} event={event}>
+                                <div>
+                                    <p className='event_img'>
+                                        <img src={event.imgsrc} alt="이벤트사진" />
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className='event_title'>{event.title}</p>
+                                    <p className='event_date'></p>
+                                    <p className='btn_view' onClick={()=>eventClick(event.id)}>
+                                        <Link to={`/event/${event.id}`}>{event.detailview}</Link>
+                                    </p>
+                                </div>
+                            </li>
+                        ))}
+                        {/* <li>
                             <div>
                                 <p className='event_img'>
                                     <img src="images/event2.png" alt="이벤트사진" />
@@ -63,7 +148,6 @@ const Event = () => {
                                 <p className='event_title'>원주DB 홈 경기 직관이벤트</p>
                                  <p className='event_date'></p>
                                 <p className='btn_view'>
-                                    {/* <Link to="/event/${event.no}">자세히보기</Link> */}
                                     <Link to="/detailEvent">자세히보기</Link>
                                 </p>
                             </div>
@@ -78,7 +162,6 @@ const Event = () => {
                                 <p className='event_title'>직관이벤트! 라운드 '승부사'를 찾아라!</p>
                                 <p className='event_date'></p>
                                 <p className='btn_view'>
-                                    {/* <Link to="/event/${event.no}">자세히보기</Link> */}
                                     <Link to="/detailEvent">자세히보기</Link>
                                 </p>
                             </div>
@@ -93,11 +176,10 @@ const Event = () => {
                                 <p className='event_title'>2021-2022시즌 라이브 팬미팅</p>
                                 <p className='event_date'></p>
                                 <p className='btn_view'>
-                                    {/* <Link to="/event/${event.no}">자세히보기</Link> */}
                                     <Link to="/detailEvent">자세히보기</Link>
                                 </p>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

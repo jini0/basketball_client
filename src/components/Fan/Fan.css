@@ -9,6 +9,10 @@
     margin-bottom: 70px;
     width: 100%;
 }
+/* hidden youtube 재생 */
+/* #youtube #youtube_top .view_youtube {
+    display: none;
+} */
 #youtube #youtube_top .youtube_info {
     padding: 30px 40px;
     background-color: #fff;

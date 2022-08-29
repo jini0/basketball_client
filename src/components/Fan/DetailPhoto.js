@@ -1,13 +1,32 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DetailPhoto = () => {
     const navigate = useNavigate();
+    // mysql로 데이터 불러오기
+    const [ photo, setPhoto ] = useState(null);
+    const { id } = useParams();             // id값 받아오기(parameter 사용)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8001/photo/${id}`)
+        .then(result => {
+            const results = result.data;
+            console.log(results);
+            setPhoto(results[0]); 
+        })   
+        .catch(e=> {
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+    if(!photo) return <div>로딩중입니다...</div>
 
     //button - 목록으로 보내는 함수
     function onSubmit(){
         navigate('/photo');
     }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -18,15 +37,15 @@ const DetailPhoto = () => {
                 <div className='inner'>
                     <article>
                         <div className='detail_photo_title'>
-                            <h2>[04.05] 원주 DB와 창원 LG의 경기</h2>
+                            <h2>{photo.title}</h2>
                         </div>
                         <table>
                             <thead>
                                 <tr>
                                     <th>
                                         <ul>
-                                            <li><span>작성일</span>2022-04-06</li>
-                                            <li><span>조회</span></li>
+                                            <li><span>작성일</span>{photo.date}</li>
+                                            <li><span>조회</span>{photo.view}</li>
                                         </ul>
                                     </th>
                                 </tr>
@@ -35,10 +54,10 @@ const DetailPhoto = () => {
                                 <tr>
                                     <td className='photo_content'>
                                         <div>
-                                            <img src="images/photo_1_1.png" alt="상세포토" />
-                                            <img src="images/photo_1_2.png" alt="상세포토" />
-                                            <img src="images/photo_1_3.png" alt="상세포토" />
-                                            <img src="images/photo_1_4.png" alt="상세포토" />
+                                            <img src={"../"+photo.imgsrc1} alt="상세포토1" />
+                                            <img src={"../"+photo.imgsrc2} alt="상세포토2" />
+                                            <img src={"../"+photo.imgsrc3} alt="상세포토3" />
+                                            <img src={"../"+photo.imgsrc4} alt="상세포토4" />
                                         </div>
                                     </td>
                                 </tr>

@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 const MainColumn = () => {
     // mysql로 데이터 부르기
     const [ mainNotices, setmainNotices ] = useState([]);
+    const [ mainNews, setmainNews ] = useState([]);
 
+    //notice
     useEffect(()=>{ 
         axios.get("http://localhost:8001/noticesmain")
         .then(result=>{
@@ -20,7 +22,49 @@ const MainColumn = () => {
         })
         // eslint-disable-next-line
     },[])
+    
+    //notice 조회수
+    const noticesClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewNoticeMain/${id}`)
+        .then(res=>{
+            console.log(res);
+            setmainNotices(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+    
 
+    //news 
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/newsmain")
+        .then(result=>{
+            const resultB = result.data;
+            console.log(resultB);
+            // console.log(result.data);
+            setmainNews(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+    //news 조회수
+    const newsClick = (id) => {
+        console.log(id);
+        axios.put(`http://localhost:8001/viewNewsMain/${id}`)
+        .then(res=>{
+            console.log(res);
+            setmainNews(res.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+
+    // 경기일정 - 랭킹 ul 클릭
     useEffect(()=>{
         // 변수
         const schedule = document.querySelector('.schedule');
@@ -94,8 +138,16 @@ const MainColumn = () => {
                             <span>NEWS</span>
                             <span><Link to="/news">more</Link></span>
                             <ul>
+                                {mainNews.map(mainnew=>(
+                                    <li key={mainnew.id} onClick={()=>newsClick(mainnew.id)}>
+                                        <a href={mainnew.address} target="_blank" rel="noopener noreferrer">
+                                        <p>{mainnew.title}</p>
+                                        <span>{(mainnew.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>
+                                        </a>
+                                    </li>
+                                ))}
                                 {/* https://beomsoo.me/issue/Issue-4/ */}
-                                <li><a href="https://sports.news.naver.com/news?oid=417&aid=0000837363" target="_blank" rel="noopener noreferrer">
+                                {/* <li><a href="https://sports.news.naver.com/news?oid=417&aid=0000837363" target="_blank" rel="noopener noreferrer">
                                     <p>에르난데스 영입…재계약한 프리먼과 호흡</p>
                                     <span>2022-07-28</span></a>
                                 </li>
@@ -106,10 +158,6 @@ const MainColumn = () => {
                                 <li><a href="http://www.rookie.co.kr/news/articleView.html?idxno=75803" target="_blank" rel="noopener noreferrer">
                                     <p>‘이제는 DB맨’ 최승욱 “첫 목표는 팀에 필요한 선수 되는 것”</p>
                                     <span>2022-07-11</span></a>
-                                </li>
-                                {/* <li><a href="https://sports.news.naver.com/news?oid=076&aid=0003889672" target="_blank" rel="noopener noreferrer">
-                                    <p>아시아쿼터 이선 알바노 영입</p>
-                                    <span>2022-07-06</span></a>
                                 </li> */}
                             </ul>
                         </div>
@@ -118,7 +166,7 @@ const MainColumn = () => {
                             <span><Link to="/notice">more</Link></span>
                             <ul>
                                 {mainNotices.map(mainnotice=>(
-                                    <li key={mainnotice.id}>
+                                    <li key={mainnotice.id} onClick={()=>noticesClick(mainnotice.id)}>
                                         <Link to={`/notice/${mainnotice.id}`}>
                                         <p>{mainnotice.title}</p>
                                         <span>{(mainnotice.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</span>

@@ -919,7 +919,8 @@ body {
 }
 .main_index_3 .main_index_text_3 h4 > span {
   position: absolute;
-  top: 15.5%;
+  /* top: 15.5%; */
+  bottom: 12%;
   right: 8%;
   font-size: 0.875em;
   border: 1px solid #03662c;

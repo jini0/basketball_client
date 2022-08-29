@@ -53,9 +53,9 @@ function App() {
         <Route path='/cheerleading' element={<Cheer/>} />
         <Route path='/youtube' element={<Youtube/>} />
         <Route path='/photo' element={<Photo/>} />
-        <Route path='/detailPhoto' element={<DetailPhoto/>} />
+        <Route path='/photo/:id' element={<DetailPhoto/>} />
         <Route path='/event' element={<Event/>} />
-        <Route path='/detailEvent' element={<DetailEvent/>} />
+        <Route path='/event/:id' element={<DetailEvent/>} />
         <Route path='/ticketPrice' element={<TicketPrice/>} />
         <Route path='/guide' element={<Guidelines/>} />
         <Route path='/product' element={<Store/>} />

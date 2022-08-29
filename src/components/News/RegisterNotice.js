@@ -21,7 +21,8 @@ const RegisterNotice = () => {
         c_img3: "",
         c_img4: "",
         c_img5: "",
-        c_desc: ""
+        c_desc: "",
+        c_view: 0
     })
 
     //input - onChange이벤트
@@ -54,7 +55,7 @@ const RegisterNotice = () => {
         }
         //등록함수
         function registerNotice(){
-            axios.post('http://localhost:8000/registerNotice', (formData))
+            axios.post('http://localhost:8001/registerNotice', (formData))
             .then(res=>{
                 console.log(res);
                 navigate(-1);   // '/notice'(이전)으로 이동
@@ -86,15 +87,15 @@ const RegisterNotice = () => {
                             </li>
                             <li>
                                 <label htmlFor="date">작성일</label>
-                                <input type="text" name='c_date' min={0} value={formData.c_date} onChange={onChange} readOnly/>
+                                <input type="text" name='c_date' value={formData.c_date} onChange={onChange} readOnly/>
                             </li>
                             <li>
                                 <label htmlFor="address1">링크</label>
-                                <input type="text" name='c_address1' min={0} value={formData.c_address1} onChange={onChange} placeholder="생략가능"/>
+                                <input type="text" name='c_address1' value={formData.c_address1} onChange={onChange} placeholder="생략가능"/>
                             </li>
                             <li>
                                 <label htmlFor="address2">링크2</label>
-                                <input type="text" name='c_address2' min={0} value={formData.c_address2} onChange={onChange} placeholder="생략가능" />
+                                <input type="text" name='c_address2' value={formData.c_address2} onChange={onChange} placeholder="생략가능" />
                             </li>
                             <li>
                                 <label htmlFor="img1">이미지1</label>
@@ -117,9 +118,14 @@ const RegisterNotice = () => {
                                 <input type="file" name="c_img5" onChange={onChangeImg} className="imgView"/>
                             </li>
                             <li>
+                                <label htmlFor="view">조회수</label>
+                                <input type="text" name='c_view' value={formData.c_view} onChange={onChange} readOnly />
+                            </li>
+                            <li>
                                 <label htmlFor="desc">내용</label>
-                                <textarea name="noticeDesc" type="text" 
-                                value={formData.c_desc} onChange={onChange}>
+                                <textarea name="c_desc" type="text" 
+                                onChange={onChange} defaultValue={formData.c_desc}>
+                                {/* {formData.c_desc} */}
                                 </textarea>
                             </li>
                             <li id='uploadBtn'>

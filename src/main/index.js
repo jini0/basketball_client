@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import MainColumn from '../components/MainColumn';
 import MainMovie from '../components/MainMovie';
 import MainPhoto from '../components/MainPhoto';
+import { Link } from 'react-router-dom';
 
 const MainPage = () => {
     // 슬라이드 설정
@@ -99,10 +100,10 @@ const MainPage = () => {
                         </div>
                     </div>
                     <div id="main3">
-                        <img src="images/mainSlide_3.png" alt="메인슬라이드3" />
+                        <Link to="/notice/12"><img src="images/mainSlide_3.png" alt="메인슬라이드3" /></Link>
                     </div>
                     <div id="main4">
-                        <img src="images/mainSlide_4.png" alt="메인슬라이드4" />
+                        <Link to="/notice/13"><img src="images/mainSlide_4.png" alt="메인슬라이드4" /></Link>
                     </div>
                 </Slider>
             </div>
