@@ -78,6 +78,9 @@ const Photo = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='registerBtn'>
+                        <button type='submit'><Link to="/registerPhoto">사진 등록</Link></button>
+                    </div>
                     {/* 경기장면 클릭시 */}
                     <ul id='game_page'>
                         {photos.filter(e=>e.sort==="경기").map(photo=>(
