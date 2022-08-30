@@ -87,7 +87,7 @@ const MainPhoto = () => {
                     <div>
                         <Slider {...settings} className="slide">
                             {mainPhotos.map(mainPhoto=>(
-                                <div className='main_index_3' onClick={()=>photoClick(mainPhoto.id)}>
+                                <div className='main_index_3' onClick={()=>photoClick(mainPhoto.id)} key={mainPhoto.id}>
                                     <Link to={`photo/${mainPhoto.id}`}>
                                         <img src={mainPhoto.imgsrc} alt='핫포토' />
                                         <div className='main_index_text_3'>

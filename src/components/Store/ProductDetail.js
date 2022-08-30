@@ -1,98 +1,187 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PZoomImage from './PZoomImage';
 
 const ProductDetail = () => {
     //상세페이지 - 상세설명/상품후기/배송 menuTab설정
-    useEffect(()=>{
-        // list 
-        const description = document.querySelector('.detail_description');
-        const review = document.querySelector('.detail_review');
-        const delivery = document.querySelector('.detail_delivery');
-        // list별 내용
-        const detailImg = document.querySelector('.detail_img');
-        const reviewDesc = document.querySelector('.detail_review_desc');
-        const deliveryDesc = document.querySelector('.detail_delivery_desc');
+    // list 
+    const description = document.querySelector('.detail_description');
+    const review = document.querySelector('.detail_review');
+    const delivery = document.querySelector('.detail_delivery');
+    // list별 내용
+    const detailImg = document.querySelector('.detail_img');
+    const reviewDesc = document.querySelector('.detail_review_desc');
+    const deliveryDesc = document.querySelector('.detail_delivery_desc');
 
-        description.addEventListener('click',()=>{
-            description.classList.add('active');
-            review.classList.remove('active');
-            delivery.classList.remove('active');
-            detailImg.style.display = "block";
-            reviewDesc.style.display = "none";
-            deliveryDesc.style.display = "none";
-        })
-        review.addEventListener('click',()=>{
-            review.classList.add('active');
-            description.classList.remove('active');
-            delivery.classList.remove('active');
-            reviewDesc.style.display = "block";
-            detailImg.style.display = "none";
-            deliveryDesc.style.display = "none";
-        })
-        delivery.addEventListener('click',()=>{
-            delivery.classList.add('active');
-            description.classList.remove('active');
-            review.classList.remove('active');
-            deliveryDesc.style.display = "block";
-            detailImg.style.display = "none";
-            reviewDesc.style.display = "none";
+    //list click이벤트
+    function desClick(){
+        description.classList.add('active');
+        review.classList.remove('active');
+        delivery.classList.remove('active');
+        detailImg.style.display = "block";
+        reviewDesc.style.display = "none";
+        deliveryDesc.style.display = "none";
+    }
+    function reviewClick(){
+        review.classList.add('active');
+        description.classList.remove('active');
+        delivery.classList.remove('active');
+        reviewDesc.style.display = "block";
+        detailImg.style.display = "none";
+        deliveryDesc.style.display = "none";
+    }
+    function deliveryClick(){
+        delivery.classList.add('active');
+        description.classList.remove('active');
+        review.classList.remove('active');
+        deliveryDesc.style.display = "block";
+        detailImg.style.display = "none";
+        reviewDesc.style.display = "none";
+    }
+
+    // mysql로 데이터 불러오기
+    const [ store, setStore ] = useState(null);
+    // const [ cartData, setCartData ] = useState();
+
+    const { id } = useParams();             // id값 받아오기(parameter 사용)
+    useEffect(()=>{
+        axios.get(`http://localhost:8001/store/${id}`)
+        .then(result => {
+            const results = result.data;
+            console.log(results);
+            setStore(results[0]); 
+            // setCartData({
+            //     c_name : results[0].name,
+            //     c_img : results[0].imgsrc,
+            //     c_price : results[0].price,
+            //     c_size : "",
+            //     c_amount : "",
+            //     c_userid : ""
+            // });
+        })   
+        .catch(e=> {
+            console.log(e);
         })
         // eslint-disable-next-line
     },[])
+    if(!store) return <div>로딩중입니다...</div>
+
+    //총상품금액
+    // const amount = document.querySelector('#amount');
+    //상품 수량 onChange이벤트
+    // const totalP = document.querySelector('.totalPrice');
+    const onChange = (e)=>{
+        const { value } = e.target;
+        console.log(value);
+    }
+
+    //카트 추가
+    // const addToCart = ()=>{
+    //     // axios.post(`http://localhost:8001/addToCart`, cartData)
+    //     if(qttNum.value == 0){
+    //         window.alert("수량을 입력해주세요.");
+    //     }else{
+    //         axios.post(`${API_URL}/addToCart`, cartData)
+    //         .then(res=>{
+    //             console.log("카트추가완료");
+
+    //             if( window.confirm("장바구니에 담겼습니다. 장바구니로 가시겠습니까?")){
+    //                 Navigate('/cart');
+    //                 console.log("카트O")
+    //             }else{
+    //                 console.log("카트X")
+    //             }
+    //         })
+    //         .catch(err=>{
+    //             console.log(err);
+    //         })
+    //     }
+    // }
+
+    // const selectOnChange = (e) => {
+    //     const { value } = e.target
+    //     let num = "S"
+    //     console.log('여기에요')
+       
+    //     if(value==="1"){
+            
+          
+    //     }else if(value==="2"){
+            
+         
+    //     }else if(value==="3") {
+            
+           
+    //     } else {
+
+    //     }
+    //     setCartData({
+    //         ...cartData,
+    //         c_size : num
+    //     })
+    //     console.log(num)
+    // }
+
     return (
         <div id='product_detail'>
             <div className='inner'>
                 <div id='detailLeft'>
-                    <PZoomImage/>
+                    <PZoomImage imgsrc={store.imgsrc}/>
                     {/* <div className='zoom'></div> */}
                     {/* <img src="images/goods_metal_sticker.png" alt="상품" /> */}
                 </div>
                 <div id='detailRight'>
                     <div>
-                        <h2>DB프로미 플레이어 메탈스티커<span>(대형)</span></h2>
-                        <div>
+                    <form>
+                        <h2>{store.name}<span>{store.span}</span></h2>
+                        <div className='detailR'>
                             <ul className='product_desc'>
-                                <li className='product_price'><span>판매가</span> 6,000원</li>
+                                <li className='product_price'><span>판매가</span> {store.saleprice.toLocaleString('ko-KR')}원</li>
                                 <li><span>배송</span> 택배(주문 시 결제)</li>
-                                <li><span>판매자</span> (주)스미스스포츠</li>
+                                <li><span>판매자</span> {store.seller}</li>
                                 <li>
                                     <span>옵션선택</span>
                                     <select>
-                                        <option value="" disabled="" selected="">선수 선택</option>
-                                        <option>허웅[대형]</option>
-                                        <option>정준원[대형]</option>
-                                        <option>이준희[대형]</option>
+                                        <option value="0" disabled="">선수 선택</option>
+                                        <option value="1" disabled="">허웅[대형]</option>
+                                        <option value="2" disabled="">정준원[대형]</option>
+                                        <option value="3" disabled="">이준희[대형]</option>
                                     </select>
-                                    <input type="number" placeholder='수량'/>
+                                    <input type="number" placeholder='수량' min="0" id='amount' onChange={onChange} />
                                 </li>
                             </ul>
-                            <p>총 상품 금액<span>30,000원</span></p>
+                            <p className='totalPrice'>총 상품 금액<span>{(store.saleprice)}</span></p>
                             <ul>
                                 <li><button>ADD TO CART</button></li>
                                 <li><button>구매하기</button></li>
                             </ul>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
             <div className='inner' id='detail_desc'>
                 <div className='detail_tabMenu'>
                     <ul>
-                        <li className='active detail_description'>상세설명</li>
-                        <li className='detail_review'>상품후기</li>
+                        <li className='active detail_description' onClick={desClick}>상세설명</li>
+                        <li className='detail_review' onClick={reviewClick}>상품후기</li>
                         {/* <li>상품문의</li> */}
-                        <li className='detail_delivery'>교환/배송/반품</li>
+                        <li className='detail_delivery' onClick={deliveryClick}>교환/배송/반품</li>
                     </ul>
                 </div>
                 {/* 상세설명 클릭시 */}
                 <div className='detail_img'>
-                    <img src="images/goods_metal_sticker_desc.png" alt="상품설명" />
+                    <img src={"../"+store.imgdesc} alt="상품설명" />
+                    {store.imgdesc2 !== null &&
+                        <img src={"../"+store.imgdesc2} alt="상품설명" />
+                    }
                 </div>
                 <div className='detail_review_desc'>
 
                 </div>
                 <div className='detail_delivery_desc'>
-                    <img src="images/DB_delivery.png" alt="교환배송반품" />
+                    <img src={"../"+store.delivery} alt="교환배송반품" />
                 </div>
             </div>
         </div>

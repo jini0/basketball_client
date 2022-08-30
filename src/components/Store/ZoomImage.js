@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import testImage from "./goods_metal_sticker.png";
+// import testImage from "./goods_metal_sticker.png"; //test용이미지
 
 const Container = styled.div`
 //   position: absolute;
@@ -42,17 +42,18 @@ const Image = styled.img`
 
 const ImageZoom = styled.div`
   position: absolute;
-  ${({ width, height }) =>
+  ${({ width, height, imgsrc }) =>
     css`
       width: ${width}px;
       height: ${height}px;
-    `}
-  margin-top: 30px;
-  top: -5%;
-  right: -110%;
-  display: inline-block;
-  transition: transform 0.5s ease-out;
-  background-image: url(${testImage});
+      background-image: url(${'../'+imgsrc});
+      `}
+      margin-top: 30px;
+      top: -5%;
+      right: -110%;
+      display: inline-block;
+      transition: transform 0.5s ease-out;
+      // background-image: url({testImgae});   //$붙여서 썼었음 - test용
 `;
 
 const Cursor = styled.div`
@@ -70,9 +71,9 @@ const Cursor = styled.div`
   z-index: 999;
 `;
 
-const ZoomImage = ({ zoomRate, width, height }) => {
-    // zoom이미지 상태관리
-    const [ isZoom, setIsZoom ] = useState(false);
+const ZoomImage = ({ zoomRate, width, height, imgsrc }) => {  
+  // zoom이미지 상태관리
+  const [ isZoom, setIsZoom ] = useState(false);
 
     // onClick 이벤트
     const onClick = ()=>{
@@ -139,7 +140,7 @@ const ZoomImage = ({ zoomRate, width, height }) => {
         <Cursor width={width/2} height={height/2} ref={cursorRef} cursor={cursor} cursorSize={zoomRate} />
         <Image
           ref={imageRef}
-          src={testImage}
+          src={'../'+imgsrc}
           onMouseMove={(e) => onMouseMove(e, zoomRate)}
           onClick={onClick}
         />
@@ -147,7 +148,7 @@ const ZoomImage = ({ zoomRate, width, height }) => {
 
       {/* flase일 때는, zoom 안보이게 */}
       { isZoom && 
-      <ImageZoom ref={imageZoomRef} width={width} height={height} />}
+      <ImageZoom ref={imageZoomRef} width={width} height={height} imgsrc={imgsrc}/>}
       <div className='zoom' onClick={onClick}></div>
     </Container>
   );

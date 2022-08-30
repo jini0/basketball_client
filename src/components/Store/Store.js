@@ -1,11 +1,188 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Store.css';
 
 const Store = () => {
-    // 위시리스트 클릭
+    // mysql로 데이터 부르기
+    const [ stores, setStores ] = useState([]);
+    const [ allStores, setAllStores ] = useState([]);
 
-    // 카테고리 분류 --> 뿌리고나서 filter 사용해서!
+    useEffect(()=>{ 
+        axios.get("http://localhost:8001/stores")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setStores(result.data);
+            setAllStores(result.data);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    //sort 분류 - onClick
+    function all(){
+        setStores(allStores.filter(e=>e.sort));
+            // eslint-disable-next-line
+        if((allStores.filter(e=>e.sort)) == ''){
+            alert('상품이 없습니다.')
+        }
+    }
+    function clothes(){
+        setStores(allStores.filter(e=>e.sort === "clothes"));
+            // eslint-disable-next-line
+            if((allStores.filter(e=>e.sort === "clothes")) == ''){
+                alert('해당 상품이 없습니다.')
+            }
+        }
+        function ball(){
+        setStores(allStores.filter(e=>e.sort === "ball"));
+            // eslint-disable-next-line
+            if((allStores.filter(e=>e.sort === "ball")) == ''){
+                alert('해당 상품이 없습니다.')
+            }
+        }
+        function caps(){
+        setStores(allStores.filter(e=>e.sort === "caps"));
+            // eslint-disable-next-line
+        if((allStores.filter(e=>e.sort === "caps")) == ''){
+            alert('해당 상품이 없습니다.')
+        }
+    }
+    function lifestyle(){
+        setStores(allStores.filter(e=>e.sort === "lifestyle"));
+            // eslint-disable-next-line 
+        if((allStores.filter(e=>e.sort === "lifestyle")) == ''){
+            alert('해당 상품이 없습니다.')
+        }
+    }
+    function accessory(){
+        setStores(allStores.filter(e=>e.sort === "accessory"));
+            // eslint-disable-next-line
+        if((allStores.filter(e=>e.sort === "accessory")) == ''){
+            alert('해당 상품이 없습니다.')
+        }
+    }
+
+    //sort2 - button - onClick이벤트
+    const uploadList = document.querySelector('.uploadList');
+    const rankList = document.querySelector('.rankList');
+    const lowList = document.querySelector('.lowList');
+    const highList = document.querySelector('.highList');
+    const reviewList = document.querySelector('.reviewList');
+    const sellList = document.querySelector('.sellList');
+
+    function upload(){
+        axios.get("http://localhost:8001/stores")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            setStores(result.data); 
+            uploadList.classList.add('active');
+            rankList.classList.remove('active');
+            lowList.classList.remove('active');
+            highList.classList.remove('active');
+            reviewList.classList.remove('active');
+            sellList.classList.remove('active');
+
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+    function ranking(){
+        axios.get("http://localhost:8001/storesRank")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            setStores(result.data);
+            rankList.classList.add('active');
+            uploadList.classList.remove('active');
+            lowList.classList.remove('active');
+            highList.classList.remove('active');
+            reviewList.classList.remove('active');
+            sellList.classList.remove('active');
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+    function lowPrice(){
+        axios.get("http://localhost:8001/storesLow")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            setStores(result.data);
+            lowList.classList.add('active');
+            uploadList.classList.remove('active');
+            rankList.classList.remove('active');
+            highList.classList.remove('active');
+            reviewList.classList.remove('active');
+            sellList.classList.remove('active');
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+    function highPrice(){
+        axios.get("http://localhost:8001/storesHigh")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setStores(result.data);
+            highList.classList.add('active');
+            uploadList.classList.remove('active');
+            rankList.classList.remove('active');
+            lowList.classList.remove('active');
+            reviewList.classList.remove('active');
+            sellList.classList.remove('active');
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+    // function review(){
+    //     axios.get("http://localhost:8001/storesReview")
+    //     .then(result=>{
+    //         const resultA = result.data;
+    //         console.log(resultA);
+    //         // console.log(result.data);
+    //         setStores(result.data);
+    //         reviewList.classList.add('active');
+    //         uploadList.classList.remove('active');
+    //         rankList.classList.remove('active');
+    //         lowList.classList.remove('active');
+    //         highList.classList.remove('active');
+    //         sellList.classList.remove('active');
+    //     })
+    //     .catch(e=>{
+    //         console.log(e);
+    //     })
+    // }
+    function sellRank(){
+        axios.get("http://localhost:8001/storesSell")
+        .then(result=>{
+            const resultA = result.data;
+            console.log(resultA);
+            // console.log(result.data);
+            setStores(result.data);
+            sellList.classList.add('active');
+            uploadList.classList.remove('active');
+            rankList.classList.remove('active');
+            lowList.classList.remove('active');
+            highList.classList.remove('active');
+            reviewList.classList.remove('active');
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }
+
+    // 위시리스트 클릭
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -15,50 +192,65 @@ const Store = () => {
             <div id='product_category'>
                 <section class="categoryList inner">
                     <ul class="clear" id="categorys">
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '0');return false;" value="0" className="active">ALL</a>
-                        </li>
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '233150');return false;" value="233150">UNIFORM/CLOTHES</a>
-                        </li>
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '233151');return false;" value="233151">BALL</a>
-                        </li>
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '233152');return false;" value="233152">CAPS</a>
-                        </li>
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '233976');return false;" value="233976">LIFESTYLE</a>
-                        </li>
-                        <li>
-                            <a href="/product" id="categ" onclick="kbl.productList.clickCategories(this, '233153');return false;" value="233153">ACCESSORY</a>
-                        </li>
+                        <li onClick={all}>ALL</li>
+                        <li onClick={clothes}>UNIFORM/CLOTHES</li>
+                        <li onClick={ball}>BALL</li>
+                        <li onClick={caps}>CAPS</li>
+                        <li onClick={lifestyle}>LIFESTYLE</li>
+                        <li onClick={accessory}>ACCESSORY</li>
                     </ul>
                 </section>
                 <section class="inner clear">
                     <ul className='categorization'>
                         <li>
-                            <button className='active'>신규등록순</button>
+                            <button className='uploadList active' onClick={upload}>신규등록순</button>
                         </li>
                         <li>
-                            <button>랭킹순</button>
+                            <button className='rankList' onClick={ranking}>랭킹순</button>
                         </li>
                         <li>
-                            <button>낮은가격순</button>
+                            <button className='lowList' onClick={lowPrice}>낮은가격순</button>
                         </li>
                         <li>
-                            <button>높은가격순</button>
+                            <button className='highList' onClick={highPrice}>높은가격순</button>
                         </li>
                         <li>
-                            <button>상품평많은순</button>
+                            <button className='reviewList' >상품평많은순</button>
                         </li>
                         <li>
-                            <button>판매량순</button>
+                            <button className='sellList' onClick={sellRank}>판매량순</button>
                         </li>
                     </ul>
+                    <div className='ball_dribble_top'>
+                        <img src="images/gif-maker.gif" alt="농구공gif" />
+                    </div>
                     {/* All */}
                     <ul className='products'>
-                        <li>
+                        {stores.map(store=>(
+                            <li key={store.id}>
+                                <div className='product_img'>
+                                    <Link to={`/store/${store.id}`}>
+                                        <img src={store.imgsrc} alt={store.name} />
+                                    </Link>
+                                    <span className='wish_btn'></span>
+                                </div>
+                                <Link to="/detailProduct">
+                                    <div className='product_text'>
+                                        <h4>{store.name}<span>{store.span}</span></h4>
+                                        <div>
+                                            {(store.price !== null) &&
+                                                <span className='price'>{store.price.toLocaleString('ko-KR')}원</span>
+                                            }
+                                            <span className='saleprice'>{store.saleprice.toLocaleString('ko-KR')}원</span>
+                                            <span className='discount_per'>{store.discountper}</span>
+                                        </div>
+                                        <span className='store'>{store.seller}</span>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+
+                        {/* <li>
                             <div className='product_img'>
                                 <Link to="/detailProduct">
                                     <img src="images/goods_metal_sticker.png" alt="메탈스티커" />
@@ -271,10 +463,10 @@ const Store = () => {
                                 </div>
                                 <span className='store'>(주)스미스스포츠</span>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </section>
-                <div className='ball_dribble0'>
+                <div className='ball_dribble'>
                     <img src="images/gif-maker.gif" alt="농구공gif" />
                 </div>
             </div>

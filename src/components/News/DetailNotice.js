@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './News.css';
 
 const DetailNotice = () => {
@@ -51,7 +51,7 @@ const DetailNotice = () => {
             <div id='detail_notice'>
                 <div className='inner'>
                     <div className='noticeBtn'>
-                        <button id='editBtn'>수정하기</button>
+                        <button id='editBtn' type='submit'><Link to={`/editNotice/${notice.id}`}>수정하기</Link></button>
                         <button id='deleteBtn' onClick={onDelete}>삭제하기</button>
                     </div>
                     <article>
@@ -74,20 +74,20 @@ const DetailNotice = () => {
                                     <td className='notice_content'>
                                         <div>
                                             <img src={"../images/"+notice.imgsrc} alt="상세공지" />
-                                            { (notice.address !== null) && (notice.imgsrc2 !== null) ? 
+                                            { (notice.address !== "") && (notice.address !== null) && (notice.imgsrc2 !== "") && (notice.imgsrc2 !== null) ? 
                                                 <a href={notice.address} target="_blank" rel="noopener noreferrer"><img src={"../images/"+notice.imgsrc2} alt="상세공지" /></a> 
-                                                : (notice.imgsrc2 !== null) ? <img src={"../images/"+notice.imgsrc2} alt="상세공지" /> : null
+                                                : (notice.imgsrc2 !== "") && (notice.imgsrc2 !== null) ? <img src={"../images/"+notice.imgsrc2} alt="상세공지" /> : null
                                             }
                                             {/* { (notice.address !== null) && (notice.imgsrc2 !== null) && 
                                                 <a href={notice.address} target="_blank" rel="noopener noreferrer"><img src={"../images/"+notice.imgsrc2} alt="상세공지" /></a>
                                             } */}
-                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null)) &&
+                                            { ((notice.imgsrc2 !== "") && (notice.imgsrc2 !== null) && (notice.imgsrc3 !== "") && (notice.imgsrc3 !== null)) &&
                                                 <img src={"../images/"+notice.imgsrc3} alt="상세공지" />                                       
                                             }
-                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== null)) && 
+                                            { ((notice.imgsrc2 !== "") && (notice.imgsrc2 !== null) && (notice.imgsrc3 !== "") && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== "") && (notice.imgsrc4 !== null)) && 
                                                 <img src={"../images/"+notice.imgsrc4} alt="상세공지" />
                                             }
-                                            { ((notice.imgsrc2 !== null) && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== null) && (notice.imgsrc5 !== null)) && 
+                                            { ((notice.imgsrc2 !== "") && (notice.imgsrc2 !== null) && (notice.imgsrc3 !== "") && (notice.imgsrc3 !== null) && (notice.imgsrc4 !== "") && (notice.imgsrc4 !== null) && (notice.imgsrc5 !== "") && (notice.imgsrc5 !== null)) && 
                                                 <img src={"../images/"+notice.imgsrc5} alt="상세공지" />
                                             }
                                             <p>{notice.noticedesc}</p>

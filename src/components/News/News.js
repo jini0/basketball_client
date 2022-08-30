@@ -1,12 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './News.css';
 import Pagination from './Pagination';
-// import Pagination from './Pagination';
 
 const News = () => {
-    const navigate = useNavigate();
     //check한 애들 선택하기 
     const [ checked, setChecked ] = useState([]);
     // mysql로 데이터 부르기
@@ -30,8 +28,9 @@ const News = () => {
         .catch(e=>{
             console.log(e);
         })
+        console.log("데이터 다시 부르기")
         // eslint-disable-next-line
-    },[])
+    },[checked])
 
     // *검색기능*
     const [ search, setSearch ] = useState("");   
@@ -81,18 +80,22 @@ const News = () => {
     }
 
     //input - formData
-    const onChecked = (e) => {
-        e.preventDefault();
-        setChecked(newses.id);
+    const onChecked = (id) => {
+        // console.log(checked);
+        // console.log(checked[0]);
+        setChecked([ ...checked, id ]);
     }
+
     
     //게시글 삭제
-    const { id } = useParams();
-    const onDelete = (checked) => {
-        axios.delete(`http://localhost:8001/delNews/${id}`)
+    // const { id } = useParams();
+    const onDelete = () => {
+        console.log(checked);
+        console.log(checked[0]);
+        axios.delete(`http://localhost:8001/delNews/${checked[0]}`)
         .then(res=>{
             console.log("삭제 완료!");
-            navigate('/news');
+            setChecked([]);
         })
         .catch(err=>{
             console.log(err);
@@ -109,7 +112,7 @@ const News = () => {
                 <div className='inner'>
                     <div className='notice_search'>
                         <div className='registerBtn'>
-                            <button>게시물 등록</button>
+                            <button type='submit'><Link to="/registerNews">게시물 등록</Link></button>
                             <button type='submit' onClick={onDelete}>삭제</button>
                         </div>
                         <form onSubmit={onSearch}>
@@ -140,7 +143,7 @@ const News = () => {
                         </select>
                     </label>
                     <div className='notice_table'>
-                        <form onSubmit={()=>onChecked(checked)}>
+                        <form>
                         <table>
                             <thead>
                                 <tr>
@@ -158,7 +161,9 @@ const News = () => {
                                         <td onClick={()=> newsClick(news.id)}><a href={news.address} target="_blank" rel="noopener noreferrer">{news.title}</a></td>
                                         <td>{(news.date).replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3')}</td>
                                         <td>{news.view}</td>
-                                        <td><input type="checkbox" value={news.id} name="id[]" /></td>
+                                        <td><input type="checkbox" value={news.id} onChange={()=>onChecked(news.id)} /></td>
+                                        {/* <td><input type="checkbox" value={news.id} name="id[]" onChange={(e)=>onChecked(e.target.checked, news.id)} checked={checked.includes(news.id) ? true : false} /></td> */}
+                                        {/* <td><input type="checkbox" value={news.id} name="id[]" onChange={()=>onChecked(news.id)} /></td> */}
                                         {(searchlist == null) &&
                                             <td colSpan={4} className="empty">조회할 내용이 없습니다.</td>
                                         }

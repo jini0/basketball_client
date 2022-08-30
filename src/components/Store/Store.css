@@ -2,7 +2,7 @@
     background: #f1f1f1;
     width: 100%;
     padding-top: 80px;
-    padding-bottom: 130px;
+    padding-bottom: 180px;
     position: relative;
 }
 .categoryList {
@@ -42,6 +42,15 @@
 }
 .categoryList #categorys li a {
     font-size: 1rem;
+}
+.ball_dribble_top {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 8%;
+}
+.ball_dribble_top img {
+    width: 100%;
 }
 .ball_dribble {
     position: absolute;
@@ -200,8 +209,11 @@
     font-weight: 700;
     height: 10%;
 }
-#product_detail #detailRight > div > div {
+#product_detail #detailRight > div form {
     height: 90%;
+}
+#product_detail #detailRight > div .detailR {
+    height: 100%;
 }
 #product_detail #detailRight .product_desc {
     display: flex;
@@ -232,20 +244,20 @@
     font-size: 1em;
     font-size: 1.375em;
 }
-#product_detail #detailRight > div > div > span {
+#product_detail #detailRight > div .detailR > span {
     font-size: 1rem;
     color: #777;
     letter-spacing: -0.035rem;
     min-width: 150px;
     display: inline-block;
 }
-#product_detail #detailRight > div > div > p {
+#product_detail #detailRight > div .detailR > p {
     font-size: 1em;
     font-weight: 700;
     letter-spacing: -.035rem;
     padding: 20px 0;
 }
-#product_detail #detailRight > div > div > p span {
+#product_detail #detailRight > div .detailR > p span {
     float: right;
     padding-right: 40px;
 }

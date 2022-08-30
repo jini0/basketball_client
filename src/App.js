@@ -28,6 +28,8 @@ import TicketPrice from './components/Ticket/TicketPrice';
 import Guidelines from './components/Ticket/Guidelines';
 import DetailEvent from './components/Event/DetailEvent';
 import RegisterNotice from './components/News/RegisterNotice';
+import EditNotice from './components/News/EditNotice';
+import RegisterNews from './components/News/RegisterNews';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -43,9 +45,11 @@ function App() {
         <Route path='/sponser' element={<Sponser/>} />
         <Route path='/stadium' element={<Stadium/>} />
         <Route path='/notice' element={<Notice/>} />
-        <Route path='/registerNotice' element={<RegisterNotice/>} />
         <Route path='/notice/:id' element={<DetailNotice/>} />
+        <Route path='/registerNotice' element={<RegisterNotice/>} />
+        <Route path='/editNotice/:id' element={<EditNotice/>} />
         <Route path='/news' element={<News/>} />
+        <Route path='/registerNews' element={<RegisterNews/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/player/:id' element={<PlayerDetail/>} />
         <Route path='/coach' element={<Coach/>} />
@@ -59,7 +63,7 @@ function App() {
         <Route path='/ticketPrice' element={<TicketPrice/>} />
         <Route path='/guide' element={<Guidelines/>} />
         <Route path='/product' element={<Store/>} />
-        <Route path='/detailProduct' element={<ProductDetail/>} />
+        <Route path='/store/:id' element={<ProductDetail/>} />
         <Route path='/login' element={<Login/>} />
       </Routes>
       {/* <MainYoutube /> */}

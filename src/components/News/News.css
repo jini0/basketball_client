@@ -378,13 +378,32 @@
     flex-flow: column;
     text-align: center;
     justify-content: center;
-    background: #fff;
+    /* background: #fff; */
+    background: url('/public/images/note.png') center center / cover no-repeat;
     padding: 40px 0;
+}
+/* 뉴스 등록만 - 다르게 */
+#uploadBox .newsUpload {
+    margin: 0 auto;
+    text-align: center;
+    width: 55%;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+    background: url('/public/images/note.png') center center / contain no-repeat;
+    padding: 40px 0;
+}
+#uploadBox .newsUpload_form {
+    width: 40%;
+}
+#uploadBox .newsUpload_ul {
+    padding: 80px 0 0 0;
 }
 #uploadBox p {
     font-size: 0.7em;
     color: #777;
     margin-bottom: 20px;
+    padding-top: 50px;
 }
 #uploadBox form {
     width: 60%;
@@ -453,7 +472,34 @@
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
-
+/* 이미지파일 눈속임 주기 -hidden type */
+#uploadBox .imgDiv {
+    position: relative; 
+    width: 400px;
+    text-align: left;
+}
+#uploadBox .imgView {
+    position: absolute; 
+    left: 0; 
+    top: 0;
+    opacity: 0;
+    z-index: 5;
+}
+#uploadBox .imgFile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #888; 
+    border-radius: 5px;
+    background: rgba(204, 204, 204, 0.295);
+    padding: 6px 20px;
+    font-size: 0.875em;
+    vertical-align: middle;
+}
+#uploadBox .imgLabel {
+    margin-left: 130px;
+    vertical-align: middle;
+  }
 
 /* 뉴스 */
 /* #news {

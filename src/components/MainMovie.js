@@ -102,7 +102,7 @@ const MainMovie = () => {
                     {/* 항목들 슬라이드로 할거임! */}
                         <Slider {...settings} className="slide">
                             {mainYoutubes.map(mainYoutube=>(
-                                <div className='main_index_3' onClick={()=>youtubeClick(mainYoutube.id)}>
+                                <div className='main_index_3' onClick={()=>youtubeClick(mainYoutube.id)} key={mainYoutube.id}>
                                     <Link to="/youtube">
                                     <img src={mainYoutube.imgsrc} alt='유튜브화면' />
                                     <div className='main_index_text_3'>
