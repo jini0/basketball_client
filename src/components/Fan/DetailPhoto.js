@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const DetailPhoto = () => {
     const navigate = useNavigate();
@@ -27,6 +27,18 @@ const DetailPhoto = () => {
         navigate('/photo');
     }
 
+    //게시글 삭제
+    const onDelete = () => {
+        axios.delete(`http://localhost:8001/delPhoto/${id}`)
+        .then(res=>{
+            console.log("삭제 완료!");
+            navigate(-1);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -35,6 +47,10 @@ const DetailPhoto = () => {
             </div> 
             <div id='detail_photo'>
                 <div className='inner'>
+                    <div className='photoBtn'>
+                        <button id='editBtn' type='submit'><Link to={`/editPhoto/${photo.id}`}>수정하기</Link></button>
+                        <button id='deleteBtn' onClick={onDelete}>삭제하기</button>
+                    </div>
                     <article>
                         <div className='detail_photo_title'>
                             <h2>{photo.title}</h2>

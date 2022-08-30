@@ -113,6 +113,7 @@ const News = () => {
                     <div className='notice_search'>
                         <div className='registerBtn'>
                             <button type='submit'><Link to="/registerNews">게시물 등록</Link></button>
+                            <button type='submit'><Link to={`/editNews/${checked[0]}`}>수정</Link></button>
                             <button type='submit' onClick={onDelete}>삭제</button>
                         </div>
                         <form onSubmit={onSearch}>

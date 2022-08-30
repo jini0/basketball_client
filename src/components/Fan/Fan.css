@@ -181,6 +181,35 @@
     cursor: pointer;
     background-color: transparent;
 }
+/* 사진등록 버튼 */
+#photo .registerBtn {
+    position: absolute;
+    top: 7%;
+    left: 2.5%;
+}
+#photo .registerBtn button {
+    border: none;
+    background: #011b47;
+    color: #fff;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 0.875em;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+#photo .registerBtn button:hover {
+    background: #011b47c7;
+}
+#photo .registerBtn button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
 #photo .photo_main > ul {
     width: 100%;
     display: flex;
@@ -252,6 +281,40 @@
 #detail_photo .inner {
     position: relative;
     margin: 4px auto 0;
+}
+#detail_photo .inner .photoBtn {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+#detail_photo .inner .photoBtn button {
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #011b47;
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+#detail_photo .inner .photoBtn button:hover {
+    background-color: #011b47c7;
+}
+#detail_photo .inner .photoBtn button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+#detail_photo .inner .photoBtn button:nth-child(1) {
+    margin-right: 15px;
 }
 #detail_photo article .detail_photo_title {
     width: 100%;
@@ -386,4 +449,44 @@
 #detail_photo article > table > tfoot button:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+/* 사진등록페이지 */
+#uploadBox .photoUpload {
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+    /* background-color: #ccc; */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/public/images/polar3.png');
+    padding: 40px 0;
+}
+#uploadBox .photoUpload_form {
+    width: 40%;
+}
+#uploadBox .photoUpload_form > p {
+    padding-top: 60px;
+}
+#uploadBox .photoUpload_form > p span {
+    vertical-align: middle;
+    color: red;
+}
+#uploadBox .photoUpload_ul {
+    padding-top: 20px;
+    padding-bottom: 250px;
+}
+#uploadBox .photoUpload_ul label span {
+    vertical-align: middle;
+    margin-left: 5px;
+    color: red;
+}
+#uploadBox .photoUpload_form select {
+    width: 400px;
+    padding-left: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

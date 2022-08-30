@@ -133,7 +133,24 @@ const Sponser = () => {
                             <a href="https://www.sulsungmall.com/" target="_blank" rel="noopener noreferrer"><img src="images/spon_db_24.png" alt="설성식품" /></a>
                         </li> */}
                     </ul>
-                    <p>클릭시 홈페이지로 넘어갑니다.</p>
+                    {/* <p>클릭시 홈페이지로 넘어갑니다.</p> */}
+                    <p>
+                        <span>클</span>
+                        <span>릭</span>
+                        <span>시</span> 
+
+                        <span>홈</span>
+                        <span>페</span>
+                        <span>이</span>
+                        <span>지</span>
+                        <span>로</span> 
+                        
+                        <span>넘</span>
+                        <span>어</span>
+                        <span>갑</span>
+                        <span>니</span>
+                        <span>다</span>.
+                    </p>
                 </div>
             </div>
         </div>

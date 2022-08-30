@@ -33,7 +33,7 @@
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
     inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
-#notice .notice_search button:nth-child(1) {
+#notice .notice_search button:not(:last-child) {
     margin-right: 15px;
 }
 #notice .notice_search, #news .news_search {

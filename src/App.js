@@ -30,6 +30,10 @@ import DetailEvent from './components/Event/DetailEvent';
 import RegisterNotice from './components/News/RegisterNotice';
 import EditNotice from './components/News/EditNotice';
 import RegisterNews from './components/News/RegisterNews';
+import EditNews from './components/News/EditNews';
+import RegisterPhoto from './components/Fan/RegisterPhoto';
+import EditPhoto from './components/Fan/EditPhoto';
+import RankTeam from './components/Game/RankTeam';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -50,14 +54,18 @@ function App() {
         <Route path='/editNotice/:id' element={<EditNotice/>} />
         <Route path='/news' element={<News/>} />
         <Route path='/registerNews' element={<RegisterNews/>} />
+        <Route path='/editNews/:id' element={<EditNews/>} />
         <Route path='/player' element={<Player/>} />
         <Route path='/player/:id' element={<PlayerDetail/>} />
         <Route path='/coach' element={<Coach/>} />
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />
+        <Route path='/rankTeam' element={<RankTeam/>} />
         <Route path='/youtube' element={<Youtube/>} />
         <Route path='/photo' element={<Photo/>} />
         <Route path='/photo/:id' element={<DetailPhoto/>} />
+        <Route path='/registerPhoto' element={<RegisterPhoto/>} />
+        <Route path='/editPhoto/:id' element={<EditPhoto/>} />
         <Route path='/event' element={<Event/>} />
         <Route path='/event/:id' element={<DetailEvent/>} />
         <Route path='/ticketPrice' element={<TicketPrice/>} />

@@ -69,8 +69,8 @@ const Header = () => {
                             <h3>GAME·STATS</h3>
                             <ul class="hideMenu">
                                 <li>일정 및 결과</li>
-                                <li>팀 순위</li>
-                                <li>선수 순위</li>
+                                <li><Link to="/rankTeam">팀 순위</Link></li>
+                                <li><Link to="/rankPlayer">선수 순위</Link></li>
                             </ul>
                         </li>
                         <li><Link to="/"><img src="images/DB_logo1.png" alt="원주DB로고" /></Link></li>
