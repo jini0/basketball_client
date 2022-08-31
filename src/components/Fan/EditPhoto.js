@@ -39,11 +39,11 @@ const EditPhoto = () => {
             c_title: photo? photo.title : "",
             c_date: photo? photo.date : "",
             c_sort: photo? photo.sort : "",
-            c_img: photo? photo.img : "",
-            c_img1: photo? photo.img1 : "",
-            c_img2: photo? photo.img2 :"",
-            c_img3: photo? photo.img3 :"",
-            c_img4: photo? photo.img4 :"",
+            c_img: photo? photo.imgsrc : "",
+            c_img1: photo? photo.imgsrc1 : "",
+            c_img2: photo? photo.imgsrc2 :"",
+            c_img3: photo? photo.imgsrc3 :"",
+            c_img4: photo? photo.imgsrc4 :"",
             c_view: photo? photo.view :""
         })
     },[photo])
@@ -103,6 +103,10 @@ const EditPhoto = () => {
     //수정button - onClick이벤트
     const onPhotoCheck = ()=>{
         console.log(formData);
+    }
+    //취소button - onClick이벤트
+    const onResetCheck = ()=>{
+        navigate(`/photo/${id}`);
     }
 
     return (
@@ -182,7 +186,7 @@ const EditPhoto = () => {
                             </li>
                             <li id='uploadBtn'>
                                 <button type='submit' onClick={onPhotoCheck}>등록</button>
-                                <button type='reset'>취소</button>
+                                <button type='reset' onClick={onResetCheck}>취소</button>
                             </li>
                         </ul>
                     </form>

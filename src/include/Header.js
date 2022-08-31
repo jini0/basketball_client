@@ -66,9 +66,9 @@ const Header = () => {
                             </ul>
                         </li>
                         <li class="menuList">
-                            <h3>GAME·STATS</h3>
+                            <h3><Link to="/calender">GAME·STATS</Link></h3>
                             <ul class="hideMenu">
-                                <li>일정 및 결과</li>
+                                <li><Link to="/calender">일정 및 결과</Link></li>
                                 <li><Link to="/rankTeam">팀 순위</Link></li>
                                 <li><Link to="/rankPlayer">선수 순위</Link></li>
                             </ul>

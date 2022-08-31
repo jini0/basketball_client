@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Game.css';
 
 const RankTeam = () => {
+    // select - 경기tab --> 정규경기/D리그 클릭
+    const [ selected, setSelected ] = useState("");
+    // select - 년도tab --> 2022-2023/2021-2022/2020-2021 클릭
+    const [ selected2, setSelected2 ] = useState("21");
+    const [ style, setStyle ] = useState({display: "block"});
+    const [ style2, setStyle2 ] = useState({display: "block"});
+
+    const onMouseEnter = () => {
+        setStyle({display: 'none'})
+        setStyle2({display: 'none'})
+    }
+    const onMouseLeave = () => {
+        setStyle({display: 'block'})
+        setStyle2({display: 'block'})
+    }
+
+    //변수 설정
+    // const tableWrap = document.querySelector('.table_wrap');
+    // const tableWrap2 = document.querySelector('.table_wrap2');
+
+    // onChange 이벤트
+    const handleSelect = (e) => {
+        setSelected(e.target.value);    
+    }
+    // onChange 이벤트2
+    const handleSelect2 = (e) => {
+        setSelected2(e.target.value);
+        console.log(e.target.value)
+        // eslint-disable-next-line
+        if(e.target.value== "22"){       //2022-2023시즌은 아직 시작 전이라서 -> table 내용 없음
+        // (selected == "22") 로 주면 인식을 못해서 e.target.value로 줬음!
+            // tableWrap.style.display = "none";
+            // tableWrap2.style.display = "none";
+            onMouseEnter();
+            alert('시즌 시작 전입니다.');
+        // eslint-disable-next-line
+        } else if(e.target.value == "21") {      //2021-2022시즌 table 데이터
+            // tableWrap.style.display = "block";  
+            // tableWrap2.style.display = "block";  
+            onMouseLeave();
+        }
+    }
+
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
@@ -17,7 +60,7 @@ const RankTeam = () => {
                                 <label>경기</label>
                                 <div className='rank_text'>정규경기</div>
                                 {/* React에서는 option에 selected를 쓰는 대신 select에서 value로 사용!  */}
-                                <select className='rank_options'>
+                                <select className='rank_options' onChange={handleSelect} value={selected}>
                                     <option className='opt' value="1">정규경기</option>
                                     <option className='opt' value="2">D리그</option>
                                 </select>
@@ -25,10 +68,10 @@ const RankTeam = () => {
                             <div className='rank_selected'>
                                 <label>년도</label>
                                 <div className='rank_text'>2022-2023</div>
-                                <select className='rank_options'>
+                                <select className='rank_options' onChange={handleSelect2} value={selected2}>
                                     <option className='opt' value="22">2022-2023</option>
                                     <option className='opt' value="21">2021-2022</option>
-                                    <option className='opt' value="10">2020-2021</option>
+                                    {/* <option className='opt' value="10">2020-2021</option> */}
                                 </select>
                             </div>
                         </div>
@@ -40,7 +83,7 @@ const RankTeam = () => {
                             <section className='rankTeam_table'>
                                 <div className='teamRanking'>
                                     <h3>팀 순위</h3>
-                                    <div className='table_wrap'>
+                                    <div className='table_wrap' style={style}>
                                         <table className='table_header'>
                                             <thead>
                                                 <tr>
@@ -77,7 +120,7 @@ const RankTeam = () => {
                                                     <td className='ranking'>7</td>
                                                     <td className='ranking'>창원 LG</td>
                                                 </tr>
-                                                <tr>
+                                                <tr className='dbPromy'>
                                                     <td className='ranking'>8</td>
                                                     <td className='ranking'>원주 DB</td>
                                                 </tr>
@@ -176,7 +219,7 @@ const RankTeam = () => {
                                                         <td className='home'>16-11</td>
                                                         <td className='away'>8-19</td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr className='dbPromy'>
                                                         <td className='win'>23</td>
                                                         <td className='lose'>31</td>
                                                         <td className='win_rate'>0.426</td>
@@ -213,10 +256,11 @@ const RankTeam = () => {
                                 </div>
                             </section>
                             {/* 팀간 승패표 */}
+                            {/* ex> 2021-2022 정규시즌 팀간 승패표 */}
                             <section className='team_winlose_table'>
                                 <div className='record'>
                                     <h3>팀간 승패표</h3>
-                                    <div className='table_wrap'>
+                                    <div className='table_wrap table_wrap2' style={style2}>
                                         <table className='table_header'>
                                             <thead>
                                                 <tr>
@@ -253,7 +297,7 @@ const RankTeam = () => {
                                                     <td className='ranking'>7</td>
                                                     <td className='ranking'>창원 LG</td>
                                                 </tr>
-                                                <tr>
+                                                <tr className='dbPromy'>
                                                     <td className='ranking'>8</td>
                                                     <td className='ranking'>원주 DB</td>
                                                 </tr>
@@ -368,7 +412,7 @@ const RankTeam = () => {
                                                         <td>2:4</td>
                                                         <td>4:2</td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr className='dbPromy'>
                                                         <td>0:6</td>
                                                         <td>5:1</td>
                                                         <td>1:5</td>
@@ -395,6 +439,7 @@ const RankTeam = () => {
                                                     <tr>
                                                         <td>1:5</td>
                                                         <td>0:6</td>
+                                                        <td>1:5</td>
                                                         <td>1:5</td>
                                                         <td>1:5</td>
                                                         <td>1:5</td>

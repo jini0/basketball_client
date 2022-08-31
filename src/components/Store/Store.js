@@ -190,6 +190,9 @@ const Store = () => {
                 <p>원주DB프로미의 다양한 굿즈들을 소개합니다.</p>
             </div>  
             <div id='product_category'>
+                <section className='inner'>
+                    <button type='submit'><Link to="/registerProduct">상품 등록</Link></button>
+                </section>
                 <section class="categoryList inner">
                     <ul class="clear" id="categorys">
                         <li onClick={all}>ALL</li>

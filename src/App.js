@@ -34,6 +34,8 @@ import EditNews from './components/News/EditNews';
 import RegisterPhoto from './components/Fan/RegisterPhoto';
 import EditPhoto from './components/Fan/EditPhoto';
 import RankTeam from './components/Game/RankTeam';
+import RegisterProduct from './components/Store/RegisterProduct';
+import { Calender } from './components/Game/Calender';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -60,6 +62,7 @@ function App() {
         <Route path='/coach' element={<Coach/>} />
         <Route path='/staff' element={<Staff/>} />
         <Route path='/cheerleading' element={<Cheer/>} />
+        <Route path='/calender' element={<Calender/>} />
         <Route path='/rankTeam' element={<RankTeam/>} />
         <Route path='/youtube' element={<Youtube/>} />
         <Route path='/photo' element={<Photo/>} />
@@ -72,6 +75,7 @@ function App() {
         <Route path='/guide' element={<Guidelines/>} />
         <Route path='/product' element={<Store/>} />
         <Route path='/store/:id' element={<ProductDetail/>} />
+        <Route path='/registerProduct' element={<RegisterProduct/>} />
         <Route path='/login' element={<Login/>} />
       </Routes>
       {/* <MainYoutube /> */}

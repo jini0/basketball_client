@@ -184,8 +184,8 @@
 /* 사진등록 버튼 */
 #photo .registerBtn {
     position: absolute;
-    top: 7%;
-    left: 2.5%;
+    top: 8%;
+    left: 11%;
 }
 #photo .registerBtn button {
     border: none;
@@ -454,22 +454,23 @@
 #uploadBox .photoUpload {
     margin: 0 auto;
     text-align: center;
-    width: 60%;
+    width: 52%;
     flex-flow: column;
     text-align: center;
     justify-content: center;
     /* background-color: #ccc; */
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('/public/images/polar3.png');
+    background-size: contain;
+    /* background-image: url('/public/images/polar3.png'); */
+    background-image: url('/public/images/memo.png');
     padding: 40px 0;
 }
 #uploadBox .photoUpload_form {
     width: 40%;
 }
 #uploadBox .photoUpload_form > p {
-    padding-top: 60px;
+    padding-top: 150px;
 }
 #uploadBox .photoUpload_form > p span {
     vertical-align: middle;
@@ -477,7 +478,7 @@
 }
 #uploadBox .photoUpload_ul {
     padding-top: 20px;
-    padding-bottom: 250px;
+    padding-bottom: 200px;
 }
 #uploadBox .photoUpload_ul label span {
     vertical-align: middle;

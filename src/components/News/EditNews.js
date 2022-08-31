@@ -34,7 +34,7 @@ const EditNews = () => {
         setFormData({
             c_title: news? news.title : "",
             c_date: news? news.date : "",
-            c_address: news? news.c_address : "",
+            c_address: news? news.address : "",
             c_view: news? news.view :""
         })
     },[news])

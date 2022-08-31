@@ -41,14 +41,14 @@ const EditNotice = () => {
         setFormData({
             c_title: notice? notice.title : "",
             c_date: notice? notice.date : "",
-            c_address1: notice? notice.c_address1 : "",
+            c_address1: notice? notice.address : "",
             c_address2: notice? notice.address2 : "",
-            c_img1: notice? notice.img1 : "",
-            c_img2: notice? notice.img2 :"",
-            c_img3: notice? notice.img3 :"",
-            c_img4: notice? notice.img4 :"",
-            c_img5: notice? notice.img5 :"",
-            c_desc: notice? notice.desc :"",
+            c_img1: notice? notice.imgsrc : "",
+            c_img2: notice? notice.imgsrc2 :"",
+            c_img3: notice? notice.imgsrc3 :"",
+            c_img4: notice? notice.imgsrc4 :"",
+            c_img5: notice? notice.imgsrc5 :"",
+            c_desc: notice? notice.noticedesc :"",
             c_view: notice? notice.view :""
         })
     },[notice])
@@ -142,7 +142,7 @@ const EditNotice = () => {
                                     <input type="hidden" name="oldimg1" value={formData.c_img1} />
                                     <input type="file" name="c_img1" className="imgView" onChange={onChangeImg}/>
                                     <label className='imgFile'>파일선택</label>
-                                    <label className='imgLabel'>{formData.c_img1}</label>
+                                    <label className='imgLabel'>{formData.c_img1}dddd</label>
                                 </div>
                             </li>
                             <li>

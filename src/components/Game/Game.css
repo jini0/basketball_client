@@ -1,3 +1,4 @@
+/* 팀순위 */
 #rankTeam {
     background: #f1f1f1;
     width: 100%;
@@ -6,13 +7,16 @@
 }
 #rankTeam .rank_category {
     width: calc(100% - 3.75rem);
+    /* width: 100%; */
     max-width: 100%;
+    margin: 0 auto;
     padding: 1.375rem 1.875rem;
     border-radius: 2.25rem;
     top: -2rem;
     box-shadow: 0.125rem 0.219rem 1.813rem 0 rgb(15 16 16 / 3%);
     background-color: #fff;
     position: relative;
+    margin-bottom: 20px;
 }
 #rankTeam .rank_category div {
     display: inline-block;
@@ -55,4 +59,128 @@
     content: "|";
     margin-left: 20px;
     color: #eee;
+}
+#rankTeam .teamR {
+    position: relative;
+}
+#rankTeam .teamR  > section{
+    position: relative;
+}
+#rankTeam .teamR  > section h3 {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-bottom: 16px;
+    padding: 20px 20px 20px 60px;
+    background-color: #fff;
+    background-image: url('/public/images/sub_title_bg.png');
+    background-repeat: no-repeat;
+    background-position: 30px;
+    background-size: 13px 18px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 20px;
+    color: #222;
+    font-weight: 700;
+    line-height: 1.4;
+    /* vertical-align: middle; */
+}
+#rankTeam .teamR  section:not(:first-child) h3 {
+    margin-top: 70px;
+}
+#rankTeam .teamR > section table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: top;
+    table-layout: fixed;
+}
+#rankTeam .teamR  > section table thead th {
+    font-size: 0.875em;
+    color: #222;
+    font-weight: 700;
+    min-height: 50px;
+    padding: 18px 0;
+    text-align: center;
+    line-height: 1.4;
+    background-color: #fff;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 2px solid #011241;
+    vertical-align: middle;
+}
+#rankTeam .teamR  > section table tbody td {
+    word-break: break-all;
+    height: 64px;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #222;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: #fff;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    vertical-align: middle;
+}
+#rankTeam .teamR  > section .data_wrap table th:last-child, #rankTeam .teamR  > section table td:last-child  {
+    border-right: 0;
+}
+#rankTeam .teamR  > section table thead tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+#rankTeam .teamR  > section table tbody tr:last-child td {
+    border-bottom: 0;
+}
+#rankTeam .teamR  > section .table_wrap .table_header thead th:first-child {
+    width: 60px;
+}
+#rankTeam .teamR  > section table thead th:last-child {
+    border-top-left-radius: 0;
+    border-right: 1px solid #e5e5e5;
+}
+#rankTeam .teamR  > section table tbody td:last-child {
+    border-top-right-radius: 0;
+}
+#rankTeam .teamR  > section .table_wrap > table {
+    display: inline-block;
+    width: 200px;
+}
+#rankTeam .teamR  > section .table_wrap > table thead th {
+    font-size: 0.875em;
+    color: #222;
+    font-weight: 700;
+}
+#rankTeam .teamR  > section .table_wrap > table thead th:nth-child(2) {
+    width: 140px;
+}
+#rankTeam .teamR  > section .table_wrap .table_header tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+#rankTeam .teamR  > section .table_wrap > table td:last-child {
+    border-right: 1px solid #e5e5e5;
+}
+#rankTeam .teamR  .rankTeam_table .table_wrap .data_wrap {
+    width: calc(100% - 200px);
+    display: inline-block;
+}
+#rankTeam .teamR  .team_winlose_table .table_wrap .data_wrap {
+    width: calc(100% - 200px);
+    display: inline-block;
+    overflow-y: auto;
+}
+#rankTeam .teamR  .team_winlose_table .table_wrap .data_wrap table {
+    width: 80rem;
+}
+#rankTeam .teamR  > section .table_wrap .data_wrap table th:first-child {
+    border-top-left-radius: 0;
+}
+#rankTeam .teamR  > section .table_wrap .data_wrap table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+#rankTeam .teamR  > section .table_wrap .data_wrap table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+#rankTeam .teamR > section .table_wrap table .dbPromy td {
+    background-color: #ecf5ef;
+    font-weight: 700;
 }

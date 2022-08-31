@@ -81,8 +81,8 @@ const News = () => {
 
     //input - formData
     const onChecked = (id) => {
-        // console.log(checked);
-        // console.log(checked[0]);
+        console.log(checked);
+        console.log(checked[0]);
         setChecked([ ...checked, id ]);
     }
 
@@ -90,16 +90,29 @@ const News = () => {
     //게시글 삭제
     // const { id } = useParams();
     const onDelete = () => {
-        console.log(checked);
+        const checkedLength = checked.length;
+        console.log(checked.length);
         console.log(checked[0]);
-        axios.delete(`http://localhost:8001/delNews/${checked[0]}`)
-        .then(res=>{
-            console.log("삭제 완료!");
-            setChecked([]);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+        //1개 삭제
+        // axios.delete(`http://localhost:8001/delNews/${checked[i]}`)
+        // .then(res=>{
+        //     console.log("삭제 완료!");
+        //     setChecked([]);
+        // })
+        // .catch(err=>{
+        //     console.log(err);
+        // })
+        //2개 이상 삭제시 -> 배열의 길이만큼 삭제시켜줘야함!
+        for(let i=0; i<checkedLength; i++){
+            axios.delete(`http://localhost:8001/delNews/${checked[i]}`)
+            .then(res=>{
+                console.log("삭제 완료!");
+                setChecked([]);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }
     }
     
     return (

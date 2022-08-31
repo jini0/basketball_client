@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import PZoomImage from './PZoomImage';
 
 const ProductDetail = () => {
+    //총상품금액 - 상태관리
+    const [totalPrice, setTotalPrice] = useState();
+
     //상세페이지 - 상세설명/상품후기/배송 menuTab설정
     // list 
     const description = document.querySelector('.detail_description');
@@ -65,64 +68,15 @@ const ProductDetail = () => {
         })
         // eslint-disable-next-line
     },[])
-    if(!store) return <div>로딩중입니다...</div>
-
-    //총상품금액
-    // const amount = document.querySelector('#amount');
-    //상품 수량 onChange이벤트
-    // const totalP = document.querySelector('.totalPrice');
+    
+    //상품 수량 input - onChange이벤트
     const onChange = (e)=>{
         const { value } = e.target;
         console.log(value);
+        setTotalPrice((store.saleprice)*value)
     }
-
-    //카트 추가
-    // const addToCart = ()=>{
-    //     // axios.post(`http://localhost:8001/addToCart`, cartData)
-    //     if(qttNum.value == 0){
-    //         window.alert("수량을 입력해주세요.");
-    //     }else{
-    //         axios.post(`${API_URL}/addToCart`, cartData)
-    //         .then(res=>{
-    //             console.log("카트추가완료");
-
-    //             if( window.confirm("장바구니에 담겼습니다. 장바구니로 가시겠습니까?")){
-    //                 Navigate('/cart');
-    //                 console.log("카트O")
-    //             }else{
-    //                 console.log("카트X")
-    //             }
-    //         })
-    //         .catch(err=>{
-    //             console.log(err);
-    //         })
-    //     }
-    // }
-
-    // const selectOnChange = (e) => {
-    //     const { value } = e.target
-    //     let num = "S"
-    //     console.log('여기에요')
-       
-    //     if(value==="1"){
-            
-          
-    //     }else if(value==="2"){
-            
-         
-    //     }else if(value==="3") {
-            
-           
-    //     } else {
-
-    //     }
-    //     setCartData({
-    //         ...cartData,
-    //         c_size : num
-    //     })
-    //     console.log(num)
-    // }
-
+    
+    if(!store) return <div>로딩중입니다...</div>
     return (
         <div id='product_detail'>
             <div className='inner'>
@@ -151,7 +105,8 @@ const ProductDetail = () => {
                                     <input type="number" placeholder='수량' min="0" id='amount' onChange={onChange} />
                                 </li>
                             </ul>
-                            <p className='totalPrice'>총 상품 금액<span>{(store.saleprice)}</span></p>
+                            <p className='totalPrice'>총 상품 금액<span>{!totalPrice ? (store.saleprice).toLocaleString('ko-KR') : totalPrice.toLocaleString('ko-KR')}원</span></p>
+                            {/* <p className='totalPrice'>총 상품 금액<span>{!totalPrice ? store.saleprice : totalPrice}</span></p> */}
                             <ul>
                                 <li><button>ADD TO CART</button></li>
                                 <li><button>구매하기</button></li>
