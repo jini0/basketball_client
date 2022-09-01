@@ -1,12 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCookie } from '../util/cookie';
 import './News.css';
 import Pagination from './Pagination';
 
 const Notice = () => {
     // const noticeTr = document.querySelector('.noticeTr');
     // const noticeTr2 = document.querySelector('.noticeTr2');
+
+    // 관리자 로그인시
+    const userId = getCookie('userId');
+    console.log(userId);
 
     // mysql로 데이터 부르기
     const [ notices, setNotices ] = useState([]);
@@ -92,8 +97,10 @@ const Notice = () => {
                 <div className='inner'>
                     <div className='notice_search'>
                         <div className='registerBtn'>
-                            <button type='submit'><Link to="/registerNotice">공지사항 등록</Link></button>
-                        </div>
+                            {userId === 'admin' ?
+                                <button type='submit'><Link to="/registerNotice">공지사항 등록</Link></button>
+                            : ''}
+                        </div> 
                         <form onSubmit={e => onSearch(e)}>
                             <div className='form_select'>
                                 <div className='text'>제목</div>

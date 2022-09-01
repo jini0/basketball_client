@@ -1,10 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCookie } from '../util/cookie';
 import './News.css';
 import Pagination from './Pagination';
 
 const News = () => {
+    // 관리자 로그인시
+    const userId = getCookie('userId');
+    console.log(userId);
+
     //check한 애들 선택하기 
     const [ checked, setChecked ] = useState([]);
     // mysql로 데이터 부르기
@@ -125,9 +130,13 @@ const News = () => {
                 <div className='inner'>
                     <div className='notice_search'>
                         <div className='registerBtn'>
-                            <button type='submit'><Link to="/registerNews">게시물 등록</Link></button>
-                            <button type='submit'><Link to={`/editNews/${checked[0]}`}>수정</Link></button>
-                            <button type='submit' onClick={onDelete}>삭제</button>
+                            {userId === 'admin' ?
+                                <>
+                                <button type='submit'><Link to="/registerNews">게시물 등록</Link></button>
+                                <button type='submit'><Link to={`/editNews/${checked[0]}`}>수정</Link></button>
+                                <button type='submit' onClick={onDelete}>삭제</button>
+                                </>
+                            : '' }
                         </div>
                         <form onSubmit={onSearch}>
                             <div className='form_select'>

@@ -2,7 +2,10 @@ import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs';
 import { SiNaver } from 'react-icons/si';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { getCookie, removeCookie } from '../components/util/cookie';
+import { setLogout } from '../components/modules/logincheck';
 
 const Header = () => {
     // //header 메뉴(nav/gnb) 스크롤시 부드럽게 
@@ -21,13 +24,41 @@ const Header = () => {
     //     })
     // // eslint-disable-next-line
     // },[])
+
+    const navigate = useNavigate();
+    const userId = getCookie('userId');
+    const isLogin = useSelector(state=>state.logincheck.isLogin);
+    const dispatch = useDispatch();
+    const logoutClick = () => {
+        removeCookie('userName');
+        removeCookie('userId');
+        dispatch(setLogout());
+        navigate('/');
+        alert('로그아웃되었습니다.')
+    }
+
+    console.log(isLogin);
     return (
         <div id="header">
             <div id='sign_nav'>
                 <div className='inner'>
                     <ul>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/join">Join</Link></li>
+                        { isLogin &&
+                            <>
+                                {/* <li><Link to = {`/myPage/${userId}`}>{userId}</Link></li> */}
+                                <li><Link to ="/myPage">{userId}</Link></li>
+                                <li onClick={logoutClick}>Logout</li>
+                                {/* <li><Link to="/">회원정보수정</Link></li> */}
+                            </>
+                        }
+                        { isLogin ||
+                            <>
+                                <li><Link to="/login">Login</Link></li>
+                                <li><Link to = "/join">Join</Link></li>
+                            </>
+                        }
+                        {/* <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/join">Join</Link></li> */}
                         {/* <li><FontAwesomeIcon icon="fa-brands fa-facebook" /></li> */}
                         <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/' target="_blank" rel="noopener noreferrer"><BsInstagram /></a></li>
                         <li className='snsIcon'><a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg" target="_blank" rel="noopener noreferrer"><BsYoutube /></a></li>
