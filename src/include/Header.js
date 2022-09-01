@@ -27,7 +27,7 @@ const Header = () => {
                 <div className='inner'>
                     <ul>
                         <li><Link to="/login">Login</Link></li>
-                        <li>Join</li>
+                        <li><Link to="/join">Join</Link></li>
                         {/* <li><FontAwesomeIcon icon="fa-brands fa-facebook" /></li> */}
                         <li className='snsIcon'><a href='https://www.instagram.com/dbpromy_official/' target="_blank" rel="noopener noreferrer"><BsInstagram /></a></li>
                         <li className='snsIcon'><a href="https://www.youtube.com/channel/UCugMqpcZRShKcIzDVjS8uxg" target="_blank" rel="noopener noreferrer"><BsYoutube /></a></li>

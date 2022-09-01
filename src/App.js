@@ -36,6 +36,7 @@ import EditPhoto from './components/Fan/EditPhoto';
 import RankTeam from './components/Game/RankTeam';
 import RegisterProduct from './components/Store/RegisterProduct';
 import { Calender } from './components/Game/Calender';
+import Join from './components/Member/Join';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
         <Route path='/store/:id' element={<ProductDetail/>} />
         <Route path='/registerProduct' element={<RegisterProduct/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/join' element={<Join/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />
