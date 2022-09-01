@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getCookie } from '../util/cookie';
 import './News.css';
 
 const DetailNotice = () => {
     const navigate = useNavigate();
+    // 관리자 로그인시
+    const userId = getCookie('userId');
+    console.log(userId);
 
     //button - 목록으로 보내는 함수
     function onSubmit(){
@@ -50,10 +54,12 @@ const DetailNotice = () => {
             </div> 
             <div id='detail_notice'>
                 <div className='inner'>
+                {userId === 'admin' ?
                     <div className='noticeBtn'>
                         <button id='editBtn' type='submit'><Link to={`/editNotice/${notice.id}`}>수정하기</Link></button>
                         <button id='deleteBtn' onClick={onDelete}>삭제하기</button>
                     </div>
+                : ''}
                     <article>
                         <div className='detail_notice_title'>
                             <h2>{notice.title}</h2>

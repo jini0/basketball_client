@@ -66,11 +66,12 @@ const Join = () => {
         let userId = document.querySelector('#userId');
         const res = await axios.get('http://localhost:8001/idCheck');  //id 중복확인
         const idDB = res.data;
+        console.log(idDB);
         let sameNum = 0;
         let idReg = /^[A-Za-z0-9]{4,12}$/;  //영문자/숫자 조합하여 4-12자리
         idDB.forEach( id => {
-            if(userId.value === id.value){
-                sameNum++;
+            if(userId.value === id.userid){
+                sameNum++;  //중복횟수++
             }
         });
         if(sameNum !== 0) {
@@ -144,8 +145,8 @@ const Join = () => {
     //   }
     // - 비밀번호 체크
     const onPwCh = () => {
-        const userPw = document.querySelector("#userPass");
-        const userPwch = document.querySelector("#userPwch");
+        const userPw = document.querySelector("#userPw");
+        const userPwch = document.querySelector("#pwch");
         userPwch.addEventListener('keyup', ()=>{
             if(userPw.value !== userPwch.value) {
                 alert("비밀번호가 일치하지 않습니다.");
@@ -158,58 +159,64 @@ const Join = () => {
     const [ passCheck, setPassCheck ] = useState(false);
     // *폼 submit이벤트  
     const onSubmit = (e) => {
-        //form에 원래 연결된 이벤트를 제거 --> 다른 페이지로 넘어가지않음!!(이게 없으면 클릭시 새로운 페이지로 넘어가짐!)
-        e.preventDefault();                     
+        console.log(formData.userPhone);
+        // if(window.confirm("가입하시겠습니까?")){
+            //form에 원래 연결된 이벤트를 제거 --> 다른 페이지로 넘어가지않음!!(이게 없으면 클릭시 새로운 페이지로 넘어가짐!)
+            e.preventDefault();                     
 
-        // //전화번호가 숫자인지 체크
-        // if(isNaN(formData.userPhone) || isNaN(formData.userPhone2) || isNaN(formData.userPhone3)){
-        //     alert("전화번호는 숫자만 입력해주세요");
-        //     setFormData({
-        //         ...formData,
-        //         userPhone:"",
-        //         userPhone2:"",
-        //         userPhone3:""
-        //     })
-        // } else if(formData.userPhone.length>=4 || formData.userPhone2.length>=5 || formData.userPhone3.length>=5 ) {
-        //     alert("전화번호 양식에 적합하지 않습니다.");
-        // }    
-        // 비밀번호 체크
-        let password = document.querySelector("#userPw").value;
-        console.log(password);
+            //전화번호가 숫자인지 체크
+            if(isNaN(formData.userPhone) || isNaN(formData.userPhone2) || isNaN(formData.userPhone3)){
+                alert("전화번호는 숫자만 입력해주세요");
+                setFormData({
+                    ...formData,
+                    userPhone:"",
+                    userPhone2:"",
+                    userPhone3:""
+                })
+            } else if(formData.userPhone.length>=4 || formData.userPhone2.length>=5 || formData.userPhone3.length>=5 ) {
+                alert("전화번호 양식에 적합하지 않습니다.");
+            }    
+            // 비밀번호 체크
+            let passVal = document.querySelector("#userPw").value;
+            console.log(passVal);
 
-        let passwordReg =  /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;    //영어(소대문자), 숫자 사용하여 8-20자
-        if(passwordReg.test(password) === false) {
-            alert('영문자/숫자 조합하여 8-20자 입력해주세요.')
-        } else {
-            setPassCheck(true);
-            //input에 값이 있는지 체크하고
-            //입력이 다 되어있으면 post전송   -- insert member 해주면 됨!!!
-            //필수입력사항 제외하고!! 다 값이 있을때
-            if(formData.userId !== "" && formData.userPass !== "" && formData.userName !== ""
-            && formData.userPhone !== "" && formData.userPhone2 !== "" && formData.userPhone3 !== ""
-            && formData.userGender !== "" && formData.userMail !== "") {
-                if(idCheck && mailCheck){
-                    addMember();
-                } else if(!idCheck) { //아이디 체크
-                    alert("아이디 중복확인을 해주세요.");
-                } else if(!mailCheck) { //이메일 체크
-                    alert("이메일 형식이 맞지 않습니다.");
-                } else if(!passCheck) { //비밀번호 체크
-                    alert("비밀번호 형식이 맞지 않습니다.");
+            let passwordReg =  /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;    //영어(소대문자), 숫자 사용하여 8-20자
+            if(passwordReg.test(passVal) === false) {
+                alert('비밀번호는 영문자/숫자를 조합하여 8-20자 입력해주세요.')
+            } else {
+                setPassCheck(true);
+                //input에 값이 있는지 체크하고
+                //입력이 다 되어있으면 post전송   -- insert member 해주면 됨!!!
+                //필수입력사항 제외하고!! 다 값이 있을때
+                if(formData.userId !== "" && formData.userPass !== "" && formData.userName !== ""
+                && formData.userPhone !== "" && formData.userPhone2 !== "" && formData.userPhone3 !== ""
+                && formData.userGender !== "" && formData.userMail !== "") {
+                    if(idCheck && mailCheck){
+                        addMember();
+                    } else if(!idCheck) { //아이디 체크
+                        alert("아이디 중복확인을 해주세요.");
+                    } else if(!mailCheck) { //이메일 체크
+                        alert("이메일 형식이 맞지 않습니다.");
+                    } else if(!passCheck) { //비밀번호 체크
+                        alert("비밀번호 형식이 맞지 않습니다.");
+                    }
+                }
+                else {
+                    alert("필수 기입란을 모두 입력해주세요.")
+                    // console.log(formData.userGender);
+                    // console.log(formData.userBirthY);
+                    // console.log(formData.userBirthM);
+                    // console.log(formData.userBirthD);
+                    console.log(formData.userMail);
+                    console.log(formData.userPhone);
+                    console.log(formData.userPhone2);
+                    console.log(formData.userPhone3);
                 }
             }
-            else {
-                alert("필수 기입란을 모두 입력해주세요.")
-                // console.log(formData.userGender);
-                // console.log(formData.userBirthY);
-                // console.log(formData.userBirthM);
-                // console.log(formData.userBirthD);
-                console.log(formData.userMail);
-                console.log(formData.userPhone);
-                console.log(formData.userPhone2);
-                console.log(formData.userPhone3);
-            }
-        }
+        // } 
+        // else {
+        //     console.log("가입이 취소되었습니다.");
+        // }
     }
 
     // *addMember()함수 만들기
@@ -217,6 +224,7 @@ const Join = () => {
         axios.post('http://localhost:8001/join', formData)  
         .then(res=>{
             alert('등록되었습니다.');
+            console.log(res);
             navigate('/');      
         })
         .catch(e=>{
