@@ -37,6 +37,7 @@ import RankTeam from './components/Game/RankTeam';
 import RegisterProduct from './components/Store/RegisterProduct';
 import { Calender } from './components/Game/Calender';
 import Join from './components/Member/Join';
+import Cart from './components/Member/Cart';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
         <Route path='/registerProduct' element={<RegisterProduct/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/join' element={<Join/>} />
+        <Route path='/cart' element={<Cart/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />

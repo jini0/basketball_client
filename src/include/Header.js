@@ -48,6 +48,7 @@ const Header = () => {
                                 {/* <li><Link to = {`/myPage/${userId}`}>{userId}</Link></li> */}
                                 <li><Link to ="/myPage">{userId}</Link></li>
                                 <li onClick={logoutClick}>Logout</li>
+                                <li><Link to = "/cart">Cart</Link></li>
                                 {/* <li><Link to="/">회원정보수정</Link></li> */}
                             </>
                         }
@@ -55,6 +56,7 @@ const Header = () => {
                             <>
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to = "/join">Join</Link></li>
+                                <li><Link to = "/cart">Cart</Link></li>
                             </>
                         }
                         {/* <li><Link to="/login">Login</Link></li>

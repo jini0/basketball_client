@@ -164,7 +164,7 @@ const Join = () => {
             //form에 원래 연결된 이벤트를 제거 --> 다른 페이지로 넘어가지않음!!(이게 없으면 클릭시 새로운 페이지로 넘어가짐!)
             e.preventDefault();                     
 
-            //전화번호가 숫자인지 체크
+            //전화번호가 숫자인지 체크 -varchar로 해서!!(int로 하면 010입력해도 10으로 저장됨..! /0123하면 123이 저장되고!~~)
             if(isNaN(formData.userPhone) || isNaN(formData.userPhone2) || isNaN(formData.userPhone3)){
                 alert("전화번호는 숫자만 입력해주세요");
                 setFormData({
@@ -250,7 +250,7 @@ const Join = () => {
                                 <tr className='table_id'>
                                     <th>아이디<span>*</span></th>
                                     <td>
-                                        <input name="userId" id='userId' placeholder='영문자/숫자를 조합하여 4-12자리 입력' type="text" value={formData.userId} onChange={onChange}/><button type='submit' onClick={(e)=>{onIdCheck(e);}}>중복확인</button>
+                                        <input name="userId" id='userId' placeholder='영문자/숫자를 조합하여 4-12자리 입력' type="text" value={formData.userId} onChange={onChange}/><button type='button' onClick={(e)=>{onIdCheck(e);}}>중복확인</button>
                                     </td>
                                 </tr>
                                 <tr className='join_input'>

@@ -182,7 +182,7 @@ width: 35%;
     overflow: visible;
 }
 #join_content .join_form .table_id input {
-    width: 65%;
+    width: 75%;
     height: 42px;
     padding: 0 12px 0 20px;
     background-color: #fff;
@@ -281,7 +281,7 @@ width: 35%;
 }
 #join_content .join_form .table_add button {
     position: absolute;
-    right: 5%;
+    right: -8%;
     top: 5%;
     width: 30%;
     border: none;
@@ -324,4 +324,140 @@ width: 35%;
 }
 #join_content .join_form .table_submit button:nth-child(1){
     margin-right: 10px;
+}
+
+/* 장바구니 */
+#cart {
+    padding-top: 12.5%;
+    padding-bottom: 200px;
+    background: #f1f1f1;
+    margin: 0 auto;
+}
+#cart .inner {
+    text-align: center;
+}
+#cart .inner h2 {
+    font-size: 2.500em;
+    color: #011B47;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+#cart .cartContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#cart .cartContent form > div {
+    text-align: left;
+}
+#cart .cartContent form > div button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border: 1.2px solid #011B47;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #011B47;
+}
+#cart .cartContent .cartTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+#cart .cartTable tr {
+    width: 100%;
+}
+#cart .cartTable tr td {
+    border-top: 1px solid #fff;
+    padding: 16px 0;
+}
+#cart .cartTable tr td:nth-child(1) {
+    width: 5%;
+}
+#cart .cartTable tr td:nth-child(2) {
+    width: 20%;
+}
+#cart .cartTable tr td:nth-child(3) {
+    width: 35%;
+}
+#cart .cartTable tr td:nth-child(4) {
+    width: 10%;
+}
+#cart .cartTable tr td:nth-child(5) {
+    width: 10%;
+}
+#cart .cartTable tr td:nth-child(6) {
+    width: 10%;
+}
+#cart .cartTable tr td:nth-child(7) {
+    width: 10%;
+}
+#cart .cartTable tr:last-child {
+    border-bottom: 1.1px solid #ccc;
+}
+#cart .cartTable img {
+    width: 100px;
+    height: 100px;
+}
+#cart .cartTable .table_title {
+    background: #011B47;
+    color: #fff;
+}
+#cart .cart_total {
+    width: 100%;
+    text-align: left;
+    /* margin-top: 60px; */
+}
+#cart .cart_total table {
+    border-collapse: collapse;
+    width: 100%;
+    /* margin-top: 15px; */
+}
+#cart .cart_total table tbody {
+    width: 100%;
+}
+/* #cart .cart_total table tr:not(:last-child) td {
+    padding: 30px 40px;
+} */
+#cart .cart_total table tr:nth-child(1) td {
+    padding: 40px 40px;
+}
+#cart .cart_total table tr:nth-child(2) td {
+    padding: 0 40px 40px 40px;
+}
+#cart .cart_total table tr:last-child td {
+    padding: 30px 40px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+#cart .cart_total table tr:last-child td:last-child {
+    color: #03662c;
+    /* color: #011B47; */
+    font-weight: 700;
+}
+#cart .cart_total table tr:nth-child(2) {
+    border-bottom: 2px solid #ccc;
+}
+#cart .cart_total table tr td:last-child {
+    float: right;
+}
+#cart .clear::after {
+    content: "";
+    display: block;
+    clear: both;
+ }
+#cart .cartBtn {
+    text-align: right;
+    padding-top: 50px;
+    padding-right: 30px;
+}
+#cart .cartBtn button {
+    border: none;
+    background: #011B47;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.5em;
+    width: 200px;
+    height: 60px;
 }

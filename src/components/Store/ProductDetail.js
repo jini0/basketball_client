@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PZoomImage from './PZoomImage';
 
 const ProductDetail = () => {
+    const navigate = useNavigate();
     //총상품금액 - 상태관리
     const [totalPrice, setTotalPrice] = useState();
+    //장바구니
+    const [ cartData, setCartData ] = useState();
 
     //상세페이지 - 상세설명/상품후기/배송 menuTab설정
     // list 
@@ -54,21 +57,51 @@ const ProductDetail = () => {
             const results = result.data;
             console.log(results);
             setStore(results[0]); 
-            // setCartData({
-            //     c_name : results[0].name,
-            //     c_img : results[0].imgsrc,
-            //     c_price : results[0].price,
-            //     c_size : "",
-            //     c_amount : "",
-            //     c_userid : ""
-            // });
+            setCartData({
+                c_name : results[0].name,
+                c_span : results[0].span,
+                c_saleprice : results[0].saleprice,
+                c_amount : "",
+                c_img : results[0].imgsrc,
+                c_select : results[0].select,
+                c_userid : ""
+            });
         })   
         .catch(e=> {
             console.log(e);
         })
         // eslint-disable-next-line
     },[])
+
+    //카트 추가
+    const pAmount = document.querySelector('#amount');
+    const addCart = ()=>{
+        // eslint-disable-next-line
+        if(pAmount.value == 0){
+            window.alert("수량을 입력해주세요.");
+        }else{
+            axios.post(`http://localhost:8001/addCart`, cartData)
+            .then(res=>{
+                console.log("카트추가완료");
     
+                if( window.confirm("장바구니에 담겼습니다. 장바구니로 가시겠습니까?")){
+                    navigate('/cart');
+                    console.log("확인")
+                }else{
+                    console.log("실패")
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }
+    }
+    
+    //select - onChange이벤트
+    const onChangeSelect = (e)=>{
+        const { value } = e.target;
+        console.log(value);
+    }
     //상품 수량 input - onChange이벤트
     const onChange = (e)=>{
         const { value } = e.target;
@@ -96,7 +129,7 @@ const ProductDetail = () => {
                                 <li><span>판매자</span> {store.seller}</li>
                                 <li>
                                     <span>옵션선택</span>
-                                    <select>
+                                    <select onChange={onChangeSelect}>
                                         <option value="0" disabled="">선수 선택</option>
                                         <option value="1" disabled="">허웅[대형]</option>
                                         <option value="2" disabled="">정준원[대형]</option>
@@ -108,7 +141,7 @@ const ProductDetail = () => {
                             <p className='totalPrice'>총 상품 금액<span>{!totalPrice ? (store.saleprice).toLocaleString('ko-KR') : totalPrice.toLocaleString('ko-KR')}원</span></p>
                             {/* <p className='totalPrice'>총 상품 금액<span>{!totalPrice ? store.saleprice : totalPrice}</span></p> */}
                             <ul>
-                                <li><button>ADD TO CART</button></li>
+                                <li><button onClick={addCart}>ADD TO CART</button></li>
                                 <li><button>구매하기</button></li>
                             </ul>
                         </div>
