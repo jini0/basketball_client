@@ -3,6 +3,7 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import './Team.css';
 import PlayerList from './PlayerList';
+// import { API_URL } from '../config/contansts';
 
 const Player = () => {
     // 변수 지정
@@ -33,6 +34,7 @@ const Player = () => {
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/players")
+        // axios.get(`${API_URL}/players`)
         .then(result=>{
             const players = result.data;
             console.log(players);

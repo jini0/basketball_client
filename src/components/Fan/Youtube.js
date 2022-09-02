@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+// import { API_URL } from '../config/contansts';
 import './Fan.css';
 
 const Youtube = () => {
@@ -29,6 +30,7 @@ const Youtube = () => {
     //전체
     useEffect(()=>{ 
         axios.get("http://localhost:8001/youtubes")
+        // axios.get(`${API_URL}/youtubes`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -46,6 +48,7 @@ const Youtube = () => {
     //최근영상 재생
     useEffect(()=>{ 
         axios.get('http://localhost:8001/youtubeLatest')
+        // axios.get(`${API_URL}/youtubeLatest`)
         .then(result=>{
             const resultB = result.data;
             console.log(resultB);
@@ -62,6 +65,7 @@ const Youtube = () => {
         console.log(id);
         // 클릭시 영상 재생
         axios.get(`http://localhost:8001/youtube/${id}`)
+        // axios.get(`${API_URL}/youtube/${id}`)
         .then(res=>{
             console.log(res);
             setyoutube(res.data);
@@ -74,6 +78,7 @@ const Youtube = () => {
 
         // 조회수
         axios.put(`http://localhost:8001/viewYoutube/${id}`)
+        // axios.put(`${API_URL}/viewYoutube/${id}`)
         .then(res=>{
             console.log(res);
             setyoutube(res.data);

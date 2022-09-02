@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../config/contansts';
 import './Store.css';
 
 const Store = () => {
@@ -9,7 +10,8 @@ const Store = () => {
     const [ allStores, setAllStores ] = useState([]);
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/stores")
+        // axios.get("http://localhost:8001/stores")
+        axios.get(`${API_URL}/stores`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -76,7 +78,8 @@ const Store = () => {
     const sellList = document.querySelector('.sellList');
 
     function upload(){
-        axios.get("http://localhost:8001/stores")
+        // axios.get("http://localhost:8001/stores")
+        axios.get(`${API_URL}/stores`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -94,7 +97,8 @@ const Store = () => {
         })
     }
     function ranking(){
-        axios.get("http://localhost:8001/storesRank")
+        // axios.get("http://localhost:8001/storesRank")
+        axios.get(`${API_URL}/storesRank`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -111,7 +115,8 @@ const Store = () => {
         })
     }
     function lowPrice(){
-        axios.get("http://localhost:8001/storesLow")
+        // axios.get("http://localhost:8001/storesLow")
+        axios.get(`${API_URL}/storesLow`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -128,7 +133,8 @@ const Store = () => {
         })
     }
     function highPrice(){
-        axios.get("http://localhost:8001/storesHigh")
+        // axios.get("http://localhost:8001/storesHigh")
+        axios.get(`${API_URL}/storesHigh`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -164,7 +170,8 @@ const Store = () => {
     //     })
     // }
     function sellRank(){
-        axios.get("http://localhost:8001/storesSell")
+        // axios.get("http://localhost:8001/storesSell")
+        axios.get(`${API_URL}/storesSell`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);

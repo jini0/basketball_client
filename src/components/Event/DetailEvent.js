@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Event.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+// import { API_URL } from '../config/contansts';
 
 const DetailEvent = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const DetailEvent = () => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8001/event/${id}`)
+        // axios.get(`${API_URL}/event/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);

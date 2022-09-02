@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setCookie } from '../util/cookie';
 import { setLogin } from '../modules/logincheck';
 import './Member.css';
+// import { API_URL } from '../config/contansts';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Login = () => {
     const onLogin = async () => {
         let userId = document.querySelector('#userId');
         const response = await axios.get(`http://localhost:8001/getId/${userId.value}`);
+        // const response = await axios.get(`${API_URL}/getId/${userId.value}`);
         const getId = response.data;
         console.log(getId);
         if(getId.length <= 0) {
@@ -37,6 +39,7 @@ const Login = () => {
             alert('아이디와 비밀번호를 입력해주세요');
         } else {
             axios.post('http://localhost:8001/login', loginData)
+            // axios.post(`${API_URL}/login`, loginData)
             //로그인 되었을 때,
             .then(result => {  
                 let { userid, name } = result.data; //구조분해할당

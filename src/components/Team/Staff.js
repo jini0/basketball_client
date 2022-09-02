@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+// import { API_URL } from '../config/contansts';
 import './Team.css';
 
 const Staff = () => {
@@ -8,6 +9,7 @@ const Staff = () => {
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/staff")
+        // axios.get(`${API_URL}/staff`)
         .then(result=>{
             const staffs = result.data;
             console.log(staffs);

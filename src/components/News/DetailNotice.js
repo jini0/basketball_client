@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+// import { API_URL } from '../config/contansts';
 import { getCookie } from '../util/cookie';
 import './News.css';
 
@@ -21,6 +22,7 @@ const DetailNotice = () => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8001/notice/${id}`)
+        // axios.get(`${API_URL}/notice/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -37,6 +39,7 @@ const DetailNotice = () => {
     //게시글 삭제
     const onDelete = () => {
         axios.delete(`http://localhost:8001/delNotice/${id}`)
+        // axios.delete(`${API_URL}/delNotice/${id}`)
         .then(res=>{
             console.log("삭제 완료!");
             navigate(-1);

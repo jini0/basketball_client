@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+// import { API_URL } from './config/contansts';
 
 const MainColumn = () => {
     // mysql로 데이터 부르기
@@ -11,6 +12,7 @@ const MainColumn = () => {
     //notice
     useEffect(()=>{ 
         axios.get("http://localhost:8001/noticesmain")
+        // axios.get(`${API_URL}/noticesmain`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -27,6 +29,7 @@ const MainColumn = () => {
     const noticesClick = (id) => {
         console.log(id);
         axios.put(`http://localhost:8001/viewNoticeMain/${id}`)
+        // axios.put(`${API_URL}/viewNoticeMain/${id}`)
         .then(res=>{
             console.log(res);
             setmainNotices(res.data);
@@ -40,6 +43,7 @@ const MainColumn = () => {
     //news 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/newsmain")
+        // axios.get(`${API_URL}/newsmain`)
         .then(result=>{
             const resultB = result.data;
             console.log(resultB);
@@ -55,6 +59,7 @@ const MainColumn = () => {
     const newsClick = (id) => {
         console.log(id);
         axios.put(`http://localhost:8001/viewNewsMain/${id}`)
+        // axios.put(`${API_URL}/viewNewsMain/${id}`)
         .then(res=>{
             console.log(res);
             setmainNews(res.data);

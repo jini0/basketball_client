@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import { API_URL } from "./config/contansts";
 
 // https://poew.tistory.com/707
 // https://fromnowwon.tistory.com/entry/react-slick-slider
@@ -66,6 +67,7 @@ const MainMovie = () => {
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/youtubemain")
+        // axios.get(`${API_URL}/youtubemain`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -81,6 +83,7 @@ const MainMovie = () => {
     const youtubeClick = (id) => {
         console.log(id);
         axios.put(`http://localhost:8001/viewYoutubeMain/${id}`)
+        // axios.put(`${API_URL}/viewYoutubeMain/${id}`)
         .then(res=>{
             console.log(res);
             setmainYoutubes(res.data);

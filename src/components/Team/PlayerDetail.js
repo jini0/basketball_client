@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Team.css';
+// import { API_URL } from '../config/contansts';
 
 const PlayerDetail = () => {
     // mysql로 데이터 불러오기
@@ -10,6 +11,7 @@ const PlayerDetail = () => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8001/player/${id}`)
+        // axios.get(`${API_URL}/player/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);

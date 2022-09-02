@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { API_URL } from '../config/contansts';
 import { getCookie } from '../util/cookie';
 import './News.css';
 import Pagination from './Pagination';
@@ -24,6 +25,7 @@ const Notice = () => {
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/notices")
+        // axios.get(`${API_URL}/notices`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -50,6 +52,7 @@ const Notice = () => {
         if(search === null || search === '') {  //검색어가 없을 경우(null이거나 '빈값') 경고창 + 전체리스트 반환
             alert("검색어를 입력하시오.")
             axios.get("http://localhost:8001/notices")
+            // axios.get(`${API_URL}/notices`)
             .then(result=>{
                 const resultA = result.data;
                 console.log(resultA);
@@ -76,6 +79,7 @@ const Notice = () => {
     const noticeClick = (id) => {
         console.log(id);
         axios.put(`http://localhost:8001/view/${id}`)
+        // axios.put(`${API_URL}/view/${id}`)
         .then(res=>{
             console.log(res);
             // setNotices(res.data.view+1);

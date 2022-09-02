@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Fan.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import { API_URL } from '../config/contansts';
 
 const Photo = () => {
     // cf.https://wazacs.tistory.com/31 <React 에서 select 사용하기>
@@ -30,6 +31,7 @@ const Photo = () => {
 
     useEffect(()=>{ 
         axios.get("http://localhost:8001/photos")
+        // axios.get(`${API_URL}/photos`)
         .then(result=>{
             const players = result.data;
             console.log(players);
@@ -47,6 +49,7 @@ const Photo = () => {
     const photoClick = (id) => {
         console.log(id);
         axios.put(`http://localhost:8001/viewPhoto/${id}`)
+        // axios.put(`${API_URL}/viewPhoto/${id}`)
         .then(res=>{
             console.log(res);
             // setNotices(res.data.view+1);

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { API_URL } from '../config/contansts';
 
 const RegisterPhoto = () => {
     const today = new Date(); 
@@ -55,6 +56,7 @@ const RegisterPhoto = () => {
         //등록함수
         function registerPhoto(){
             axios.post('http://localhost:8001/registerPhoto', (formData))
+            // axios.post(`${API_URL}/registerPhoto`, (formData))
             .then(res=>{
                 console.log(res);
                 navigate('/photo');   // '/photo'(이전)으로 이동

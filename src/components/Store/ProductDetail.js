@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+// import { API_URL } from '../config/contansts';
 import PZoomImage from './PZoomImage';
 
 const ProductDetail = () => {
@@ -53,6 +54,7 @@ const ProductDetail = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
     useEffect(()=>{
         axios.get(`http://localhost:8001/store/${id}`)
+        // axios.get(`${API_URL}/store/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -81,6 +83,7 @@ const ProductDetail = () => {
             window.alert("수량을 입력해주세요.");
         }else{
             axios.post(`http://localhost:8001/addCart`, cartData)
+            // axios.post(`${API_URL}/addCart`, cartData)
             .then(res=>{
                 console.log("카트추가완료");
     
