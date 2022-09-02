@@ -47,7 +47,7 @@ import { setLogin } from './components/modules/logincheck';
 function App() {
     // 새로고침되면 로그아웃 되는거 해결
     const dispatch = useDispatch();
-    const uname = getCookie('username');
+    const uname = getCookie('userName');
     useEffect(()=>{
       if(uname){        //uname이 있으면(로그인한거)
         dispatch(setLogin())
