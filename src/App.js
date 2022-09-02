@@ -52,6 +52,7 @@ function App() {
       if(uname){        //uname이 있으면(로그인한거)
         dispatch(setLogin())
       }
+      // eslint-disable-next-line
     },[])
   return (
     <div className="App">
