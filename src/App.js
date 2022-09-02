@@ -38,9 +38,21 @@ import RegisterProduct from './components/Store/RegisterProduct';
 import { Calender } from './components/Game/Calender';
 import Join from './components/Member/Join';
 import Cart from './components/Member/Cart';
+import { useDispatch } from 'react-redux';
+import { getCookie } from './components/util/cookie';
+import { useEffect } from 'react';
+import { setLogin } from './components/modules/logincheck';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
+    // 새로고침되면 로그아웃 되는거 해결
+    const dispatch = useDispatch();
+    const uname = getCookie('username');
+    useEffect(()=>{
+      if(uname){        //uname이 있으면(로그인한거)
+        dispatch(setLogin())
+      }
+    },[])
   return (
     <div className="App">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
