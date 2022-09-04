@@ -93,7 +93,7 @@ function App() {
         <Route path='/registerProduct' element={<RegisterProduct/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/join' element={<Join/>} />
-        <Route path='/cart' element={<Cart/>} />
+        <Route path='/cart/:idid' element={<Cart/>} />
       </Routes>
       {/* <MainYoutube /> */}
       <Aside />

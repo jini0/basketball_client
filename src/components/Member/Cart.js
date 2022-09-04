@@ -1,14 +1,15 @@
-// import axios from 'axios';
 import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-// import CartList from './CartList';
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useParams } from 'react-router-dom';
+// import CartList from './CartList';
 // import { API_URL } from '../config/contansts';
-// import { useParams } from 'react-router-dom';
 
 const Cart = () => {
+    const { idid } = useParams();
+
     const [ subPrice, setSubPrice] = useState(0);       //제품 합계
     const [ totalPrice, setTotalPrice] = useState(0);   //배송비
     const [ delivery, setDelivery] = useState(2500);    //총금액
@@ -26,7 +27,7 @@ const Cart = () => {
     const [ carts, setCarts ] = useState([]);
     
     useEffect(()=>{
-        axios.get(`http://localhost:8001/cart`)
+        axios.get(`http://localhost:8001/cart/${idid}`)
         // axios.get(`${API_URL}/cart`)
         .then((result) => {
             const carts = result.data;
@@ -54,7 +55,7 @@ const Cart = () => {
             console.log(e);
         })
     // eslint-disable-next-line 
-    },[checked])
+    },[idid,checked])
 
     const onDelete = () => {
         const checkedLength = checked.length;   // check한 목록들을 -> 배열에 담음
@@ -97,10 +98,11 @@ const Cart = () => {
                                     <td>수량</td>
                                     <td>총 가격</td>
                                 </tr>
-                                {carts.map(cart=>(
+                                {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
+                                    : carts.map(cart=>(
                                     <tr>
                                         <td><input type="checkbox" value={cart.id} onChange={()=>onChecked(cart.id)}/></td>
-                                        <td><img src={cart.imgsrc} alt=""/></td>
+                                        <td><img src={"../"+cart.imgsrc} alt=""/></td>
                                         <td>{cart.name}</td>
                                         <td>{cart.saleprice.toLocaleString('ko-KR')}원</td>
                                         <td>{cart.select}허웅</td>
@@ -108,6 +110,10 @@ const Cart = () => {
                                         <td className='cartPrice'>{(cart.saleprice*cart.amount).toLocaleString('ko-KR')}원</td>
                                     </tr>
                                 ))}
+                                {/* {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
+                                    : carts.map((cart, index)=>(<CartList key={index} cart={cart}/> ))} */}
+                                {/* {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
+                                    : carts.map((cart, index)=>(<Cart key={index} cart={cart}/> ))} */}
                                 {/* {carts.map(cart=>(
                                     <CartList key={cart.id} cart={cart} />
                                 ))} */}

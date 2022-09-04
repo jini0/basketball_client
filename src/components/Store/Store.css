@@ -234,6 +234,7 @@
 } */
 #product_detail #detailRight > div {
     height: 100%;
+    position: relative;
 }
 #product_detail #detailRight h2 {
     margin: 20px 0 60px 0;
@@ -340,7 +341,40 @@
 #product_detail #detailRight ul:nth-child(3) li:nth-child(1) {
     margin-right: 20px;
 }
-
+/* 상세페이지 - 수정/삭제 버튼 */
+#product_detail #detailRight .productBtn {
+    position: absolute;
+    top: 15%;
+    right: -26%;
+}
+#product_detail #detailRight .productBtn button {
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #166c35;
+    border: none;
+    border-radius: 0.375rem;
+    outline: none;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+    margin-top: 35px;
+}
+#product_detail #detailRight .productBtn button:hover {
+    background-color: #166c36bc;
+}
+#product_detail #detailRight .productBtn button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
 /* 상세페이지 - 상품 설명 */
 #detail_desc {
     width: 100%;
@@ -400,3 +434,75 @@
 #detail_desc .detail_delivery_desc img {
     width: 100%;
 }
+
+
+/* 상품등록페이지 */
+#register_product {
+    padding-top: 40px;
+    padding-bottom: 120px;
+    background: #f1f1f1;
+    margin: 0 auto;
+}
+#register_product .inner {
+    margin: 0 auto;
+    width: 50%;
+    flex-flow: column;
+    justify-content: center;
+    /* background: #fff; */
+    background: url('/public/images/note.png') center center / cover no-repeat;
+    padding: 100px 0;
+}
+#register_product .inner p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#register_product .inner p span {
+    font-size: 12px;
+    color: red;
+    vertical-align: middle;
+}
+#register_product table {
+    width: 80%;
+}
+#register_product table tr td {
+    padding: 10px 0;
+}
+#register_product table tr td span {
+    font-size: 12px;
+    color: red;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+#register_product table tr td:nth-child(1) {
+    /* width: 100%; */
+    min-width: 400px;
+    padding-left: 20%;
+}
+/* 이미지파일 눈속임 주기 -hidden type */
+#register_product .imgDiv {
+    position: relative; 
+    width: 400px;
+    text-align: left;
+}
+#register_product .imgView {
+    position: absolute; 
+    left: 0; 
+    top: 0;
+    opacity: 0;
+    z-index: 5;
+}
+#register_product .imgFile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #888; 
+    border-radius: 5px;
+    background: rgba(204, 204, 204, 0.295);
+    padding: 6px 20px;
+    font-size: 0.875em;
+    vertical-align: middle;
+}
+#register_product .imgLabel {
+    margin-left: 130px;
+    vertical-align: middle;
+  }

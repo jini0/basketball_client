@@ -2,9 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../config/contansts';
+import { getCookie } from '../util/cookie';
 import './Store.css';
 
 const Store = () => {
+    // 관리자 로그인시
+    const userId = getCookie('userId');
+    console.log(userId);
+
     // mysql로 데이터 부르기
     const [ stores, setStores ] = useState([]);
     const [ allStores, setAllStores ] = useState([]);
@@ -198,7 +203,9 @@ const Store = () => {
             </div>  
             <div id='product_category'>
                 <section className='inner'>
-                    <button type='submit'><Link to="/registerProduct">상품 등록</Link></button>
+                    {userId === 'admin' ?
+                        <button type='submit'><Link to="/registerProduct">상품 등록</Link></button>
+                    : '' }
                 </section>
                 <section class="categoryList inner">
                     <ul class="clear" id="categorys">

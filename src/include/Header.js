@@ -28,6 +28,7 @@ const Header = () => {
     const navigate = useNavigate();
     const userId = getCookie('userId');
     const isLogin = useSelector(state=>state.logincheck.isLogin);
+    const uid = getCookie('userId');
     const dispatch = useDispatch();
     const logoutClick = () => {
         removeCookie('userName');
@@ -35,6 +36,11 @@ const Header = () => {
         dispatch(setLogout());
         navigate('/');
         alert('로그아웃되었습니다.')
+    }
+
+    //로그인 안되어있을 시 cart 클릭하면,
+    const onLogPlease = () => {
+        alert("로그인을 해주세요.")
     }
 
     console.log(isLogin);
@@ -46,9 +52,9 @@ const Header = () => {
                         { isLogin &&
                             <>
                                 {/* <li><Link to = {`/myPage/${userId}`}>{userId}</Link></li> */}
-                                <li><Link to ="/myPage">{userId}</Link></li>
+                                <li><Link to ="/myPage">🏀 {userId}님 환영합니다 🏀</Link></li>
                                 <li onClick={logoutClick}>Logout</li>
-                                <li><Link to = "/cart">Cart</Link></li>
+                                <li><Link to = {`/cart/${uid}`}>Cart</Link></li>
                                 {/* <li><Link to="/">회원정보수정</Link></li> */}
                             </>
                         }
@@ -56,7 +62,7 @@ const Header = () => {
                             <>
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to = "/join">Join</Link></li>
-                                <li><Link to = "/cart">Cart</Link></li>
+                                <li onClick={onLogPlease}><Link to = "/">Cart</Link></li>
                             </>
                         }
                         {/* <li><Link to="/login">Login</Link></li>
