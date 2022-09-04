@@ -4,6 +4,9 @@ import { format, addMonths, subMonths } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
 import './style.scss';
+import { useEffect } from 'react';
+import axios from 'axios';
+// import { useParams } from 'react-router-dom';
 
 // 리액트 달력만들기 https://sennieworld.tistory.com/61
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
@@ -41,6 +44,28 @@ const RenderDays = () => {
 };
 
 const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
+    // mysql로 데이터 부르기
+    const [ games, setGames ] = useState([]);
+    // const { gameDate } = useParams();
+
+    useEffect(()=>{ 
+        axios.get(`http://localhost:8001/calendars`)
+        // axios.get(`http://localhost:8001/calendars/${gameDate}`)
+        // axios.get(`${API_URL}/calendars`)
+        .then(result=>{
+            const players = result.data;
+            console.log(players);
+            setGames(result.data)
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    // const gameday = games ? new Date(games.date) : null;
+
+
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -62,6 +87,8 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
                             ? 'disabled'
                             : isSameDay(day, selectedDate)
                             ? 'selected'
+                            // : isSameDay(day, gameday)
+                            // ? 'game'
                             : format(currentMonth, 'M') !== format(day, 'M')
                             ? 'not-valid'
                             : 'valid'
@@ -69,6 +96,26 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
                     key={day}
                     onClick={() => onDateClick(parse(cloneDay))}
                 >
+                    <div className='gameDate'>
+                        <div>
+                            {games.map(game=>(
+                                <>
+                                {/* <div>
+                                    <img src={"../"+game.imgsrc_promy} alt="원주DB"/>
+                                    <span>{game.name_promy}</span>
+                                </div>
+                                <span>vs</span>
+                                <div>
+                                    <img src={"../"+game.imgsrc_competitor} alt="상대팀"/>
+                                    <span>{game.name_competitor}</span>
+                                </div> */}
+
+                                <p>{game.name_promy}vs{game.name_competitor}</p>
+                                <p>{game.goal_promy}{game.goal_competitor}</p>
+                                </>
+                            ))}
+                        </div>
+                    </div>
                     <span
                         className={
                             format(currentMonth, 'M') !== format(day, 'M')
