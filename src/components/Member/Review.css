@@ -58,35 +58,42 @@
     color: #fff;
     font-weight: 400;
 }
-#reviewContents #reviewText ul {
+#reviewContents #reviewText > ul {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     padding: 8px;
     margin-bottom: 16px;
-    position: relative;
+    /* position: relative; */
     border: none;
-    border-bottom: 1px solid #bbb;
+    /* border-bottom: 1px solid #bbb; */
 }
-#reviewContents #reviewText ul li {
+#reviewContents #reviewText > ul > li {
     padding-bottom: 10px;
-    width: 80%;
+    margin-bottom: 30px;
+    /* width: 80%; */
+    width: 90%;
+    border-bottom: 1px solid #bbb;
+    position: relative;
 }
-#reviewContents #reviewText ul li:nth-child(1) {
+/* #reviewContents #reviewText ul li:nth-child(1) {
     display: none;
-}
-#reviewContents #reviewText ul li span {
+} */
+#reviewContents #reviewText ul li p span {
     color: rgb(255, 208, 0);
     font-size: 22px;
 }
-#reviewContents #reviewText ul li img {
+/* #reviewContents #reviewText ul li img {
     width: 20%;
-}
-#reviewContents #reviewText ul li button {
+} */
+/* #reviewContents #reviewText > ul li ul li:nth-child(3) form {
+    position: relative;
+} */
+#reviewContents #reviewText > ul li ul li button {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 0;
+    right: 8px;
     border: none;
     background-color: #166c35;
     width: 30px;
@@ -96,4 +103,50 @@
 #reviewContents .reviewimg {
     position:absolute; 
     opacity:0;
+}
+#reviewContents #review form > input {
+    width: 70%;
+    margin-bottom: 5px;
+    border: 1px solid #bbb;
+    outline: none;
+    padding: 4px;
+    margin-bottom: 10px;
+}
+#reviewContents #reviewText > ul > li {
+    width: 100%;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(1) {
+    width: 20%;
+}
+#reviewContents #reviewText ul li img {
+    width: 100%;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(1) p {
+    text-align: center;
+    font-weight: 600;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(1) p span {
+    vertical-align: middle;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(2) {
+    width: 56%;
+    margin-left: 5%;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(3) {
+    width: 16%;
+    margin-left: 3%;
+}
+#reviewContents #reviewText > ul li ul li:nth-child(2) div:nth-child(3) p {
+    padding-top: 10px;
+}
+#reviewContents .reviewTitle {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 19px;
 }
