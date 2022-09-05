@@ -47,11 +47,19 @@ const ProductDetail = () => {
     const onChangeSelect = (e)=>{
         const { value } = e.target;
         console.log(value);
+        setCartData({
+            ...cartData,
+            c_select: value
+        })
     }
     //상품 수량 input - onChange이벤트
     const onChange = (e)=>{
         const { value } = e.target;
         console.log(value);
+        setCartData({
+            ...cartData,
+            c_amount: value
+        })
         setTotalPrice((store.saleprice)*value)
     }
 
@@ -74,7 +82,7 @@ const ProductDetail = () => {
             c_saleprice : store ? store.saleprice : "",
             c_amount : store ? store.amount : "",
             c_img : store ? store.imgsrc : "",
-            c_select : store ? store.select : "",
+            c_select : store ? store.select_option : "",
             c_userid : uid
         })
     // eslint-disable-next-line
@@ -147,31 +155,28 @@ const ProductDetail = () => {
     // }
 
     const pAmount = document.querySelector('#amount');
-    async function addCart(){
-        if(window.confirm("장바구니에 담으시겠습니까?") && uid){       
+    async function addCart(e){
+        e.preventDefault();
+        console.log("여기여기")
+        console.log(cartData);
+        if(window.confirm("장바구니에 담으시겠습니까?") && uid){    
+            // eslint-disable-next-line   
+            if(pAmount.value == 0){
+                window.alert("수량을 입력해주세요.");
+            }
             // console.log(pAmount.value);
             axios.put(`http://localhost:8001/addCart`,cartData)
             .then((result)=>{
                 console.log(result);
-                // eslint-disable-next-line
-                if(pAmount.value == 0){
-                    window.alert("수량을 입력해주세요.");
-                    if(result.data !== ""){
-                        alert('이미 담겨진 상품입니다.')
-                        window.location.reload();
-                    } else {
-                        axios.put(`http://localhost:8001/addCart/${id}`)
-                        .then((result)=>{
-                            console.log(result);
-                        })
-                        .catch(e=>{
-                            console.log(e);
-                        })
-                        if(window.confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")){
-                            navigate(`/cart/${uid}`);
-                        } else {}
-                    }
-                } 
+                // eslint-disable-next-line  
+                if(result.data == '있음'){
+                    alert('이미 담겨진 상품입니다.')
+                    window.location.reload();
+                } else {
+                    
+                        window.confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")
+                        navigate(`/cart/${uid}`);                    
+                }
             })
             .catch(e=>{
                 console.log(e);
@@ -179,7 +184,7 @@ const ProductDetail = () => {
         } 
          else {
             if(uid) alert("취소되었습니다.");
-            else alert('로그인 후 이용바랍니다.')
+            else alert("로그인 후 이용바랍니다.");
         }
     }
 
@@ -217,13 +222,13 @@ const ProductDetail = () => {
                                     <li><span>판매자</span> {store.seller}</li>
                                     <li>
                                         <span>옵션선택</span>
-                                        <select onChange={onChangeSelect}>
+                                        <select name="c_select" value={cartData.c_select} onChange={onChangeSelect}>
                                             <option value="0" disabled="">선수 선택</option>
                                             <option value="1" disabled="">허웅[대형]</option>
                                             <option value="2" disabled="">정준원[대형]</option>
                                             <option value="3" disabled="">이준희[대형]</option>
                                         </select>
-                                        <input type="number" placeholder='수량' min="0" id='amount' onChange={onChange} />
+                                        <input type="number" placeholder='수량' min="0" id='amount' name="c_amount" value={cartData.c_amount} onChange={onChange} />
                                     </li>
                                 </ul>
                                 <p className='totalPrice'>총 상품 금액<span>{!totalPrice ? (store.saleprice).toLocaleString('ko-KR') : totalPrice.toLocaleString('ko-KR')}원</span></p>

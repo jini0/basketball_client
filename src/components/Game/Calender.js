@@ -49,17 +49,17 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
     // const { gameDate } = useParams();
 
     useEffect(()=>{ 
-        axios.get(`http://localhost:8001/calendars`)
-        // axios.get(`http://localhost:8001/calendars/${gameDate}`)
-        // axios.get(`${API_URL}/calendars`)
-        .then(result=>{
-            const players = result.data;
-            console.log(players);
-            setGames(result.data)
-        })
-        .catch(e=>{
-            console.log(e);
-        })
+        // axios.get(`http://localhost:8001/calendars`)
+        // // axios.get(`http://localhost:8001/calendars/${gameDate}`)
+        // // axios.get(`${API_URL}/calendars`)
+        // .then(result=>{
+        //     const players = result.data;
+        //     console.log(players);
+        //     setGames(result.data)
+        // })
+        // .catch(e=>{
+        //     console.log(e);
+        // })
         // eslint-disable-next-line
     },[])
 
@@ -98,22 +98,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
                 >
                     <div className='gameDate'>
                         <div>
-                            {games.map(game=>(
-                                <>
-                                {/* <div>
-                                    <img src={"../"+game.imgsrc_promy} alt="원주DB"/>
-                                    <span>{game.name_promy}</span>
-                                </div>
-                                <span>vs</span>
-                                <div>
-                                    <img src={"../"+game.imgsrc_competitor} alt="상대팀"/>
-                                    <span>{game.name_competitor}</span>
-                                </div> */}
-
-                                <p>{game.name_promy}vs{game.name_competitor}</p>
-                                <p>{game.goal_promy}{game.goal_competitor}</p>
-                                </>
-                            ))}
+                          
                         </div>
                     </div>
                     <span
@@ -123,7 +108,8 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
                                 : ''
                         }
                     >
-                        {formattedDate}
+                        
+                        {formattedDate} 
                     </span>
                 </div>,
             );
