@@ -30,46 +30,85 @@ const Store = () => {
         // eslint-disable-next-line
     },[])
 
+    // 0. 찜하기 - 상태관리 - state의 초기값 설정 
+    const [isWishAdd, setIsWishAdd] = useState(false);
+    const [wishCount, setWishCount] = useState(808); 
+
+    // 1. 찜하기 버튼을 누를 때마다 boolean 값이 변경되는 함수 작성
+    // - wishAddHandler 함수를 wishCountHandler 함수 안에 넣어줄 것이다.
+    // - onClick 이 될 때마다 isWishAdd state 의 boolean 값이 변경된다.
+    const wishAddHandler = () => {
+        setIsWishAdd(!isWishAdd)
+    }
+    // 2. 찜하기 숫자 올리고 백엔드에 데이터 보내는 wishCountHandler 함수 작성
+    // 찜하기 버튼 - onClick 이벤트
+    // wishCountHandler 함수를 찜하기 버튼의 onClick 이벤트로 넘겨준다.
+    // wishCountHandler 함수 안에 wishAddHandler 함수를 넣어준다.
+    // isWishAdd 값이 true 일 때 카운트를 +1 해주고 fetch 함수를 사용해서 백엔드 API 주소로 user_id 와 product_id 데이터를 보내준다.
+    // 백엔드에서는 위 데이터를 처음 받게 되면 찜하기 카운트가 +1이 될 것이고 한 번 더 클릭했을 때 이미 데이터가 있는 상태인데 데이터를 전달 받으면 카운트가 -1이 될 것이다.
+    const wishCountHandler = () => {
+        wishAddHandler();
+        if (!isWishAdd) {
+          setWishCount(wishCount +1)
+        //   fetch("http://10.58.0.148:8000/product/dip", {
+        //     method: "POST".
+        //     body: JSON.stringify({
+        //       "user_id": 8,
+        //       "product_id": 2
+        //     })
+        //   })
+        } else if (isWishAdd) {
+          setWishCount(wishCount -1)
+        //   fetch("http://10.58.0.148:8000/product/dip", {
+        //     method: "POST".
+        //     body: JSON.stringigy({
+        //       "user_id": 8,
+        //       "product_id: 2
+        //     })
+        //   })
+        }
+      }    
+
     //sort 분류 - onClick
     function all(){
-        setStores(allStores.filter(e=>e.sort));
+        setStores(allStores.filter(e=>e.sortcategory));
             // eslint-disable-next-line
-        if((allStores.filter(e=>e.sort)) == ''){
+        if((allStores.filter(e=>e.sortcategory)) == ''){
             alert('상품이 없습니다.')
         }
     }
     function clothes(){
-        setStores(allStores.filter(e=>e.sort === "clothes"));
+        setStores(allStores.filter(e=>e.sortcategory === "clothes"));
             // eslint-disable-next-line
-            if((allStores.filter(e=>e.sort === "clothes")) == ''){
+            if((allStores.filter(e=>e.sortcategory === "clothes")) == ''){
                 alert('해당 상품이 없습니다.')
             }
         }
         function ball(){
-        setStores(allStores.filter(e=>e.sort === "ball"));
+        setStores(allStores.filter(e=>e.sortcategory === "ball"));
             // eslint-disable-next-line
-            if((allStores.filter(e=>e.sort === "ball")) == ''){
+            if((allStores.filter(e=>e.sortcategory === "ball")) == ''){
                 alert('해당 상품이 없습니다.')
             }
         }
         function caps(){
-        setStores(allStores.filter(e=>e.sort === "caps"));
+        setStores(allStores.filter(e=>e.sortcategory === "caps"));
             // eslint-disable-next-line
-        if((allStores.filter(e=>e.sort === "caps")) == ''){
+        if((allStores.filter(e=>e.sortcategory === "caps")) == ''){
             alert('해당 상품이 없습니다.')
         }
     }
     function lifestyle(){
-        setStores(allStores.filter(e=>e.sort === "lifestyle"));
+        setStores(allStores.filter(e=>e.sortcategory === "lifestyle"));
             // eslint-disable-next-line 
-        if((allStores.filter(e=>e.sort === "lifestyle")) == ''){
+        if((allStores.filter(e=>e.sortcategory === "lifestyle")) == ''){
             alert('해당 상품이 없습니다.')
         }
     }
     function accessory(){
-        setStores(allStores.filter(e=>e.sort === "accessory"));
+        setStores(allStores.filter(e=>e.sortcategory === "accessory"));
             // eslint-disable-next-line
-        if((allStores.filter(e=>e.sort === "accessory")) == ''){
+        if((allStores.filter(e=>e.sortcategory === "accessory")) == ''){
             alert('해당 상품이 없습니다.')
         }
     }
@@ -249,7 +288,7 @@ const Store = () => {
                                     <Link to={`/store/${store.id}`}>
                                         <img src={store.imgsrc} alt={store.name} />
                                     </Link>
-                                    <span className='wish_btn'></span>
+                                    <span className='wish_btn'><button onClick={wishCountHandler}></button></span>
                                 </div>
                                 <Link to="/detailProduct">
                                     <div className='product_text'>

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Store.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const RegisterProduct = () => {
+const EditProduct = () => {
     const navigate = useNavigate();
+    //formdata
     const [ formData, setFormData ] = useState({
         c_name: "", 
         c_span: "", 
@@ -23,7 +24,45 @@ const RegisterProduct = () => {
         c_delivery: ""
     })
 
-    //input - onChange이벤트
+    // mysql로 데이터 불러오기
+    const [ product, setProduct ] = useState(null);
+    const { id } = useParams();             // id값 받아오기(parameter 사용)
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8001/store/${id}`)
+        // axios.get(`${API_URL}/store/${id}`)
+        .then(result => {
+            const results = result.data;
+            console.log(results);
+            setProduct(results[0]); 
+        })   
+        .catch(e=> {
+            console.log(e);
+        })
+        // eslint-disable-next-line
+    },[])
+
+    // 값 변경시
+    useEffect(()=>{
+        setFormData({
+            c_name: product? product.name : "", 
+            c_span: product? product.span : "", 
+            c_price: product? product.price : "", 
+            c_saleprice: product? product.saleprice : "", 
+            c_discountper: product? product.discountper : "", 
+            c_seller: product? product.seller : "", 
+            c_img: product? product.imgsrc : "", 
+            c_desc: product? product.imgdesc : "", 
+            c_desc2: product? product.imgdesc2 : "", 
+            c_sort: product? product.sortcategory : "", 
+            c_ranking: product? product.ranking : "", 
+            c_review: product? product.review : "", 
+            c_sellrank: product? product.sellrank : "", 
+            c_delivery: product? product.delivery : ""
+        })
+    },[product])
+
+    //onChange 이벤트
     const onChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -31,22 +70,12 @@ const RegisterProduct = () => {
             [name] : value
         })
     }
-    //input - 이미지 - onChange이벤트
+    //이미지 onChange 이벤트
     const onChangeImg = (e)=>{
         const { name, value } = e.target;
         setFormData({
             ...formData,
-            // [name] :value.replace("C:\\fakepath\\","images/")
-            [name] :value.replace("C:\\fakepath\\","images/")
-        })
-    }
-    //input - 할인률 계산
-    const onChangeDiscount = (e) => {
-        const { name } = e.target;
-        const value = (1-Number( formData.c_saleprice/formData.c_price ));
-        setFormData({
-            ...formData,
-            [name] : value
+            [name] :value.replace("C:\\fakepath\\","../images/")
         })
     }
     //select - onChange이벤트
@@ -58,56 +87,66 @@ const RegisterProduct = () => {
             c_sort: value
         })
     }
+    //input - 할인률 계산
+    const onChangeDiscount = (e) => {
+        const { name } = e.target;
+        const value = (1-Number( formData.c_saleprice/formData.c_price ));
+        setFormData({
+            ...formData,
+            [name] : value
+        })
+    }
 
-    //폼 onSubmit 이벤트
-    const onSubmitch = (e) => {
+    //폼 submit이벤트
+    const onSubmit = (e) => {
         e.preventDefault();
-        console.log("상품등록");
+        console.log("상품 수정");
         console.log(formData);
 
         //span/price/discountper/desc2/ranking/sellrank/reivew 는 null가능!
         if(formData.c_name !== "" && formData.c_saleprice !== "" && formData.c_seller !=="" 
         && formData.c_img !== "" && formData.c_desc !== "" && formData.c_sort !== ""
         && formData.c_delivery !== ""){
-            registerProduct();
+            updateProduct();
         } else {
             alert("항목을 입력하세요");
-            console.log(formData.c_sort);
         }
-        //등록함수
-        function registerProduct(){
-            axios.post('http://localhost:8001/registerProduct', (formData))
-            // axios.post(`${API_URL}/registerProduct`, (formData))
+        //수정함수 PUT전송
+        function updateProduct(){
+            axios.put(`http://localhost:8001/editProduct/${id}`,formData)
+            // axios.put(`${API_URL}/editProduct/${id}`,formData)
             .then(res=>{
                 console.log(res);
-                navigate(-1);   // '/store'(이전)으로 이동
+                navigate(`/store/${id}`);
             })
             .catch(e=>{
+                console.log('상품 수정에 실패하였습니다.');
                 console.log(e);
-                alert('상품을 등록하는 도중 오류가 발생하였습니다.')
             })
         }
     }
-
-    const check = ()=>{
+    //수정button - onClick이벤트
+    const onCheck = ()=>{
         console.log(formData);
     }
-
     //취소 클릭
     const cancelClick = () => {
         alert('상품등록을 취소하겠습니다.');
         navigate(-1);
     }
+    
+
+    if(!product) return <div>로딩중입니다...</div>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
-                <h3>상품 등록</h3>
-                <p>상품을 등록하세요.</p>
-            </div>  
-            <div id="register_product">
-                <div className='inner'>
+                <h3>상품 수정</h3>
+                <p>상품을 수정하세요.</p>
+            </div>
+            <div id='uploadBox2'>
+                <div className='editProduct inner'>
                     <p><span>*</span>필수항목입니다.</p>
-                    <form onSubmit={onSubmitch}>
+                    <form onSubmit={onSubmit}>
                         <table>
                             <tbody>
                                 <tr>
@@ -247,7 +286,7 @@ const RegisterProduct = () => {
                                 </tr>
                                 <tr className='regiProductBtn'>
                                     <td colSpan={2}>
-                                        <button type="submit" onClick={check}>등록</button>
+                                        <button type="submit" onClick={onCheck}>수정</button>
                                         <button type="reset" onClick={cancelClick}>취소</button>
                                     </td>
                                 </tr>
@@ -260,4 +299,4 @@ const RegisterProduct = () => {
     );
 };
 
-export default RegisterProduct;
+export default EditProduct;

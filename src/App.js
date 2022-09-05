@@ -42,6 +42,7 @@ import { useDispatch } from 'react-redux';
 import { getCookie } from './components/util/cookie';
 import { useEffect } from 'react';
 import { setLogin } from './components/modules/logincheck';
+import EditProduct from './components/Store/EditProduct';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
         <Route path='/product' element={<Store/>} />
         <Route path='/store/:id' element={<ProductDetail/>} />
         <Route path='/registerProduct' element={<RegisterProduct/>} />
+        <Route path='/editProduct/:id' element={<EditProduct/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/join' element={<Join/>} />
         <Route path='/cart/:idid' element={<Cart/>} />

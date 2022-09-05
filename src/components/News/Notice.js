@@ -69,6 +69,7 @@ const Notice = () => {
                 alert("해당 내용이 없습니다.")
             } else {
                 setSearchList(filterData);
+                setPage(1);
             }
         }
         

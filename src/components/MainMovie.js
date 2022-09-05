@@ -116,6 +116,13 @@ const MainMovie = () => {
                                 </div>
                             ))}
                             {/* <div className='main_index_3'>
+                                <img src='images/youtube_0.png' alt='유튜브화면' />
+                                <div className='main_index_text_3'>
+                                    <h4>Welcome Home🏡 돌아온 우리먼의 인사👋 #shorts</h4>
+                                    <span>2022-09-01</span>
+                                </div>
+                            </div>
+                            {/* <div className='main_index_3'>
                                 <img src='images/youtube_1.png' alt='유튜브화면1' />
                                 <div className='main_index_text_3'>
                                     <h4>DB농구 보고 싶은 윈디들?!🙋🏻‍♂ 비시즌 첫 연습 경기 H/L (vs 고려대)</h4>

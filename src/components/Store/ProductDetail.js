@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Review from '../Member/Review';
 import { getCookie } from '../util/cookie';
 // import { API_URL } from '../config/contansts';
 // import {  reset } from '../modules/counter';
@@ -184,7 +185,10 @@ const ProductDetail = () => {
         } 
          else {
             if(uid) alert("취소되었습니다.");
-            else alert("로그인 후 이용바랍니다.");
+            else {
+                alert("로그인 후 이용바랍니다.");
+                navigate('/login');
+            }
         }
     }
 
@@ -194,7 +198,7 @@ const ProductDetail = () => {
         // axios.delete(`${API_URL}/delProduct/${id}`)
         .then(res=>{
             console.log("삭제 완료!");
-            navigate(-1);
+            navigate('/product');
         })
         .catch(err=>{
             console.log(err);
@@ -224,9 +228,9 @@ const ProductDetail = () => {
                                         <span>옵션선택</span>
                                         <select name="c_select" value={cartData.c_select} onChange={onChangeSelect}>
                                             <option value="0" disabled="">선수 선택</option>
-                                            <option value="1" disabled="">허웅[대형]</option>
-                                            <option value="2" disabled="">정준원[대형]</option>
-                                            <option value="3" disabled="">이준희[대형]</option>
+                                            <option value="허웅[대형]" disabled="">허웅[대형]</option>
+                                            <option value="정준원[대형]" disabled="">정준원[대형]</option>
+                                            <option value="이준희[대형]" disabled="">이준희[대형]</option>
                                         </select>
                                         <input type="number" placeholder='수량' min="0" id='amount' name="c_amount" value={cartData.c_amount} onChange={onChange} />
                                     </li>
@@ -264,9 +268,11 @@ const ProductDetail = () => {
                         <img src={"../"+store.imgdesc2} alt="상품설명" />
                     }
                 </div>
+                {/* 상품 후기 클릭시 */}
                 <div className='detail_review_desc'>
-
+                    <Review />
                 </div>
+                {/* 배송 클릭시 */}
                 <div className='detail_delivery_desc'>
                     <img src={"../"+store.delivery} alt="교환배송반품" />
                 </div>

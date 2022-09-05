@@ -55,14 +55,14 @@ const Header = () => {
                                 <li><Link to ="/myPage">🏀 {userId}님 환영합니다 🏀</Link></li>
                                 <li onClick={logoutClick}>Logout</li>
                                 <li><Link to = {`/cart/${uid}`}>Cart</Link></li>
-                                {/* <li><Link to="/">회원정보수정</Link></li> */}
+                                <li><Link to={`/myPage/${uid}`}>My Page</Link></li>
                             </>
                         }
                         { isLogin ||
                             <>
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to = "/join">Join</Link></li>
-                                <li onClick={onLogPlease}><Link to = "/">Cart</Link></li>
+                                <li onClick={onLogPlease}><Link to = "/login">Cart</Link></li>
                             </>
                         }
                         {/* <li><Link to="/login">Login</Link></li>

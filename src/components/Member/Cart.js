@@ -15,14 +15,14 @@ const Cart = () => {
     const [ delivery, setDelivery] = useState(2500);    //총금액
     //check한 애들 선택하기 
     const [ checked, setChecked ] = useState([]);
-
+    
     //input - formData
     const onChecked = (id) => {
         console.log(checked);
         console.log(checked[0]);
         setChecked([ ...checked, id ]);
     }
-
+    
     // mysql로 데이터 불러오기 - cart
     const [ carts, setCarts ] = useState([]);
     
@@ -33,6 +33,7 @@ const Cart = () => {
             const carts = result.data;
             console.log(carts);
             setCarts(result.data); 
+            console.log(carts[0].amount);
 
             let subNum = 0;
             result.data.forEach(data => {
@@ -40,15 +41,16 @@ const Cart = () => {
                 console.log(data.saleprice);   
             });      
             setSubPrice(subNum);
-            console.log(subPrice);      
+            console.log(subPrice);    
             if(Number(subNum) > 50000) {    //50000원 이상시 배송비 무료
                 setDelivery(0);
-                setTotalPrice(subPrice);
-                console.log(totalPrice)
+                // setTotalPrice(subPrice);
+                setTotalPrice(subNum);
+                console.log(totalPrice);
             } else {
                 setDelivery(2500);
                 setTotalPrice(delivery+subNum);
-                console.log(subPrice)
+                console.log(subPrice);
             }
         })   
         .catch(e=> {
@@ -77,7 +79,50 @@ const Cart = () => {
         }
     }
 
-    if(carts.length === 0) return <div>로딩중...</div>
+    // const [ amounts, setAmounts ] = useState({
+    //     c_count: ""
+    // });
+    // useEffect(()=>{
+    //     // console.log(carts.amount);   //undefined
+    //     console.log(carts[0].amount);  
+    //     setAmounts({
+            
+    //     })
+    // },[carts])
+
+    //증가버튼
+    async function increase(e) {
+        e.preventDefault();
+
+        const { id } = e.target.dataset;
+        carts[id]['amount'] += 1;
+        console.log("수량");
+        console.log(carts[id]['amount'])
+
+        //랜더링 다시하기
+        setCarts(carts.map((cart,index) => index === id ? { ...cart, amount: cart.amount+1 } : cart))   
+    }
+    //감소버튼
+    async function decrease(e) {
+        e.preventDefault();
+        // setAmounts({
+        //     ...amounts,
+        //     c_count: carts.amount > 1 ? carts.amount - 1 : 1,
+        // })
+        
+        const { id } = e.target.dataset;
+        carts[id]['amount'] -= 1;
+        console.log("수량");
+        console.log(carts[id]['amount'])
+
+        //랜더링 다시하기
+        setCarts(carts.map((cart,index) => index === id ? { ...cart, amount: cart.amount-1 } : cart))
+    }
+    // console.log(carts.length);
+    
+    
+    // if(carts.length === 0) return <div>로딩중...</div>
+    if(!carts) return <div>로딩중...</div>
     return (
         <div id='cart'>
             <div className='inner'>
@@ -98,22 +143,24 @@ const Cart = () => {
                                     <td>수량</td>
                                     <td>총 가격</td>
                                 </tr>
-                                {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
-                                    : carts.map(cart=>(
+                                {carts.length === 0 ? <tr><td id="noreserve" colSpan={7}>담긴 제품이 없습니다.</td></tr>
+                                    : carts.map((cart,index)=>(
                                     <tr>
                                         <td><input type="checkbox" value={cart.id} onChange={()=>onChecked(cart.id)}/></td>
                                         <td><img src={"../"+cart.imgsrc} alt=""/></td>
                                         <td>{cart.name}</td>
                                         <td>{cart.saleprice.toLocaleString('ko-KR')}원</td>
-                                        <td>{cart.select}허웅</td>
-                                        <td>{cart.amount}개</td>
+                                        <td>{cart.select_option}</td>
+                                        <td> 
+                                            <span className='amountBtn'><button onClick={decrease} data-id={index}>-</button></span>          
+                                            {cart.amount}  
+                                            <span className='amountBtn'><button onClick={increase} data-id={index}>+</button></span>    
+                                        </td>
                                         <td className='cartPrice'>{(cart.saleprice*cart.amount).toLocaleString('ko-KR')}원</td>
                                     </tr>
                                 ))}
                                 {/* {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
                                     : carts.map((cart, index)=>(<CartList key={index} cart={cart}/> ))} */}
-                                {/* {carts.length === 0 ? <tr><td id="noreserve" colSpan={6}>담긴 제품이 없습니다.</td></tr>
-                                    : carts.map((cart, index)=>(<Cart key={index} cart={cart}/> ))} */}
                                 {/* {carts.map(cart=>(
                                     <CartList key={cart.id} cart={cart} />
                                 ))} */}

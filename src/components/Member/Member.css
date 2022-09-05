@@ -461,3 +461,15 @@ width: 35%;
     width: 200px;
     height: 60px;
 }
+#cart .amountBtn {
+    width: 20px;
+    height: 20px;
+}
+#cart .amountBtn button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: #fff;
+    color: #777;
+    margin: 0 5px;
+}
