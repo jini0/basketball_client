@@ -270,7 +270,7 @@ const ProductDetail = () => {
                 </div>
                 {/* 상품 후기 클릭시 */}
                 <div className='detail_review_desc'>
-                    <Review />
+                    <Review product={store.name} />
                 </div>
                 {/* 배송 클릭시 */}
                 <div className='detail_delivery_desc'>
