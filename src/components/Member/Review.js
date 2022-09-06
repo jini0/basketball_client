@@ -2,13 +2,13 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom';
 import { getCookie } from '../util/cookie';
 import './Review.css';
 
 const Review = ({product}) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // mysql로 데이터 불러오기 - review 전체 뿌리기
     const [ reviews, setReviews ] = useState([]);
@@ -88,14 +88,50 @@ const Review = ({product}) => {
         })
     }
 
+    //리뷰 삭제하기 - 불러오기
+    function delReview(id){
+        // axios.post(`http://localhost:8001/delReview/${id}`)  // post전송 --> post로 보내면 새로고침을 해야 지워진걸 볼 수 있음!
+        axios.delete(`http://localhost:8001/delReview/${id}`)   // 삭제 - delete로 해야 삭제 후 바로 랜더링 돼서 새로고침 안해도 사라짐
+        .then(result=>{
+            console.log(result);
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    } 
+    //리뷰 삭제
+    const onDelete = (e)=>{
+        e.preventDefault();
+        const id = e.target.value;
+        delReview(id);
+        alert("리뷰 삭제 완료");
+            // eslint-disable-next-line
+        document.location.href = document.location.href
+    }
     //자기가 작성한 리뷰가 아닐때, 삭제 버튼 클릭시
-    const onClickNotId = () => {
+    const onClickNotId = (e) => {
+        e.preventDefault();
         alert("본인이 작성한 리뷰만 삭제할 수 있습니다.");
+    }
+
+
+    //자기가 작성한 리뷰가 아닐때, 수정 버튼 클릭시
+    const onClickNotId2 = (e) => {
+        e.preventDefault();
+        alert("본인이 작성한 리뷰만 수정할 수 있습니다.");
+    }
+
+    //리뷰 작성시 - 로그인 안되어 있을 경우 --> onClick이벤트
+    const onNoLogin = (e) => {
+        e.preventDefault();
+        alert("리뷰 작성을 위해서는 로그인을 해주세요!");
+        navigate('/login');     //login페이지로 이동
     }
 
     return (
         <div id='reviewContents'>
             <div>
+            {id ?
                 <div id="review">
                     <h3>Review 작성하기</h3>
                     <form onSubmit={onSubmit}>
@@ -122,6 +158,12 @@ const Review = ({product}) => {
                         </ul>
                     </form>
                 </div>
+            : 
+                <div id="review">
+                    <h3>Review를 작성해주세요!!!</h3>
+                    <p className='noLogin' onClick={onNoLogin}>로그인 후 이용가능합니다.</p>
+                </div>
+            }
                 <div id="reviewText">
                     <h3>Review</h3>
                     <ul>
@@ -153,10 +195,14 @@ const Review = ({product}) => {
                                         <form>
                                             <input type='hidden' name='product' value={review.product} />
                                             {
-                                                id === (review.userid) ? <button type='submit'>X</button>
+                                                ((id === (review.userid)) || (id ==='admin')) ? <button onClick={onDelete} value={review.id}>X</button>
                                                 : <button onClick={onClickNotId}>X</button>
                                             }
                                             {/* <button type='submit'>X</button> */}
+                                            {
+                                                ((id === (review.userid)) || (id ==='admin')) ? <button>수정</button>
+                                                : <button onClick={onClickNotId2}>수정</button>
+                                            }
                                         </form>
                                     </li>    
                                 </ul>

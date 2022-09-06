@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loading from './Loading/Loading';
 // import { API_URL } from './config/contansts';
 
 const MainPhoto = () => {
@@ -79,6 +80,7 @@ const MainPhoto = () => {
         })
     }
 
+    if(!mainPhotos) return <Loading/>
     return (
         <div id='mainPage'>
             <section id='main_hot_photo'>

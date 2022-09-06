@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 import { getCookie } from '../util/cookie';
 import './News.css';
@@ -34,8 +35,7 @@ const DetailNotice = () => {
         })
         // eslint-disable-next-line
     },[])
-    if(!notice) return <div>로딩중입니다...</div>
-
+    
     //게시글 삭제
     const onDelete = () => {
         axios.delete(`http://localhost:8001/delNotice/${id}`)
@@ -48,7 +48,8 @@ const DetailNotice = () => {
             console.log(err);
         })
     }
-
+    
+    if(!notice) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

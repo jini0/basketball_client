@@ -52,6 +52,7 @@ const ImageZoom = styled.div`
       top: -5%;
       right: -110%;
       display: inline-block;
+      z-index: 30;    //확대 이미지가 자꾸 밑에 있어서 -> z-index 추가해주기!!!
       transition: transform 0.5s ease-out;
       // background-image: url({testImgae});   //$붙여서 썼었음 - test용
 `;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Fan.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 
 const Photo = () => {
@@ -60,6 +61,7 @@ const Photo = () => {
         })
     }
 
+    if(!photos) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
