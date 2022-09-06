@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 import './Fan.css';
 
@@ -88,6 +89,8 @@ const Youtube = () => {
         })
     }
 
+    if(!youtube) return <Loading/>
+    if(!youtubeLatest) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

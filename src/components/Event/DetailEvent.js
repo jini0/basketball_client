@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Event.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 
 const DetailEvent = () => {
@@ -29,8 +30,8 @@ const DetailEvent = () => {
         })
         // eslint-disable-next-line
     },[])
-    if(!event) return <div>로딩중입니다...</div>
 
+    if(!event) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

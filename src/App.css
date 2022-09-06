@@ -41,7 +41,7 @@ $fill:$primary; */
     width:100%;
     background:grey;
 } */
-.loading {
+/* .loading {
   height: 100vh;
   background: grey;
   color: #fff;
@@ -52,7 +52,7 @@ $fill:$primary; */
 
 .hourglass{
     display:block;
-    /* background:grey; */
+    background:grey;
     background:#03662c;
     margin:3em auto;
     width:2em;
@@ -95,7 +95,7 @@ $fill:$primary; */
             inset grey 0 -2em 0 0,
             inset primary 0 -2em 0 0;
     }
-}
+} */
 
 @keyframes jump {
   0%{
@@ -737,7 +737,8 @@ $fill:$primary; */
 }
 .game_team i:nth-child(1) {
   width: 33.3333%;
-  background: url('../public/images/emblem_orions.png') center center / contain no-repeat;
+  /* background: url('../public/images/emblem_orions.png') center center / contain no-repeat; */
+  background: url('../public/images/emblem_carrot.png') center center / contain no-repeat;
 }
 .game_team .vs {
   width: 33.3333%;

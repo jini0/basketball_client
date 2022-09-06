@@ -81,14 +81,14 @@ const MainPage = () => {
                                 <div className='openingDate'>
                                     <span>시즌 첫 경기</span>
                                     <div>
-                                        <span>22.10.15 토 시간미정 고양실내</span>
+                                        <span>22.10.15 (토) 16:00 &nbsp; 고양실내</span>
                                         <p><img src="images/emblem_db.png" alt='db로고'/>원주 DB <span>vs</span> 수원 KT<img src="images/emblem_kt.png" alt='kt로고'/></p>
                                     </div>
                                 </div>
                                 <div className='openingDate'>
                                     <span>원주 홈 개막</span>
                                     <div>
-                                        <span>22.10.22 토 시간미정 원주종합</span>
+                                        <span>22.10.22 (토) 14:00 &nbsp; 원주종합</span>
                                         <p><img src="images/emblem_db.png" alt='db로고'/>원주 DB <span>vs</span> 울산현대모비스<img src="images/emblem_mobis.png" alt='mobis로고'/></p>
                                     </div>
                                 </div>

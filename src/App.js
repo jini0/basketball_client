@@ -43,6 +43,7 @@ import { getCookie } from './components/util/cookie';
 import { useEffect } from 'react';
 import { setLogin } from './components/modules/logincheck';
 import EditProduct from './components/Store/EditProduct';
+import RankPlayer from './components/Game/RankPlayer';
 // import MainYoutube from './components/MainYoutube';
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
         <Route path='/cheerleading' element={<Cheer/>} />
         <Route path='/calender' element={<Calender/>} />
         <Route path='/rankTeam' element={<RankTeam/>} />
+        <Route path='/rankPlayer' element={<RankPlayer/>} />
         <Route path='/youtube' element={<Youtube/>} />
         <Route path='/photo' element={<Photo/>} />
         <Route path='/photo/:id' element={<DetailPhoto/>} />

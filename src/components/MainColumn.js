@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import Loading from './Loading/Loading';
 // import { API_URL } from './config/contansts';
 
 const MainColumn = () => {
@@ -119,6 +120,8 @@ const MainColumn = () => {
     // },[])
 
 
+    if(!mainNotices) return <Loading/>
+    if(!mainNews) return <Loading/>
     return (
         <div id="mainPage">
             <section id='main_columns'>
@@ -229,10 +232,12 @@ const MainColumn = () => {
                                     <li>
                                         <div className='game_desc'>
                                             <span>22.10.15 토</span>
-                                            <span>00:00 고양실내</span>
+                                            <span>16:00 고양실내</span>
                                         </div>
                                         <div className='game_team'>
-                                            <i className='icon_emblem'><p>고양 오리온</p></i>
+                                            {/* 구단명 변경 */}
+                                            {/* <i className='icon_emblem'><p>고양 오리온</p></i> */}
+                                            <i className='icon_emblem'><p>고양 캐롯 점퍼스</p></i>
                                             <div className='vs'>vs</div>
                                             <i className='icon_emblem'><p>원주 DB</p></i>
                                         </div>

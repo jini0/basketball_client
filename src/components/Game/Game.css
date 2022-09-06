@@ -1,11 +1,17 @@
-/* 팀순위 */
+/* 팀순위, 선수순위 */
 #rankTeam {
     background: #f1f1f1;
     width: 100%;
     margin: 0 auto;
     padding-bottom: 130px;
 }
-#rankTeam .rank_category {
+#rankPlayer {
+    background: #f1f1f1;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 150px;
+}
+#rankTeam .rank_category, #rankPlayer .rank_category {
     width: calc(100% - 3.75rem);
     /* width: 100%; */
     max-width: 100%;
@@ -18,25 +24,25 @@
     position: relative;
     margin-bottom: 20px;
 }
-#rankTeam .rank_category div {
+#rankTeam .rank_category div, #rankPlayer .rank_category div {
     display: inline-block;
 }
-#rankTeam .rank_category .rank_selector .rank_selected {
+#rankTeam .rank_category .rank_selector .rank_selected, #rankPlayer .rank_category .rank_selector .rank_selected {
     margin-right: 1.25rem;
 }
-#rankTeam .rank_category .rank_selector > div:last-child {
+#rankTeam .rank_category .rank_selector > div:last-child, #rankPlayer .rank_category .rank_selector > div:last-child {
     margin-right: 0;
 }
-#rankTeam .rank_category .rank_selector .rank_selected label {
+#rankTeam .rank_category .rank_selector .rank_selected label, #rankPlayer .rank_category .rank_selector .rank_selected label {
     top: -0.063rem;
     font-size: 0.813em;
     letter-spacing: -0.02em;
     margin-right: 1rem;
 }
-#rankTeam .rank_category .rank_selector .rank_selected .rank_text {
+#rankTeam .rank_category .rank_selector .rank_selected .rank_text, #rankPlayer .rank_category .rank_selector .rank_selected .rank_text {
     display: none;
 }
-#rankTeam .rank_category .rank_selector .rank_selected select {
+#rankTeam .rank_category .rank_selector .rank_selected select, #rankPlayer .rank_category .rank_selector .rank_selected select {
     width: 12.5rem;
     padding-right: 0.938rem;
     color: #011241;
@@ -55,11 +61,12 @@
     background-color: transparent;
     vertical-align: middle;
 }
-#rankTeam .rank_category .rank_selector .rank_selected:not(:last-child):after {
+#rankTeam .rank_category .rank_selector .rank_selected:not(:last-child):after, #rankPlayer .rank_category .rank_selector .rank_selected:not(:last-child):after {
     content: "|";
     margin-left: 20px;
     color: #eee;
 }
+/* - 팀순위 */
 #rankTeam .teamR {
     position: relative;
 }
@@ -182,5 +189,226 @@
 }
 #rankTeam .teamR > section .table_wrap table .dbPromy td {
     background-color: #ecf5ef;
+    font-weight: 700;
+}
+
+
+/* -선수순위 */
+#rankPlayer .rank_player_list .ranking_list .first>div> i {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.icon_emblem_db {
+    background-image: url('/public/images/emblem_db.png');
+}
+.icon_emblem_kt {
+    background-image: url('/public/images/emblem_kt.png');
+}
+.icon_emblem_orion {
+    background-image: url('/public/images/emblem_orions.png');
+}
+/* 고양오리온이 고양캐롯점퍼스로 구단명 변경 */
+.icon_emblem_carrot {
+    background-image: url('/public/images/emblem_carrot.png');
+}
+.icon_emblem_samsung {
+    background-image: url('/public/images/emblem_samsung.png');
+}
+.icon_emblem_sk {
+    background-image: url('/public/images/emblem_sk.png');
+}
+.icon_emblem_kgc {
+    background-image: url('/public/images/emblem_kgc.png');
+}
+.icon_emblem_koreagas {
+    background-image: url('/public/images/emblem_koreagas.png');
+}
+.icon_emblem_lg {
+    background-image: url('/public/images/emblem_lg.png');
+}
+.icon_emblem_mobis {
+    background-image: url('/public/images/emblem_mobis.png');
+}
+.icon_emblem_kcc {
+    background-image: url('/public/images/emblem_kcc.png');
+}
+#rankPlayer .body {
+    width: 100%;
+    margin: 4px auto 0;
+    position: relative;
+}
+#rankPlayer .body section {
+    position: relative;
+    display: block;
+}
+#rankPlayer .rank_player_list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 30px;
+    -webkit-column-gap: 30px;
+    column-gap: 30px;
+    grid-row-gap: 70px;
+    row-gap: 70px;
+}
+#rankPlayer .rank_player_list .rank_header h3 {
+    background-image: url('/public/images/sub_title_bg.png');
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 20px 20px 20px 60px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 30px;
+    background-size: 13px 18px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 20px;
+    color: #222;
+    font-weight: 700;
+    line-height: 1.4;
+    /* vertical-align: middle; */
+}
+#rankPlayer .rank_player_list .rank_header h3 span {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #777;
+    cursor: pointer;
+}
+#rankPlayer .rank_player_list .rank_header h3 span::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 9px;
+    margin-left: 4px;
+    background-image: url('/public/images/more-arrow.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    vertical-align: middle;
+}
+#rankPlayer .ranking_list {    
+    background-color: #fff;
+    border-radius: 12px;
+}
+#rankPlayer .ranking_list .first {    
+    position: relative;
+    width: 100%;
+    height: 194px;
+    padding: 15px 15px 0;
+    overflow: hidden;
+}
+#rankPlayer .ranking_list .first img {    
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 200px;
+    height: auto;
+}
+#rankPlayer .ranking_list .first > div {    
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 40%;
+    height: 100%;
+}
+#rankPlayer .ranking_list .first > div .info {    
+    margin-top: 76px;
+}
+#rankPlayer .ranking_list .first > div .info .num {    
+    display: block;
+    font-size: 1.250em;
+    color: #ff4d29;
+    font-style: italic;
+    font-weight: 700;
+}
+#rankPlayer .ranking_list .first > div .info .name {    
+    display: block;
+    font-size: 1em;
+    color: #222;
+    font-weight: 700;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+#rankPlayer .ranking_list .first > div .info .team {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.875em;
+    color: #777;
+    font-weight: 500;
+}
+#rankPlayer .ranking_list .first > div .info .score {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.875em;
+    color: #777;
+    font-weight: 500;
+}
+#rankPlayer .ranking_list li.on {
+    background-color: #ecf5ef;
+}
+#rankPlayer .ranking_list>li:not(.first) {
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 30px;
+}
+#rankPlayer .ranking_list>li:not(.first).on .num {
+    background-color: #03662c;
+}
+
+#rankPlayer .ranking_list>li:not(.first) .num {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
+    /* background-color: #011241; */
+    border-radius: 50%;
+    text-align: center;
+    font-size: 0.875em;
+    color: #fff;
+    line-height: 26px;
+    font-weight: 700;
+}
+#rankPlayer .ranking_list>li:not(.first) .info .name {
+    font-size: 1.125em;
+    color: #222;
+    font-weight: 700;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+#rankPlayer .ranking_list>li:not(.first) .info .team {
+    font-size: 0.875em;
+    color: #777;
+    vertical-align: middle;
+}
+#rankPlayer .ranking_list>li:not(.first) .info .score {
+    float: right;
+    margin-top: 6px;
+    font-size: 0.875em;
+    color: #777;
+    font-weight: 500;
+}
+#rankPlayer .ranking_list>li:not(.first) .num {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
+    background-color: #011241;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
     font-weight: 700;
 }

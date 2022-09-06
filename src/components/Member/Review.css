@@ -92,8 +92,18 @@
 } */
 #reviewContents #reviewText > ul li ul li button {
     position: absolute;
+    top: 40px;
+    right: 3px;
+    border: none;
+    background-color: #166c35;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+}
+#reviewContents #reviewText > ul li ul li button:last-child {
+    position: absolute;
     top: 0;
-    right: 8px;
+    right: 3px;
     border: none;
     background-color: #166c35;
     width: 30px;
@@ -149,4 +159,14 @@
     margin-bottom: 30px;
     font-weight: 600;
     font-size: 19px;
+}
+#review .noLogin {
+    padding-top: 10px;
+    padding-bottom: 60px;
+    /* margin-left: 10px; */
+    text-align: center;
+    font-size: 1.125em;
+    letter-spacing: 1.5px;
+    color: #166c35;
+    font-weight: 600;
 }

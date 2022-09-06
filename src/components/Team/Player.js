@@ -3,6 +3,7 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import './Team.css';
 import PlayerList from './PlayerList';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 
 const Player = () => {
@@ -160,6 +161,7 @@ const Player = () => {
         // centerAll.style.display = "none";
     }
 
+    if(!players) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

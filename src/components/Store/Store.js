@@ -296,6 +296,7 @@ const Store = () => {
                                         <img src={store.imgsrc} alt={store.name} />
                                     </Link>
                                     <span className='wish_btn'><button onClick={wishCountHandler}></button></span>
+                                    {/* <span className='wish_btn'></span> */}
                                 </div>
                                 <Link to="/detailProduct">
                                     <div className='product_text'>

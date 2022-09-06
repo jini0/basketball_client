@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 import { getCookie } from '../util/cookie';
 import './News.css';
@@ -92,6 +93,7 @@ const Notice = () => {
         })
     }
 
+    if(!notices) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

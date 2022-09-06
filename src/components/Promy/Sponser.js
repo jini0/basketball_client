@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Loading from '../Loading/Loading';
 // import { API_URL } from '../config/contansts';
 import './Promy.css';
 
@@ -22,6 +23,7 @@ const Sponser = () => {
         // eslint-disable-next-line
     },[])
     
+    if(!sponsers) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>
