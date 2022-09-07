@@ -100,7 +100,7 @@ const Cart = () => {
         console.log(carts[id]['amount'])
 
         //랜더링 다시하기
-        setCarts(carts.map((cart,index) => index === id ? { ...cart, amount: cart.amount+1 } : cart))   
+        setCarts(carts.map((cart,index) => index === id ? { ...cart, amount: cart.amount+1 } : cart))
     }
     //감소버튼
     async function decrease(e) {

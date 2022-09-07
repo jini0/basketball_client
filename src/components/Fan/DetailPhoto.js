@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { API_URL } from '../config/contansts';
+import Loading from '../Loading/Loading';
 
 const DetailPhoto = () => {
     const navigate = useNavigate();
@@ -22,8 +23,7 @@ const DetailPhoto = () => {
         })
         // eslint-disable-next-line
     },[])
-    if(!photo) return <div>로딩중입니다...</div>
-
+    
     //button - 목록으로 보내는 함수
     function onSubmit(){
         navigate('/photo');
@@ -41,7 +41,8 @@ const DetailPhoto = () => {
             console.log(err);
         })
     }
-
+    
+    if(!photo) return <Loading/>
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

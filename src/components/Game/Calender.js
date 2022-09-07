@@ -5,7 +5,7 @@ import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
 import './style.scss';
 import { useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 // import { useParams } from 'react-router-dom';
 
 // 리액트 달력만들기 https://sennieworld.tistory.com/61
@@ -45,7 +45,7 @@ const RenderDays = () => {
 
 const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
     // mysql로 데이터 부르기
-    const [ games, setGames ] = useState([]);
+    // const [ games, setGames ] = useState([]);
     // const { gameDate } = useParams();
 
     useEffect(()=>{ 
