@@ -32,6 +32,23 @@ body {
   height: 100%;
 }
 
+/* 스크롤바 */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  /* height: 10%; */
+  /* background: #001489; */
+  background: #03662c;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  /* background: rgba(33, 122, 244, .1); */
+  background: rgba(56, 90, 54, 0.1);
+}
+
 /* 로딩 */
 /* http://rwdb.kr/css15/ */
 /* $bg:$grey;
@@ -205,6 +222,10 @@ $fill:$primary; */
   display: none;
   /* display: flex;
   flex-direction: column; */
+}
+#gnb .inner > ul .menuList .hideMenu li:hover {
+  text-decoration :  1px rgba(82, 228, 46, 0.849) line-through;
+  transition: 0.3s;
 }
 #gnb .inner > ul .menuList:nth-child(4) .hideMenu {
   left: -20%;
@@ -445,15 +466,15 @@ $fill:$primary; */
   text-decoration: underline;
   /* color: #03662c; */
 }
-/* 슬라이드3, 슬라이드4 */
-#main3, #main4 {
+/* 슬라이드3, 슬라이드4, 슬라이드5 */
+#main3, #main4, #main5 {
   width: 100%;
   /* height: 646px; */
   height: 792px;
   overflow: hidden;
   position: relative;
 }
-#main3 img, #main4 img {
+#main3 img, #main4 img, #main5 img {
   position: absolute;
   top: 0;
   left: 50%;

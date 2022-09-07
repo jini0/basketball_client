@@ -105,6 +105,9 @@ const MainPage = () => {
                     <div id="main4">
                         <Link to="/notice/13"><img src="images/mainSlide_4.png" alt="메인슬라이드4" /></Link>
                     </div>
+                    <div id="main5">
+                        <Link to="/notice/14"><img src="images/mainSlide_5.png" alt="메인슬라이드5" /></Link>
+                    </div>
                 </Slider>
             </div>
             <MainColumn/>
