@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Team.css';
 import PlayerList from './PlayerList';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const Player = () => {
     // 변수 지정
@@ -34,8 +34,8 @@ const Player = () => {
     const [ position, setPosition ] = useState('');
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/players")
-        // axios.get(`${API_URL}/players`)
+        // axios.get("http://localhost:8001/players")
+        axios.get(`${API_URL}/players`)
         .then(result=>{
             const players = result.data;
             console.log(players);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import PopupDom from './PopupDom';
 import PopupPostCode from "./PopupPostCode";
 
@@ -65,8 +65,8 @@ const Join = () => {
     const [ idCheck, setIdCheck ] = useState(false);
     const onIdCheck = async (e) => {
         let userId = document.querySelector('#userId');
-        const res = await axios.get('http://localhost:8001/idCheck');  //id 중복확인
-        // const res = await axios.get(`${API_URL}/idCheck`);  //id 중복확인
+        // const res = await axios.get('http://localhost:8001/idCheck');  //id 중복확인
+        const res = await axios.get(`${API_URL}/idCheck`);  //id 중복확인
         const idDB = res.data;
         console.log(idDB);
         let sameNum = 0;
@@ -223,8 +223,8 @@ const Join = () => {
 
     // *addMember()함수 만들기
     function addMember(){
-        axios.post('http://localhost:8001/join', formData)  
-        // axios.post(`${API_URL}/join`, formData)  
+        // axios.post('http://localhost:8001/join', formData)  
+        axios.post(`${API_URL}/join`, formData)  
         .then(res=>{
             alert('등록되었습니다.');
             console.log(res);

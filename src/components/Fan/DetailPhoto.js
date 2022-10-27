@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import Loading from '../Loading/Loading';
 
 const DetailPhoto = () => {
@@ -11,8 +11,8 @@ const DetailPhoto = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/photo/${id}`)
-        // axios.get(`${API_URL}/photo/${id}`)
+        // axios.get(`http://localhost:8001/photo/${id}`)
+        axios.get(`${API_URL}/photo/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -31,8 +31,8 @@ const DetailPhoto = () => {
 
     //게시글 삭제
     const onDelete = () => {
-        axios.delete(`http://localhost:8001/delPhoto/${id}`)
-        // axios.delete(`${API_URL}/delPhoto/${id}`)
+        // axios.delete(`http://localhost:8001/delPhoto/${id}`)
+        axios.delete(`${API_URL}/delPhoto/${id}`)
         .then(res=>{
             console.log("삭제 완료!");
             navigate(-1);

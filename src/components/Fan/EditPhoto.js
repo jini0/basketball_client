@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const EditPhoto = () => {
     const navigate = useNavigate();
@@ -22,8 +22,8 @@ const EditPhoto = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/photo/${id}`)
-        // axios.get(`${API_URL}/${id}`)
+        // axios.get(`http://localhost:8001/photo/${id}`)
+        axios.get(`${API_URL}/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -91,8 +91,8 @@ const EditPhoto = () => {
         }
         //수정함수 PUT전송
         function updatePhoto(){
-            axios.put(`http://localhost:8001/editPhoto/${id}`,formData)
-            // axios.put(`${API_URL}/editPhoto/${id}`,formData)
+            // axios.put(`http://localhost:8001/editPhoto/${id}`,formData)
+            axios.put(`${API_URL}/editPhoto/${id}`,formData)
             .then(res=>{
                 console.log(res);
                 navigate(`/photo/${id}`);

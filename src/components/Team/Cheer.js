@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import './Team.css';
 
 const Cheer = () => {
@@ -9,8 +9,8 @@ const Cheer = () => {
     const [ cheers, setCheers ] = useState([]);
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/cheer")
-        // axios.get(`${API_URL}/cheer`)
+        // axios.get("http://localhost:8001/cheer")
+        axios.get(`${API_URL}/cheer`)
         .then(result=>{
             const cheers = result.data;
             console.log(cheers);

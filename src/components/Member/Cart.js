@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useParams } from 'react-router-dom';
 // import CartList from './CartList';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const Cart = () => {
     const { idid } = useParams();
@@ -27,8 +27,8 @@ const Cart = () => {
     const [ carts, setCarts ] = useState([]);
     
     useEffect(()=>{
-        axios.get(`http://localhost:8001/cart/${idid}`)
-        // axios.get(`${API_URL}/cart`)
+        // axios.get(`http://localhost:8001/cart/${idid}`)
+        axios.get(`${API_URL}/cart`)
         .then((result) => {
             const carts = result.data;
             console.log(carts);
@@ -63,8 +63,8 @@ const Cart = () => {
         const checkedLength = checked.length;   // check한 목록들을 -> 배열에 담음
         if(window.confirm("삭제하시겠습니까?")){
             for(let i=0; i<checkedLength; i++){
-                axios.delete(`http://localhost:8001/delCart/${checked[i]}`)
-                // axios.delete(`${API_URL}/delCart/${checked[i]}`)
+                // axios.delete(`http://localhost:8001/delCart/${checked[i]}`)
+                axios.delete(`${API_URL}/delCart/${checked[i]}`)
                 .then(res=>{
                     console.log("삭제 완료!");
                     setChecked([]);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import './Promy.css';
 
 const Sponser = () => {
@@ -9,8 +9,8 @@ const Sponser = () => {
     const [ sponsers, setSponsers ] = useState([]);
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/sponsers")
-        // axios.get(`${API_URL}/sponsers`)
+        // axios.get("http://localhost:8001/sponsers")
+        axios.get(`${API_URL}/sponsers`)
         .then(result=>{
             const results = result.data;
             console.log(results);

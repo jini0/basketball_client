@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import Review from '../Member/Review';
 import { getCookie } from '../util/cookie';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 // import {  reset } from '../modules/counter';
 import PZoomImage from './PZoomImage';
 
@@ -22,8 +22,8 @@ const ProductDetail = () => {
 
     const { id } = useParams();             // id값 받아오기(parameter 사용)
     useEffect(()=>{
-        axios.get(`http://localhost:8001/store/${id}`)
-        // axios.get(`${API_URL}/store/${id}`)
+        // axios.get(`http://localhost:8001/store/${id}`)
+        axios.get(`${API_URL}/store/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -167,7 +167,8 @@ const ProductDetail = () => {
                 window.alert("수량을 입력해주세요.");
             }
             // console.log(pAmount.value);
-            axios.put(`http://localhost:8001/addCart`,cartData)
+            // axios.put(`http://localhost:8001/addCart`,cartData)
+            axios.put(`${API_URL}/addCart`,cartData)
             .then((result)=>{
                 console.log(result);
                 // eslint-disable-next-line  
@@ -195,8 +196,8 @@ const ProductDetail = () => {
 
     //상품 삭제
     const onDelete = () => {
-        axios.delete(`http://localhost:8001/delProduct/${id}`)
-        // axios.delete(`${API_URL}/delProduct/${id}`)
+        // axios.delete(`http://localhost:8001/delProduct/${id}`)
+        axios.delete(`${API_URL}/delProduct/${id}`)
         .then(res=>{
             console.log("삭제 완료!");
             navigate('/product');

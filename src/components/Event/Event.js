@@ -3,7 +3,7 @@ import './Event.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const Event = () => {
     // 이벤트 클릭시 각 이벤트리스트 뜨게!
@@ -32,8 +32,8 @@ const Event = () => {
     const [ ongoing, setOngoing ] = useState("");
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/events")
-        // axios.get(`${API_URL}/events`)
+        // axios.get("http://localhost:8001/events")
+        axios.get(`${API_URL}/events`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -48,8 +48,8 @@ const Event = () => {
 
     //ongoing 진행중인 이벤트 -> 없을시 다른 이미지 넣기
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/ongoing")
-        // axios.get(`${API_URL}/ongoing`)
+        // axios.get("http://localhost:8001/ongoing")
+        axios.get(`${API_URL}/ongoing`)
         .then(result=>{
             const resultB = result.data;
             console.log(resultB);
@@ -65,8 +65,8 @@ const Event = () => {
     // *조회수 
     const eventClick = (id) => {
         console.log(id);
-        axios.put(`http://localhost:8001/viewEvent/${id}`)
-        // axios.put(`${API_URL}/viewEvent/${id}`)
+        // axios.put(`http://localhost:8001/viewEvent/${id}`)
+        axios.put(`${API_URL}/viewEvent/${id}`)
         .then(res=>{
             console.log(res);
             // setNotices(res.data.view+1);
