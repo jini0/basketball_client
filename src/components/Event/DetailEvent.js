@@ -3,7 +3,7 @@ import './Event.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const DetailEvent = () => {
     const navigate = useNavigate();
@@ -18,8 +18,8 @@ const DetailEvent = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/event/${id}`)
-        // axios.get(`${API_URL}/event/${id}`)
+        // axios.get(`http://localhost:8001/event/${id}`)
+        axios.get(`${API_URL}/event/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);

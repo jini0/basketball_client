@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const EditNews = () => {
     const navigate = useNavigate();
@@ -18,8 +18,8 @@ const EditNews = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/news/${id}`)
-        // axios.get(`${API_URL}/news/${id}`)
+        // axios.get(`http://localhost:8001/news/${id}`)
+        axios.get(`${API_URL}/news/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -72,8 +72,8 @@ const EditNews = () => {
         }
         //수정함수 PUT전송
         function updateNews(){
-            axios.put(`http://localhost:8001/editNews/${id}`,formData)
-            // axios.put(`${API_URL}/editNews/${id}`,formData)
+            // axios.put(`http://localhost:8001/editNews/${id}`,formData)
+            axios.put(`${API_URL}/editNews/${id}`,formData)
             .then(res=>{
                 console.log(res);
                 navigate(-1);   // "/news" 로 돌아감

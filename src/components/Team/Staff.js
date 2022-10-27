@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import './Team.css';
 
 const Staff = () => {
@@ -9,8 +9,8 @@ const Staff = () => {
      const [ staffs, setStaffs ] = useState([]);
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/staff")
-        // axios.get(`${API_URL}/staff`)
+        // axios.get("http://localhost:8001/staff")
+        axios.get(`${API_URL}/staff`)
         .then(result=>{
             const staffs = result.data;
             console.log(staffs);

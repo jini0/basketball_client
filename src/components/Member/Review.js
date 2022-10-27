@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/contansts';
 // import { useLocation } from 'react-router-dom';
 import { getCookie } from '../util/cookie';
 import './Review.css';
@@ -13,8 +14,8 @@ const Review = ({product}) => {
     // mysql로 데이터 불러오기 - review 전체 뿌리기
     const [ reviews, setReviews ] = useState([]);
     useEffect(()=>{ 
-        axios.get(`http://localhost:8001/review/${product}`)
-        // axios.get(`${API_URL}/review`)
+        // axios.get(`http://localhost:8001/review/${product}`)
+        axios.get(`${API_URL}/review/${product}`)
         .then(result=>{
             const results = result.data;
             console.log(results);
@@ -77,7 +78,8 @@ const Review = ({product}) => {
 
     const onSubmit = (e)=>{
         e.preventDefault();
-        axios.post(`http://localhost:8001/addReview`, review)
+        // axios.post(`http://localhost:8001/addReview`, review)
+        axios.post(`${API_URL}/addReview`, review)
         .then(result=>{
             alert("리뷰가 작성되었습니다.")
             // navigate(`/review/${product}`)
@@ -91,7 +93,8 @@ const Review = ({product}) => {
     //리뷰 삭제하기 - 불러오기
     function delReview(id){
         // axios.post(`http://localhost:8001/delReview/${id}`)  // post전송 --> post로 보내면 새로고침을 해야 지워진걸 볼 수 있음!
-        axios.delete(`http://localhost:8001/delReview/${id}`)   // 삭제 - delete로 해야 삭제 후 바로 랜더링 돼서 새로고침 안해도 사라짐
+        // axios.delete(`http://localhost:8001/delReview/${id}`)   // 삭제 - delete로 해야 삭제 후 바로 랜더링 돼서 새로고침 안해도 사라짐
+        axios.delete(`${API_URL}/delReview/${id}`)   // 삭제 - delete로 해야 삭제 후 바로 랜더링 돼서 새로고침 안해도 사라짐
         .then(result=>{
             console.log(result);
         })

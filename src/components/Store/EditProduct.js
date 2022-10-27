@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../config/contansts';
 
 const EditProduct = () => {
     const navigate = useNavigate();
@@ -29,8 +30,8 @@ const EditProduct = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/store/${id}`)
-        // axios.get(`${API_URL}/store/${id}`)
+        // axios.get(`http://localhost:8001/store/${id}`)
+        axios.get(`${API_URL}/store/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);
@@ -113,8 +114,8 @@ const EditProduct = () => {
         }
         //수정함수 PUT전송
         function updateProduct(){
-            axios.put(`http://localhost:8001/editProduct/${id}`,formData)
-            // axios.put(`${API_URL}/editProduct/${id}`,formData)
+            // axios.put(`http://localhost:8001/editProduct/${id}`,formData)
+            axios.put(`${API_URL}/editProduct/${id}`,formData)
             .then(res=>{
                 console.log(res);
                 navigate(`/store/${id}`);

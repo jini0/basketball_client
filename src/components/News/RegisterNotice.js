@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const RegisterNotice = () => {
     const today = new Date(); 
@@ -57,8 +57,8 @@ const RegisterNotice = () => {
         }
         //등록함수
         function registerNotice(){
-            axios.post('http://localhost:8001/registerNotice', (formData))
-            // axios.post(`${API_URL}/registerNotice`, (formData))
+            // axios.post('http://localhost:8001/registerNotice', (formData))
+            axios.post(`${API_URL}/registerNotice`, (formData))
             .then(res=>{
                 console.log(res);
                 navigate(-1);   // '/notice'(이전)으로 이동

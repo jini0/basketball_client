@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Team.css';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 
 const PlayerDetail = () => {
     // mysql로 데이터 불러오기
@@ -11,8 +11,8 @@ const PlayerDetail = () => {
     const { id } = useParams();             // id값 받아오기(parameter 사용)
 
     useEffect(()=>{
-        axios.get(`http://localhost:8001/player/${id}`)
-        // axios.get(`${API_URL}/player/${id}`)
+        // axios.get(`http://localhost:8001/player/${id}`)
+        axios.get(`${API_URL}/player/${id}`)
         .then(result => {
             const results = result.data;
             console.log(results);

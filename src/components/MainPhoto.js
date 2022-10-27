@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from './Loading/Loading';
-// import { API_URL } from './config/contansts';
+import { API_URL } from './config/contansts';
 
 const MainPhoto = () => {
     // 다음 버튼 커스텀
@@ -52,8 +52,8 @@ const MainPhoto = () => {
     const [ mainPhotos, setmainPhotos ] = useState([]);
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/photomain")
-        // axios.get(`${API_URL}/photomain`)
+        // axios.get("http://localhost:8001/photomain")
+        axios.get(`${API_URL}/photomain`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -69,8 +69,8 @@ const MainPhoto = () => {
     //news 조회수
     const photoClick = (id) => {
         console.log(id);
-        axios.put(`http://localhost:8001/viewPhotoMain/${id}`)
-        // axios.put(`${API_URL}/viewPhotoMain/${id}`)
+        // axios.put(`http://localhost:8001/viewPhotoMain/${id}`)
+        axios.put(`${API_URL}/viewPhotoMain/${id}`)
         .then(res=>{
             console.log(res);
             setmainPhotos(res.data);

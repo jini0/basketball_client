@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/contansts';
 import './Store.css';
 
 const RegisterProduct = () => {
@@ -76,8 +77,8 @@ const RegisterProduct = () => {
         }
         //등록함수
         function registerProduct(){
-            axios.post('http://localhost:8001/registerProduct', (formData))
-            // axios.post(`${API_URL}/registerProduct`, (formData))
+            // axios.post('http://localhost:8001/registerProduct', (formData))
+            axios.post(`${API_URL}/registerProduct`, (formData))
             .then(res=>{
                 console.log(res);
                 navigate(-1);   // '/store'(이전)으로 이동

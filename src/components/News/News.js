@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
-// import { API_URL } from '../config/contansts';
+import { API_URL } from '../config/contansts';
 import { getCookie } from '../util/cookie';
 import './News.css';
 import Pagination from './Pagination';
@@ -24,8 +24,8 @@ const News = () => {
     
 
     useEffect(()=>{ 
-        axios.get("http://localhost:8001/newses")
-        // axios.get(`${API_URL}/newses`)
+        // axios.get("http://localhost:8001/newses")
+        axios.get(`${API_URL}/newses`)
         .then(result=>{
             const resultA = result.data;
             console.log(resultA);
@@ -53,8 +53,8 @@ const News = () => {
         e.preventDefault();
         if(search === null || search === '') {  //검색어가 없을 경우(null이거나 '빈값') 경고창 + 전체리스트 반환
             alert("검색어를 입력하시오.")
-            axios.get("http://localhost:8001/newses")
-            // axios.get(`${API_URL}/newses`)
+            // axios.get("http://localhost:8001/newses")
+            axios.get(`${API_URL}/newses`)
             .then(result=>{
                 const resultA = result.data;
                 console.log(resultA);
@@ -78,8 +78,8 @@ const News = () => {
     // const { id } = useParams();
     const newsClick = (id) => {
         console.log(id);
-        axios.put(`http://localhost:8001/viewNews/${id}`)
-        // axios.put(`${API_URL}/viewNews/${id}`)
+        // axios.put(`http://localhost:8001/viewNews/${id}`)
+        axios.put(`${API_URL}/viewNews/${id}`)
         .then(res=>{
             console.log(res);
             setNewses(res.data);
@@ -114,8 +114,8 @@ const News = () => {
         // })
         //2개 이상 삭제시 -> 배열의 길이만큼 삭제시켜줘야함!
         for(let i=0; i<checkedLength; i++){
-            axios.delete(`http://localhost:8001/delNews/${checked[i]}`)
-            // axios.delete(`${API_URL}/delNews/${checked[i]}`)
+            // axios.delete(`http://localhost:8001/delNews/${checked[i]}`)
+            axios.delete(`${API_URL}/delNews/${checked[i]}`)
             .then(res=>{
                 console.log("삭제 완료!");
                 setChecked([]);
