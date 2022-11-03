@@ -3,7 +3,8 @@
 
 .calendar {
     width: 100%;
-    height: 80vh;
+    height: 90vh;
+    // height: 80vh;
     padding-top: 80px;
     padding-bottom: 130px;
     background: #f1f1f1;
@@ -91,6 +92,7 @@
     .body {
         width: 100%;
         height: 90%;
+        // height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -105,6 +107,7 @@
             .col {
                 width: 13.5%;
                 height: 93%;
+                // height: 96%;
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
@@ -113,6 +116,7 @@
                 border-radius: 3px;
                 font-size: 0.8em;
                 background: #fff;
+                padding-bottom: 10px;    //추가 해당일자 cell 크기 키우려고
                 span {
                     margin: 4px 0 0 4px;
                 }
@@ -144,10 +148,45 @@
                 color: #fff;
                 font-weight: 600;
             }
+            .gameDate {
+                width: 100%;
+                // margin-top: 5px;
+                // height: 60px;
+                // margin-top: 15px;
+                .gameDateDiv {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    // justify-content: space-between;
+                    justify-content: space-around;
+                    align-items: flex-start;
+                    div {
+                        // width: 42%;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        p {
+                            // font-size: 10px; //구단별 구단 이름일때
+                            font-size: 14px;    //구단별 점수 적었을때
+                            text-align: center;
+                        }
+                    }
+                    img {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                    .versus {
+                        vertical-align: middle;
+                        font-size: 20px;
+                        color: red;
+                        // width: 5%;
+                    }
+                }
+            }
         }
     }
 }
-
 
 // 원래 scss
 // .calendar {
