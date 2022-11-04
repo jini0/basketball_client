@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <!-- favicon 수정 -->
     <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
-    <link rel="icon" href="./favicon/favicon.ico" />
+    <!-- ❗❗favicon 페이지 다른페이지 이동시 기본파비콘으로 돌아감 -> 절대경로지정(https://think0wise.tistory.com/21) -->
+    <!-- ❗❗public폴더의 절대경로를 이용하고 싶다면
+          html 에서는 %PUBLIC_URL%  쓰고, js 에서는 process.env.PUBLIC_URL 쓰세요!  -->
+    <!-- <link rel="icon" href="./favicon/favicon.ico" /> -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta

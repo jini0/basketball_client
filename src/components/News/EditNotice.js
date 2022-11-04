@@ -104,6 +104,7 @@ const EditNotice = () => {
                 console.log('게시글 수정에 실패하였습니다.');
                 console.log(e);
             })
+            
         }
     }
     //수정button - onClick이벤트
