@@ -7,6 +7,8 @@ import { API_URL } from '../config/contansts';
 
 const DetailEvent = () => {
     const navigate = useNavigate();
+    // //*로딩상태 - useState로 상태관리
+    // const [loading, setLoading] = useState(true);
 
     //button - 목록으로 보내는 함수
     function onSubmit(){
@@ -24,6 +26,7 @@ const DetailEvent = () => {
             const results = result.data;
             console.log(results);
             setEvent(results[0]); 
+            // setLoading(false);  //렌더링이 완료(event데이터들을 다 불러오면)가 되면 setLoading은 false
         })   
         .catch(e=> {
             console.log(e);
@@ -32,6 +35,7 @@ const DetailEvent = () => {
     },[])
 
     if(!event) return <Loading/>
+    // if(loading) return <Loading/>    // ->loading이 true일때만, 로딩창 뜸(데이터 불러오면 loading이 false라 안보이게)
     return (
         <div className='teamTab'>
             <div className='teamHeader'>

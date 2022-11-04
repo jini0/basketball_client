@@ -2,6 +2,7 @@ import React from 'react';
 import { NaverMap, Marker } from 'react-naver-maps'; // 패키지 불러오기
 
 // 네이버 지도 api
+// ---> 홈페이지에서, Web 서비스 URL 등록 1. http://localhost:3000/    2. https://basketball-client.vercel.app/
 const NaverMapAPI = () => {
     const navermaps = window.naver.maps;
     //마커 onClick이벤트

@@ -30,6 +30,8 @@ const Event = () => {
     // mysql로 데이터 부르기
     const [ events, setEvents ] = useState([]);
     const [ ongoing, setOngoing ] = useState("");
+    // //*로딩상태 - useState로 상태관리
+    // const [loading, setLoading] = useState(true);
 
     useEffect(()=>{ 
         // axios.get("http://localhost:8001/events")
@@ -39,6 +41,7 @@ const Event = () => {
             console.log(resultA);
             // console.log(result.data);
             setEvents(result.data);
+            // setLoading(false);  //렌더링이 완료(events데이터들을 다 불러오면)가 되면 setLoading은 false
         })
         .catch(e=>{
             console.log(e);
@@ -55,12 +58,15 @@ const Event = () => {
             console.log(resultB);
             // console.log(result.data);
             setOngoing(result.data);
+            // setLoading(false);  //렌더링이 완료(ongoing데이터들을 다 불러오면)가 되면 setLoading은 false
         })
         .catch(e=>{
             console.log(e);
         })
     // eslint-disable-next-line
     },[events])
+
+    // if(loading) return <Loading/>;    // ->loading이 true일때만, 로딩창 뜸(데이터 불러오면 loading이 false라 안보이게)
 
     // *조회수 
     const eventClick = (id) => {

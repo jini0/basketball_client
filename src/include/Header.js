@@ -42,8 +42,12 @@ const Header = () => {
     const onLogPlease = () => {
         alert("로그인을 해주세요.")
     }
-
     console.log(isLogin);
+
+    //✔ 홈로고(이미지) 액박 -> 절대경로로 수정 https://think0wise.tistory.com/21
+    const imgUrl = process.env.PUBLIC_URL+`/images/DB_logo1.png`;   //백틱안쓰면 안됨!
+    // cf. 추가로 process.env 쓰려면 ex> const img= process.env.PUBLIC_URL+`/img/${image}`; 요롷게 해야할거임
+
     return (
         <div id="header">
             <div id='sign_nav'>
@@ -112,7 +116,12 @@ const Header = () => {
                                 <li><Link to="/rankPlayer">선수 순위</Link></li>
                             </ul>
                         </li>
-                        <li><Link to="/"><img src="images/DB_logo1.png" alt="원주DB로고" /></Link></li>
+                        {/* ❗수정❗ 홈로고가 절대경로가 아니라서 새로고침시 + 페이지 이동시, 액박뜨고 alt만 나옴 
+                        https://www.dogdrip.net/385368501
+                        https://think0wise.tistory.com/21
+                        https://create-react-app.dev/docs/using-the-public-folder/ */}
+                        {/* <li><Link to="/"><img src="images/DB_logo1.png" alt="원주DB로고" /></Link></li> */}
+                        <li><Link to="/"><img src={imgUrl} alt="원주DB로고" /></Link></li>
                         <li class="menuList">
                             <h3><Link to="/youtube">FAN</Link></h3>
                             <ul class="hideMenu">

@@ -30,7 +30,7 @@ const Review = ({product}) => {
 
     // review - 작성하기
     const id = getCookie('userId');
-    console.log(product);
+    // console.log(product);
     // const location = useLocation();
     // const data = location.state;
     // console.log(data)
@@ -52,7 +52,8 @@ const Review = ({product}) => {
         reviewtitle : "",
         reviewdesc : "",
         reviewimg : "",
-        reviewstar : "",
+        // reviewstar : "",        
+        reviewstar : "★★★★★",  //❗❗3방법> 기본값으로 처음에 별5개..!(선택안해도 selected되도록)
         userid : id,
         // date : new Date()
         // 원래는 위에처럼 다 안해주고 그냥 new Date 객체만 받아서 뿌려줬다가 -> varchar(8)이라서 수정
@@ -74,6 +75,15 @@ const Review = ({product}) => {
             ...review,
             [name] :value.replace("C:\\fakepath\\","images/")
         })
+        const reviewFile = document.querySelector("#reviewFile");
+        const photoFile = document.querySelector("#photofile");
+        // console.log(reviewFile.files);
+        console.log(reviewFile.files[0].name);
+            if(reviewFile.files[0].name){
+                photoFile.innerHTML = reviewFile.files[0].name;
+            }else{
+                photoFile.innerHTML = "사진추가";
+            }
     }
 
     const onSubmit = (e)=>{
@@ -131,6 +141,39 @@ const Review = ({product}) => {
         navigate('/login');     //login페이지로 이동
     }
 
+    //❗❗*리뷰 - '사진추가' label 글자수정 (사진파일 선택시, 사진추가label에 선택한 이미지의 이름이 나오도록 ex> 6.png)
+    //--> multer 전이라서,, 이미 onChange해줘야할 input에 onChange이벤트가 있어서 위에 넣어주기..!
+    // const fileOnChange = ()=>{
+    //     const reviewFile = document.querySelector("#reviewFile");
+    //     const photoFile = document.querySelector("#photofile");
+    //     // console.log(reviewFile.files);
+    //     console.log(reviewFile.files[0].name);
+    //         if(reviewFile.files[0].name){
+    //             photoFile.innerHTML = reviewFile.files[0].name;
+    //         }else{
+    //             photoFile.innerHTML = "사진추가";
+    //         }
+    // }
+
+
+    //❗❗2방법> 리뷰 평점에서 select값: 평점5점을 기본값으로 설정하기(option 태그안에 selected 속성주는거 안됨,,,)
+    //https://wazacs.tistory.com/31
+    // const selectList = ["★★★★★", "★★★★", "★★★", "★★", "★"];
+    // const [selected, setSelected] = useState("★★★★★");   //selected 는 선택된 option이 들어갑니다. / onChange는 선택된 option의 value 값을 e.target.value 로 받은 후, Selected 에 setState 시켜줍니다. 
+                                                    //--> 만약 처음부터 grape가 선택 된 채로 설정 하고 싶다면 Selected 부분에 default 값을 넣어주면 됩니다. 
+    //select의 onChange함수 다르게 주기..!
+    // const handleSelect = (e) => {
+    //     setSelected(e.target.value);
+    //     const {name, value} = e.target;
+    //     setReview({
+    //         ...review,
+    //         [name]:value
+    //     })
+    //     // console.log(selected);
+    // };
+    // console.log(selected);
+    //❗❗ ----> 이렇게 해도 안돼서,,! [review,setReivew]에서 reviewStar에 처음 값에 "★★★★★"를 넣어줌
+
     return (
         <div id='reviewContents'>
             <div>
@@ -141,18 +184,27 @@ const Review = ({product}) => {
                         <input type="text" name="reviewtitle" placeholder="상품 후기 제목" onChange={onChange} />
                         <textarea name="reviewdesc" id="reviewdesc" cols="30" rows="10" placeholder="상품후기 작성하기" onChange={onChange}></textarea>
                         <ul id="reviewBtns">
-                            <li>
-                                <input type="file" name="reviewimg" className="reviewimg" required onChange={onChangeImg} />
+                            <li className='reviewPhoto'>
+                                <input type="file" name="reviewimg" className="reviewimg" id="reviewFile" required onChange={onChangeImg} />
                                 <label id="photofile">사진추가</label>
                             </li>
                             <li>
                                 <select name="reviewstar" id="reviewstar" onChange={onChange}>
+                                    {/* <option value="★★★★★" selected>★★★★★</option>  ---> react는 selected 이렇게 안됨...! */}
                                     <option value="★★★★★">★★★★★</option>
                                     <option value="★★★★">★★★★</option>
                                     <option value="★★★">★★★</option>
                                     <option value="★★">★★</option>
                                     <option value="★">★</option>
                                 </select>
+                                {/* ❗❗2방법 --> 안됨..."★★★★★"이 selected 기본값으로 안됨 ㅠ */}
+                                {/* <select name="reviewstar" id="reviewstar" onChange={handleSelect} value={selected}>
+                                    {selectList.map((item) => (
+                                        <option value={item} key={item}>
+                                        {item}
+                                        </option>
+                                    ))} 
+                                </select> */}
                             </li>
                             <li>
                                 <input type="hidden" name="name" value={review.name} />

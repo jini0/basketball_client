@@ -8,7 +8,7 @@ $fill:$primary; */
     background:grey;
 } */
 .loading {
-    background: grey;
+    background: rgba(128, 128, 128, 0.586);
     color: #fff;
     position: absolute;
     width: 100vw;
@@ -30,8 +30,10 @@ $fill:$primary; */
     /* background:grey; */
     background:#03662c;
     margin:3em auto;
-    width:2em;
-    height:4em;
+    /* width:2em;
+    height:4em; */
+    width:5em;
+    height:10em;
     animation:hourglass 1s linear infinite;
     /* 추가하기 */
     z-index: 100;
